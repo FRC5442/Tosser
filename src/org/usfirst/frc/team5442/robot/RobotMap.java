@@ -19,7 +19,7 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
-	public static RobotDrive driveTrain;
+	private static RobotDrive driveTrain;
 	public static Spark leftController1;
 	public static Spark leftController2;
 	public static Spark rightController1;
@@ -32,5 +32,10 @@ public class RobotMap {
 		rightController2 = new Spark(3);
 		
 		driveTrain = new RobotDrive(leftController1, leftController2, rightController1, rightController2);
+	}
+	
+	public static RobotDrive GetDriver()
+	{
+		return driveTrain;
 	}
 }
