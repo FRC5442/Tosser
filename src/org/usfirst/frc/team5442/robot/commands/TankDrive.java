@@ -13,7 +13,8 @@ public class TankDrive extends Command{
 	}
 	
 	protected void execute() {
-		DriveTrain.RobotDrive(OI.xboxController.getRawAxis(1), OI.xboxController.getRawAxis(5));
+		DriveTrain.Driving(OI.xboxController.getRawAxis(1), OI.xboxController.getRawAxis(5));
+		
 	}
 	@Override
 	protected boolean isFinished() {
