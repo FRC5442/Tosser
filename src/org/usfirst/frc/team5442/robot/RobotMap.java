@@ -1,5 +1,8 @@
 package org.usfirst.frc.team5442.robot;
 
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Spark;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -16,4 +19,18 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
+	public static RobotDrive driveTrain;
+	public static Spark leftController1;
+	public static Spark leftController2;
+	public static Spark rightController1;
+	public static Spark rightController2;
+	
+	public static void init() {
+		leftController1 = new Spark(0);
+		leftController2 = new Spark(1);
+		rightController1 = new Spark(2);
+		rightController2 = new Spark(3);
+		
+		driveTrain = new RobotDrive(leftController1, leftController2, rightController1, rightController2);
+	}
 }
