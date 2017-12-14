@@ -25,7 +25,7 @@ public class RobotMap {
 	public static Spark rightController1;
 	public static Spark rightController2;
 	
-	public static void init() {
+	public RobotMap() {
 		leftController1 = new Spark(0);
 		leftController2 = new Spark(1);
 		rightController1 = new Spark(2);
