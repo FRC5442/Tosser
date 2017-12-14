@@ -3,8 +3,10 @@ package org.usfirst.frc.team5442.robot.subsystems;
 import java.io.Console;
 
 import org.usfirst.frc.team5442.robot.RobotMap;
+import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -18,16 +20,23 @@ public class DriveTrain extends Subsystem{
 	
 	public static RobotDrive DriveTrain;
 	
+	private static boolean switched = false;
+	
 	public DriveTrain()
 	{
 		//I'm a constructor...
 		//DriveTrain = RobotMap.GetDriver();
 	}
 	
-	public static void Driving(double left, double right) {
-		System.out.println("left(" + left + ") right(" + right + ")");
+	public static void Driving(double leftJoystick, double rightJoystick) {
 		if (DriveTrain == null) DriveTrain = RobotMap.GetDriver();
-		DriveTrain.tankDrive(left, right);
+		DriveTrain.tankDrive(leftJoystick, rightJoystick, true);
+	}
+	
+	public static void Driving2(GenericHID leftJoystick) {
+		//if (!switched) setDefaultCommand(new ArcadeDrive());
+		if (DriveTrain == null) DriveTrain = RobotMap.GetDriver();
+		DriveTrain.arcadeDrive(leftJoystick, true);
 	}
 	@Override
 	protected void initDefaultCommand() {
