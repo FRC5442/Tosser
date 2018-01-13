@@ -1,18 +1,18 @@
 
 package org.usfirst.frc.team5442.robot;
 
+import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
+import org.usfirst.frc.team5442.robot.commands.TankDrive;
+import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
-import org.usfirst.frc.team5442.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5442.robot.commands.TankDrive;
-import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,6 +27,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static RobotMap robotMap;
 	public static DriveTrain driveTrain;
+	public static Pneumatics pneumatics;
 
 	Command autonomousCommand;
 	SendableChooser<Command> driveChooser;
@@ -46,6 +47,8 @@ public class Robot extends IterativeRobot {
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Drive mode", driveChooser);
+		
+		pneumatics = new Pneumatics();
 		
 	}
 
