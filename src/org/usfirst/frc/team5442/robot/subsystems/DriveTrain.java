@@ -1,26 +1,19 @@
 package org.usfirst.frc.team5442.robot.subsystems;
 
 import java.io.Console;
-
 import org.usfirst.frc.team5442.robot.RobotMap;
 import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
-
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class DriveTrain extends Subsystem{
+
 	
-	private static Spark LeftSpark1 = RobotMap.leftController1;
-	private static Spark LeftSpark2 = RobotMap.leftController2;
-	private static Spark RightSpark1 = RobotMap.rightController1;
-	private static Spark RightSpark2 = RobotMap.rightController2;
+	public static DifferentialDrive DriveTrain;
 	
-	public static RobotDrive DriveTrain;
-	
-	private static boolean switched = false;
+	//private static boolean switched = true;
 	
 	public DriveTrain()
 	{
@@ -32,12 +25,13 @@ public class DriveTrain extends Subsystem{
 		if (DriveTrain == null) DriveTrain = RobotMap.GetDriver();
 		DriveTrain.tankDrive(leftJoystick, rightJoystick, true);
 	}
-	
-	public static void Driving2(GenericHID leftJoystick) {
-		//if (!switched) setDefaultCommand(new ArcadeDrive());
+	/// Arcade Drive vs. Tank Drive
+	/*/public static void Driving2(GenericHID leftJoystick) {
+		if (!switched) setDefaultCommand(new ArcadeDrive());
 		if (DriveTrain == null) DriveTrain = RobotMap.GetDriver();
-		DriveTrain.arcadeDrive(leftJoystick, true);
+		DriveTrain.arcadeDrive(leftJoystick.getRawAxis(0), leftJoystick.getRawAxis(1), true);
 	}
+	*/
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
