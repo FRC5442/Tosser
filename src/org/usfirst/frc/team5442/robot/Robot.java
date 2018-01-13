@@ -5,8 +5,6 @@ import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
 import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
-
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -27,7 +25,6 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static RobotMap robotMap;
 	public static DriveTrain driveTrain;
-	public static Pneumatics pneumatics;
 
 	Command autonomousCommand;
 	SendableChooser<Command> driveChooser;
@@ -47,9 +44,7 @@ public class Robot extends IterativeRobot {
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Drive mode", driveChooser);
-		
-		pneumatics = new Pneumatics();
-		
+				
 	}
 
 	/**
@@ -105,7 +100,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
+		// tele-op starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		if (autonomousCommand != null)
