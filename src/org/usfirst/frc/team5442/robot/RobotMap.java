@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5442.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -28,6 +30,9 @@ public class RobotMap {
 	public static Spark rightController1;
 	public static Spark rightController2;
 	
+	public static Compressor compressor;
+	
+	public static Solenoid gearShift;
 	// Setting SpeedControllerGroups per side
 	SpeedControllerGroup leftControllers,rightControllers;
 	
@@ -41,8 +46,10 @@ public class RobotMap {
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2);
 		rightControllers = new SpeedControllerGroup(rightController1, rightController2);
 		
-		
 		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
+		
+		compressor = new Compressor();
+		gearShift = new Solenoid(1);
 	}
 	
 	public static DifferentialDrive GetDriver()
