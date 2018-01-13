@@ -1,7 +1,11 @@
 package org.usfirst.frc.team5442.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -23,18 +27,24 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
-	private static DifferentialDrive driveTrain;
+	public static DifferentialDrive driveTrain;
 	// Declare Motor Controllers Here
 	public static Spark leftController1;
 	public static Spark leftController2;
 	public static Spark rightController1;
 	public static Spark rightController2;
 	
+	// Setting SpeedControllerGroups per side
+	SpeedControllerGroup leftControllers,rightControllers;
+	
 	public static Compressor compressor;
 	
 	public static Solenoid gearShift;
-	// Setting SpeedControllerGroups per side
-	SpeedControllerGroup leftControllers,rightControllers;
+
+	public static AHRS navx;
+	
+	public static Encoder encoderLeft;
+	public static Encoder encoderRight;
 	
 	public RobotMap() {
 		// Setting port numbers for speed controllers
@@ -45,11 +55,22 @@ public class RobotMap {
 		// Setting speed controllers to their respective groups
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2);
 		rightControllers = new SpeedControllerGroup(rightController1, rightController2);
-		
 		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
 		
+		//pneumatics
 		compressor = new Compressor();
 		gearShift = new Solenoid(1);
+		
+		navx = new AHRS(SerialPort.Port.kMXP);
+		
+		//encoders
+		encoderLeft = new Encoder(3, 4, false, EncodingType.k4X);
+		encoderLeft.setSamplesToAverage(5);
+		encoderLeft.setDistancePerPulse(1.0/360);
+		
+		encoderRight = new Encoder(3, 4, false, EncodingType.k4X);
+		encoderRight.setSamplesToAverage(5);
+		encoderRight.setDistancePerPulse(1.0/360);
 	}
 	
 	public static DifferentialDrive GetDriver()

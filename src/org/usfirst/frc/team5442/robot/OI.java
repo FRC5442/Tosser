@@ -41,7 +41,7 @@ public class OI {
 		
 		
 	}
-	public XboxController getXboxController(){
+	public static XboxController getXboxController(){
 		return xboxController;
 	}
 }

@@ -1,9 +1,6 @@
 package org.usfirst.frc.team5442.robot.commands;
 
-import org.usfirst.frc.team5442.robot.OI;
 import org.usfirst.frc.team5442.robot.Robot;
-import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ArcadeDrive extends Command{

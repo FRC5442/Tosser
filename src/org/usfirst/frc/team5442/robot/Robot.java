@@ -5,12 +5,12 @@ import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
 import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5442.robot.subsystems.PIDDrive;
 import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -28,6 +28,7 @@ public class Robot extends IterativeRobot {
 	public static RobotMap robotMap;
 	public static DriveTrain driveTrain;
 	public static Pneumatics pneumatics;
+	public static PIDDrive pidDrive;
 
 	Command autonomousCommand;
 	SendableChooser<Command> driveChooser;
@@ -40,6 +41,10 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		robotMap = new RobotMap();
 		driveTrain = new DriveTrain();
+		pneumatics = new Pneumatics();
+		pidDrive = new PIDDrive();
+		
+		
 		driveChooser = new SendableChooser<>();
 		driveChooser.addDefault("Tank Drive", new TankDrive());
 		driveChooser.addObject("Arcade Drive", new ArcadeDrive());
@@ -48,7 +53,7 @@ public class Robot extends IterativeRobot {
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Drive mode", driveChooser);
 		
-		pneumatics = new Pneumatics();
+		
 		
 	}
 
@@ -90,6 +95,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
+		RobotMap.navx.reset();
+		
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}
@@ -125,6 +132,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
-		LiveWindow.run();
+		
 	}
 }
