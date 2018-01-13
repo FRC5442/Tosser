@@ -43,8 +43,8 @@ public class RobotMap {
 		rightController1 = new Spark(2);
 		rightController2 = new Spark(3);
 		// Setting speed controllers to their respective groups
-		leftControllers = new SpeedControllerGroup(leftController1, leftController2);
-		rightControllers = new SpeedControllerGroup(rightController1, rightController2);
+		leftControllers = new SpeedControllerGroup(leftController1);
+		rightControllers = new SpeedControllerGroup(rightController1);
 		
 		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
 		
