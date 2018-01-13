@@ -4,11 +4,11 @@ import org.usfirst.frc.team5442.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class LowGear extends Command {
+public class LowShift extends Command {
 	
 	@Override
 	protected void initialize() {
-		Robot.pneumatics.;
+		Robot.pneumatics.gearShift(true);
 	}
 	
 	@Override

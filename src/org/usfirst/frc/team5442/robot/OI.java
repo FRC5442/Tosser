@@ -1,5 +1,8 @@
 package org.usfirst.frc.team5442.robot;
 
+import org.usfirst.frc.team5442.robot.commands.HighShift;
+import org.usfirst.frc.team5442.robot.commands.LowShift;
+
 import edu.wpi.first.wpilibj.XboxController;
 
 /**
@@ -39,6 +42,8 @@ public class OI {
 	public OI(){
 		xboxController = new XboxController(0);
 		
+		if (xboxController.getAButtonPressed()) new LowShift();
+		if (xboxController.getBButtonPressed()) new HighShift();
 		
 	}
 	public XboxController getXboxController(){
