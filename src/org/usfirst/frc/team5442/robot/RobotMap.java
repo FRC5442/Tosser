@@ -1,10 +1,9 @@
 package org.usfirst.frc.team5442.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
@@ -25,10 +24,12 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	private static DifferentialDrive driveTrain;
 	// Declare Motor Controllers Here
-	public static Spark leftController1;
-	public static Spark leftController2;
-	public static Spark rightController1;
-	public static Spark rightController2;
+	public static VictorSP leftController1;
+	public static VictorSP leftController2;
+	public static VictorSP leftController3;
+	public static VictorSP rightController1;
+	public static VictorSP rightController2;
+	public static VictorSP rightController3;
 	
 	public static Compressor compressor;
 	
@@ -38,10 +39,12 @@ public class RobotMap {
 	
 	public RobotMap() {
 		// Setting port numbers for speed controllers
-		leftController1 = new Spark(0);
-		leftController2 = new Spark(1);
-		rightController1 = new Spark(2);
-		rightController2 = new Spark(3);
+		leftController1 = new VictorSP(0);
+		leftController2 = new VictorSP(1);
+		leftController3 = new VictorSP(2);
+		rightController1 = new VictorSP(5);
+		rightController2 = new VictorSP(6);
+		rightController3 = new VictorSP(7);
 		// Setting speed controllers to their respective groups
 		leftControllers = new SpeedControllerGroup(leftController1);
 		rightControllers = new SpeedControllerGroup(rightController1);
