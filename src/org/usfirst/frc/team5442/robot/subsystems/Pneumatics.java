@@ -2,6 +2,7 @@ package org.usfirst.frc.team5442.robot.subsystems;
 
 import org.usfirst.frc.team5442.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Pneumatics extends Subsystem{
@@ -16,8 +17,9 @@ public class Pneumatics extends Subsystem{
 		
 	}
 	
-	public void gearShift(boolean position) {
-		RobotMap.gearShift.set(position);
+	public void gearShift(Value position) {
+		RobotMap.gearShiftLeft.set(position);
+		RobotMap.gearShiftRight.set(position);
 	}
 
 }

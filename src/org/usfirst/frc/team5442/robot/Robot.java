@@ -2,10 +2,13 @@
 package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
+import org.usfirst.frc.team5442.robot.commands.HighShift;
+import org.usfirst.frc.team5442.robot.commands.LowShift;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
 import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team5442.robot.triggers.A_Button;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -49,6 +52,8 @@ public class Robot extends IterativeRobot {
 		
 		pneumatics = new Pneumatics();
 		
+		
+		SmartDashboard.putNumber("Counter", 0);
 	}
 
 	/**
@@ -117,6 +122,13 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(0));
+		SmartDashboard.putNumber("PDP1", RobotMap.pdp.getCurrent(1));
+		SmartDashboard.putNumber("PDP2", RobotMap.pdp.getCurrent(2));
+		SmartDashboard.putNumber("PDP5", RobotMap.pdp.getCurrent(5));
+		SmartDashboard.putNumber("PDP6", RobotMap.pdp.getCurrent(6));
+		SmartDashboard.putNumber("PDP7", RobotMap.pdp.getCurrent(7));
+		
 	}
 
 	/**

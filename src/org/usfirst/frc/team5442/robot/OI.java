@@ -2,8 +2,14 @@ package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
+import org.usfirst.frc.team5442.robot.triggers.A_Button;
+import org.usfirst.frc.team5442.robot.triggers.B_Button;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -38,14 +44,24 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	public static XboxController xboxController;
+	public static Joystick xboxJoystick;
+	public static JoystickButton leftBumper;
+	public static JoystickButton rightBumper;
 	
 	public OI(){
-		xboxController = new XboxController(0);
+		//xboxController = new XboxController(1);
 		
-		if (xboxController.getAButtonPressed()) new LowShift();
-		if (xboxController.getBButtonPressed()) new HighShift();
+		//Remove all xboxJoystick stuff when we replace with XboxController
+		xboxJoystick = new Joystick(0);
+		leftBumper = new JoystickButton(xboxJoystick, 5);
+		rightBumper = new JoystickButton(xboxJoystick, 6);
+		
+		leftBumper.whileHeld(new HighShift());
+		rightBumper.whileHeld(new LowShift());
 		
 	}
+	
+	
 	public XboxController getXboxController(){
 		return xboxController;
 	}
