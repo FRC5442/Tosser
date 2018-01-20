@@ -1,10 +1,7 @@
 package org.usfirst.frc.team5442.robot.subsystems;
 
-import java.io.Console;
 import org.usfirst.frc.team5442.robot.RobotMap;
-import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -34,7 +31,6 @@ public class DriveTrain extends Subsystem{
 	*/
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
 		setDefaultCommand(new TankDrive());
 	}
 

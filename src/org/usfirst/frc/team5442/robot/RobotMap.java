@@ -1,5 +1,13 @@
 package org.usfirst.frc.team5442.robot;
 
+<<<<<<< HEAD
+=======
+
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.Solenoid;
+>>>>>>> ab60edd134c9951490d92ba15df6d87d3473504b
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -28,24 +36,51 @@ public class RobotMap {
 	public static VictorSP rightController1;
 	public static VictorSP rightController2;
 	public static VictorSP rightController3;
+<<<<<<< HEAD
 		
+=======
+	
+	public static Compressor compressor;
+	
+	public static DoubleSolenoid gearShiftLeft;
+	public static DoubleSolenoid gearShiftRight;
+>>>>>>> ab60edd134c9951490d92ba15df6d87d3473504b
 	// Setting SpeedControllerGroups per side
 	SpeedControllerGroup leftControllers,rightControllers;
 	
+	public static PowerDistributionPanel pdp;
+	
 	public RobotMap() {
 		// Setting port numbers for speed controllers
+<<<<<<< HEAD
 		leftController1 = new VictorSP(0);
 		leftController2 = new VictorSP(1);
 		leftController3 = new VictorSP(2);
 		rightController1 = new VictorSP(3);
 		rightController2 = new VictorSP(4);
 		rightController3 = new VictorSP(5);
+=======
+		leftController1 = new VictorSP(5);
+		leftController2 = new VictorSP(6);
+		leftController3 = new VictorSP(7);
+		rightController1 = new VictorSP(0);
+		rightController2 = new VictorSP(1);
+		rightController3 = new VictorSP(2);
+>>>>>>> ab60edd134c9951490d92ba15df6d87d3473504b
 		// Setting speed controllers to their respective groups
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
 		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
 		
 		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
 		
+<<<<<<< HEAD
+=======
+		compressor = new Compressor();
+		gearShiftLeft = new DoubleSolenoid(0, 1);
+		gearShiftRight = new DoubleSolenoid(2, 3);
+		
+		pdp = new PowerDistributionPanel();
+>>>>>>> ab60edd134c9951490d92ba15df6d87d3473504b
 	}
 	
 	public static DifferentialDrive GetDriver()

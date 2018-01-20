@@ -2,13 +2,20 @@
 package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
+import org.usfirst.frc.team5442.robot.commands.HighShift;
+import org.usfirst.frc.team5442.robot.commands.LowShift;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
 import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
+<<<<<<< HEAD
+=======
+import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team5442.robot.triggers.A_Button;
+
+>>>>>>> ab60edd134c9951490d92ba15df6d87d3473504b
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -44,7 +51,15 @@ public class Robot extends IterativeRobot {
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Drive mode", driveChooser);
+<<<<<<< HEAD
 				
+=======
+		
+		pneumatics = new Pneumatics();
+		
+		
+		SmartDashboard.putNumber("Counter", 0);
+>>>>>>> ab60edd134c9951490d92ba15df6d87d3473504b
 	}
 
 	/**
@@ -100,7 +115,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
-		// tele-op starts running. If you want the autonomous to
+		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		if (autonomousCommand != null)
@@ -113,6 +128,13 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(0));
+		SmartDashboard.putNumber("PDP1", RobotMap.pdp.getCurrent(1));
+		SmartDashboard.putNumber("PDP2", RobotMap.pdp.getCurrent(2));
+		SmartDashboard.putNumber("PDP5", RobotMap.pdp.getCurrent(5));
+		SmartDashboard.putNumber("PDP6", RobotMap.pdp.getCurrent(6));
+		SmartDashboard.putNumber("PDP7", RobotMap.pdp.getCurrent(7));
+		
 	}
 
 	/**
@@ -120,6 +142,5 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
-		LiveWindow.run();
 	}
 }
