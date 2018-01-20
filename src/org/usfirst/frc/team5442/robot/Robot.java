@@ -2,13 +2,11 @@
 package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
-import org.usfirst.frc.team5442.robot.commands.HighShift;
-import org.usfirst.frc.team5442.robot.commands.LowShift;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
 import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
-import org.usfirst.frc.team5442.robot.triggers.A_Button;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -47,17 +45,12 @@ public class Robot extends IterativeRobot {
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
-<<<<<<< HEAD
+
 		SmartDashboard.putData("Drive mode", driveChooser);
 		
+	
 		pneumatics = new Pneumatics();
-		
-		
-		SmartDashboard.putNumber("Counter", 0);
-=======
-		SmartDashboard.putData("Drive mode", driveChooser);		
-		pneumatics = new Pneumatics();
->>>>>>> feature/Pneumatics_System
+
 	}
 
 	/**

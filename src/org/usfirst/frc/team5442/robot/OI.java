@@ -2,14 +2,10 @@ package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
-import org.usfirst.frc.team5442.robot.triggers.A_Button;
-import org.usfirst.frc.team5442.robot.triggers.B_Button;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.buttons.Trigger;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
