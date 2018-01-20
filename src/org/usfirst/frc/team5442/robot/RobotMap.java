@@ -58,10 +58,11 @@ public class RobotMap {
 		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
 		
 		compressor = new Compressor();
+		
 		gearShiftLeft = new DoubleSolenoid(0, 1);
 		gearShiftRight = new DoubleSolenoid(2, 3);
 		
-		pdp = new PowerDistributionPanel();
+		pdp = new PowerDistributionPanel(1);
 	}
 	
 	public static DifferentialDrive GetDriver()
