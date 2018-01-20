@@ -28,6 +28,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static RobotMap robotMap;
 	public static DriveTrain driveTrain;
+	public static Pneumatics pneumatics;
 
 	Command autonomousCommand;
 	SendableChooser<Command> driveChooser;
@@ -46,12 +47,17 @@ public class Robot extends IterativeRobot {
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
+<<<<<<< HEAD
 		SmartDashboard.putData("Drive mode", driveChooser);
 		
 		pneumatics = new Pneumatics();
 		
 		
 		SmartDashboard.putNumber("Counter", 0);
+=======
+		SmartDashboard.putData("Drive mode", driveChooser);		
+		pneumatics = new Pneumatics();
+>>>>>>> feature/Pneumatics_System
 	}
 
 	/**
