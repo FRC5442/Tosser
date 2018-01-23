@@ -1,11 +1,8 @@
 
 package org.usfirst.frc.team5442.robot;
 
-import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
-import org.usfirst.frc.team5442.robot.commands.TankDrive;
-import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team5442.robot.commands.*;
+import org.usfirst.frc.team5442.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -20,9 +17,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
+
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	
 	public static OI oi;
 	public static RobotMap robotMap;
 	public static DriveTrain driveTrain;
@@ -34,12 +33,14 @@ public class Robot extends IterativeRobot {
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
-	@Override
+
 	public void robotInit() {
+		// Initialize variables 
 		oi = new OI();
 		robotMap = new RobotMap();
 		driveTrain = new DriveTrain();
 		driveChooser = new SendableChooser<>();
+		// Add objects to "driveChooser" sendablechooser on shuffleboard/smartdashboard
 		driveChooser.addDefault("Tank Drive", new TankDrive());
 		driveChooser.addObject("Arcade Drive", new ArcadeDrive());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
@@ -105,10 +106,11 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
+		
+		/** This makes sure that the autonomous stops running when teleop starts running. 
+		 * If you want the autonomous to continue until interrupted by another command, remove this line or comment it out.
+		 */
+		
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 	}
@@ -118,6 +120,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(0));
 		SmartDashboard.putNumber("PDP1", RobotMap.pdp.getCurrent(1));

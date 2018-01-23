@@ -14,17 +14,21 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
+	/**For example to map the left and right motors, you could define the
+	 * following variables to use with your drivetrain subsystem.
+	 * public static int leftMotor = 1;
+	 * public static int rightMotor = 2;
+	 * 
+	 * If you are using multiple modules, make sure to define both the port
+	 * number and the module. For example you with a rangefinder:
+	 * public static int rangefinderPort = 1;
+	 * public static int rangefinderModule = 1;
+	 */
 
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
 	private static DifferentialDrive driveTrain;
 	// Declare Motor Controllers Here
+	// FORMAT:
+	// public static [Controller type] (name);
 	public static VictorSP leftController1;
 	public static VictorSP leftController2;
 	public static VictorSP leftController3;
@@ -36,20 +40,20 @@ public class RobotMap {
 	
 	public static DoubleSolenoid gearShiftLeft;
 	public static DoubleSolenoid gearShiftRight;
-
+    public static PowerDistributionPanel pdp;
+    
 	// Setting SpeedControllerGroups per side
 	SpeedControllerGroup leftControllers,rightControllers;
 	
-	public static PowerDistributionPanel pdp;
-	
 	public RobotMap() {
 		// Setting port numbers for speed controllers
-		leftController1 = new VictorSP(5);
-		leftController2 = new VictorSP(6);
-		leftController3 = new VictorSP(7);
 		rightController1 = new VictorSP(0);
 		rightController2 = new VictorSP(1);
 		rightController3 = new VictorSP(2);
+		leftController1 = new VictorSP(5);
+		leftController2 = new VictorSP(6);
+		leftController3 = new VictorSP(7);
+		
 
 		// Setting speed controllers to their respective groups
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);

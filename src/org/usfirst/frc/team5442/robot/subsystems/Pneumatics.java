@@ -9,6 +9,7 @@ public class Pneumatics extends Subsystem{
 
 	
 	public Pneumatics() {
+		// Starting compressor when code is called, which is at beginning on enabled mode
 		RobotMap.compressor.start();
 	}
 	
@@ -20,6 +21,7 @@ public class Pneumatics extends Subsystem{
 	public void gearShift(Value position) {
 		RobotMap.gearShiftLeft.set(position);
 		RobotMap.gearShiftRight.set(position);
+		// This method allows the gear shifts to be set a position, either forward or reverse
 	}
 
 }
