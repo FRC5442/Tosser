@@ -1,6 +1,10 @@
 package org.usfirst.frc.team5442.robot;
 
+import org.usfirst.frc.team5442.robot.commands.FlipBack;
+import org.usfirst.frc.team5442.robot.commands.FlipForward;
 import org.usfirst.frc.team5442.robot.commands.HighShift;
+import org.usfirst.frc.team5442.robot.commands.IntakeIn;
+import org.usfirst.frc.team5442.robot.commands.IntakeOut;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -42,6 +46,10 @@ public class OI {
 	public static Joystick xboxJoystick;
 	public static JoystickButton leftBumper;
 	public static JoystickButton rightBumper;
+	public static JoystickButton A_Button;
+	public static JoystickButton B_Button;
+	public static JoystickButton X_Button;
+	public static JoystickButton Y_Button;
 	
 	public OI(){
 		//xboxController = new XboxController(1);
@@ -50,9 +58,17 @@ public class OI {
 		xboxJoystick = new Joystick(0);
 		leftBumper = new JoystickButton(xboxJoystick, 5);
 		rightBumper = new JoystickButton(xboxJoystick, 6);
+		A_Button = new JoystickButton(xboxJoystick, 1);
+		B_Button = new JoystickButton(xboxJoystick, 2);
+		X_Button = new JoystickButton(xboxJoystick, 3);
+		Y_Button = new JoystickButton(xboxJoystick, 4);
 		
 		leftBumper.whileHeld(new HighShift());
 		rightBumper.whileHeld(new LowShift());
+		A_Button.whileHeld(new IntakeIn(.5));
+		B_Button.whileHeld(new IntakeOut(.5));
+		X_Button.whileHeld(new FlipBack(.5));
+		Y_Button.whileHeld(new FlipForward(.5));
 	}
 		
 }
