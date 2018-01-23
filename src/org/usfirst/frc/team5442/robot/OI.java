@@ -53,7 +53,6 @@ public class OI {
 		
 		leftBumper.whileHeld(new HighShift());
 		rightBumper.whileHeld(new LowShift());
-		
 	}
 		
 }

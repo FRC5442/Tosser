@@ -5,6 +5,7 @@ import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
 import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5442.robot.subsystems.Intake;
 import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -27,6 +28,7 @@ public class Robot extends IterativeRobot {
 	public static RobotMap robotMap;
 	public static DriveTrain driveTrain;
 	public static Pneumatics pneumatics;
+	public static Intake intake;
 
 	Command autonomousCommand;
 	SendableChooser<Command> driveChooser;
@@ -50,6 +52,7 @@ public class Robot extends IterativeRobot {
 		
 	
 		pneumatics = new Pneumatics();
+		intake = new Intake();
 
 	}
 

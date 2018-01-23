@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5442.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -32,6 +33,10 @@ public class RobotMap {
 	public static VictorSP rightController2;
 	public static VictorSP rightController3;
 	
+	public static VictorSP leftIntake;
+	public static VictorSP rightIntake;
+	public static VictorSP flipper;
+	
 	public static Compressor compressor;
 	
 	public static DoubleSolenoid gearShiftLeft;
@@ -41,6 +46,9 @@ public class RobotMap {
 	SpeedControllerGroup leftControllers,rightControllers;
 	
 	public static PowerDistributionPanel pdp;
+	
+	public static DigitalInput backFlipStop;
+	public static DigitalInput frontFlipStop;
 	
 	public RobotMap() {
 		// Setting port numbers for speed controllers
@@ -57,12 +65,20 @@ public class RobotMap {
 		
 		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
 		
+		leftIntake = new VictorSP(-1);
+		rightIntake = new VictorSP(-1);
+		flipper = new VictorSP(-1);		
+		
 		compressor = new Compressor();
 		
 		gearShiftLeft = new DoubleSolenoid(0, 1);
 		gearShiftRight = new DoubleSolenoid(2, 3);
 		
 		pdp = new PowerDistributionPanel(1);
+		
+		backFlipStop = new DigitalInput(-1);
+		frontFlipStop = new DigitalInput(-1);
+		
 	}
 	
 	public static DifferentialDrive GetDriver()
