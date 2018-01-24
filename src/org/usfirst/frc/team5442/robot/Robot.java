@@ -84,6 +84,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		
+		RobotMap.FlipEncoder.reset();
+		
 		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
 
 		/*
@@ -104,6 +107,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.getNumber("FlipEncoder", RobotMap.FlipEncoder.getDistance());
 	}
 
 	@Override

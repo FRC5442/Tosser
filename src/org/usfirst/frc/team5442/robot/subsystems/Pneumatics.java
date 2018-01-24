@@ -21,5 +21,10 @@ public class Pneumatics extends Subsystem{
 		RobotMap.gearShiftLeft.set(position);
 		RobotMap.gearShiftRight.set(position);
 	}
+	public void pincing(boolean pince) {
+		RobotMap.pincerLeft.set(pince);
+		RobotMap.pincerRight.set(pince);
+		
+	}
 
 }

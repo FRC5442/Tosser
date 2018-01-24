@@ -6,6 +6,8 @@ import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
 import org.usfirst.frc.team5442.robot.commands.IntakeOut;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
+import org.usfirst.frc.team5442.robot.commands.PincerIn;
+import org.usfirst.frc.team5442.robot.commands.PincerOut;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -51,10 +53,20 @@ public class OI {
 	public static JoystickButton X_Button;
 	public static JoystickButton Y_Button;
 	
+	public static Joystick xboxJoystick2;
+	public static JoystickButton leftBumper2;
+	public static JoystickButton rightBumper2;
+	public static JoystickButton A_Button2;
+	public static JoystickButton B_Button2;
+	public static JoystickButton X_Button2;
+	public static JoystickButton Y_Button2;
+	
 	public OI(){
 		//xboxController = new XboxController(1);
 		
 		//Remove all xboxJoystick stuff when we replace with XboxController
+		
+		//Driver Joystick 1
 		xboxJoystick = new Joystick(0);
 		leftBumper = new JoystickButton(xboxJoystick, 5);
 		rightBumper = new JoystickButton(xboxJoystick, 6);
@@ -63,12 +75,27 @@ public class OI {
 		X_Button = new JoystickButton(xboxJoystick, 3);
 		Y_Button = new JoystickButton(xboxJoystick, 4);
 		
+		//Control Joystick 2
+		xboxJoystick2 = new Joystick(1);
+		leftBumper2 = new JoystickButton(xboxJoystick2, 5);
+		rightBumper2 = new JoystickButton(xboxJoystick2, 6);
+		A_Button2 = new JoystickButton(xboxJoystick2, 1);
+		B_Button2 = new JoystickButton(xboxJoystick2, 2);
+		X_Button2 = new JoystickButton(xboxJoystick2, 3);
+		Y_Button2 = new JoystickButton(xboxJoystick2, 4);
+		
+		
+		//Driver Joystick 1
 		leftBumper.whileHeld(new HighShift());
 		rightBumper.whileHeld(new LowShift());
-		A_Button.whileHeld(new IntakeIn(.5));
-		B_Button.whileHeld(new IntakeOut(.5));
-		X_Button.whileHeld(new FlipBack(.5));
-		Y_Button.whileHeld(new FlipForward(.5));
+		
+		//Control Joystick 2
+		leftBumper2.whileHeld(new PincerOut());
+		rightBumper2.whileHeld(new PincerIn());
+		A_Button2.whileHeld(new IntakeIn(.5));
+		B_Button2.whileHeld(new IntakeOut(.5));
+		X_Button2.whileHeld(new FlipBack(.5));
+		Y_Button2.whileHeld(new FlipForward(.5));
 	}
 		
 }

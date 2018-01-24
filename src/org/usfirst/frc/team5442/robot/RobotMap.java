@@ -3,10 +3,14 @@ package org.usfirst.frc.team5442.robot;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -41,7 +45,11 @@ public class RobotMap {
 	
 	public static DoubleSolenoid gearShiftLeft;
 	public static DoubleSolenoid gearShiftRight;
-
+	public static Solenoid pincerLeft;
+	public static Solenoid pincerRight;
+	
+	public static Encoder FlipEncoder;
+	
 	// Setting SpeedControllerGroups per side
 	SpeedControllerGroup leftControllers,rightControllers;
 	
@@ -73,11 +81,17 @@ public class RobotMap {
 		
 		gearShiftLeft = new DoubleSolenoid(0, 1);
 		gearShiftRight = new DoubleSolenoid(2, 3);
+		pincerLeft = new Solenoid(-1);
+		pincerRight = new Solenoid(-1);
 		
 		pdp = new PowerDistributionPanel(1);
 		
 		backFlipStop = new DigitalInput(-1);
 		frontFlipStop = new DigitalInput(-1);
+		
+		FlipEncoder = new Encoder(-1, -1, false, EncodingType.k4X);
+        FlipEncoder.setSamplesToAverage(5);
+        FlipEncoder.setDistancePerPulse(1.0/360);
 		
 	}
 	
