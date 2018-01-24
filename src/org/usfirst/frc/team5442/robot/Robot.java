@@ -26,6 +26,8 @@ public class Robot extends IterativeRobot {
 	public static RobotMap robotMap;
 	public static DriveTrain driveTrain;
 	public static Pneumatics pneumatics;
+	public static Cylinders cylinders;
+	public static Catapult catapult;
 
 	Command autonomousCommand;
 	SendableChooser<Command> driveChooser;

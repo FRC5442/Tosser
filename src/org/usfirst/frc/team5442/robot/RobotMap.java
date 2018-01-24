@@ -3,6 +3,7 @@ package org.usfirst.frc.team5442.robot;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -35,12 +36,16 @@ public class RobotMap {
 	public static VictorSP rightController1;
 	public static VictorSP rightController2;
 	public static VictorSP rightController3;
+	public static VictorSP winchMotor;
 	
 	public static Compressor compressor;
 	
 	public static DoubleSolenoid gearShiftLeft;
 	public static DoubleSolenoid gearShiftRight;
     public static PowerDistributionPanel pdp;
+    
+    public static Solenoid winchCylinder;
+    public static Solenoid latchCylinder;
     
 	// Setting SpeedControllerGroups per side
 	SpeedControllerGroup leftControllers,rightControllers;
@@ -54,17 +59,21 @@ public class RobotMap {
 		leftController2 = new VictorSP(6);
 		leftController3 = new VictorSP(7);
 		
-
 		// Setting speed controllers to their respective groups
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
 		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
 		
 		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
 		
+		winchMotor = new VictorSP(-1);
+		
 		compressor = new Compressor();
 		
 		gearShiftLeft = new DoubleSolenoid(0, 1);
 		gearShiftRight = new DoubleSolenoid(2, 3);
+		
+		winchCylinder = new Solenoid(-1);
+		latchCylinder = new Solenoid(-1);
 		
 		pdp = new PowerDistributionPanel(1);
 	}
