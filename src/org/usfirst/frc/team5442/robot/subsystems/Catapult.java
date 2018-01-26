@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Catapult extends Subsystem {
 	
-	private VictorSP winchMotor;
+	private static VictorSP winchMotor;
 	
 	public Catapult() {
 		winchMotor = RobotMap.winchMotor;
@@ -18,7 +18,7 @@ public class Catapult extends Subsystem {
 		
 	}
 	
-	public void launch(double speed) {
+	public static void wind(double speed) {
 		winchMotor.set(speed);
 	}
 }

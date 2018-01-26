@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5442.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -47,6 +48,10 @@ public class RobotMap {
     public static Solenoid winchCylinder;
     public static Solenoid latchCylinder;
     
+    public static DigitalInput limitSwitch;
+    public static DigitalInput limitSwitch2;
+    public static DigitalInput windSwitch;
+    
 	// Setting SpeedControllerGroups per side
 	SpeedControllerGroup leftControllers,rightControllers;
 	
@@ -63,18 +68,21 @@ public class RobotMap {
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
 		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
 		
-		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
-		
-		winchMotor = new VictorSP(-1);
-		
-		compressor = new Compressor();
-		
 		gearShiftLeft = new DoubleSolenoid(0, 1);
 		gearShiftRight = new DoubleSolenoid(2, 3);
 		
+		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
+		// Needs port number
+		winchMotor = new VictorSP(-1);
+		
+
 		winchCylinder = new Solenoid(-1);
 		latchCylinder = new Solenoid(-1);
 		
+		compressor = new Compressor();
+		
+		windSwitch = new DigitalInput(-1);
+		//Turn on if debugging
 		pdp = new PowerDistributionPanel(1);
 	}
 	
