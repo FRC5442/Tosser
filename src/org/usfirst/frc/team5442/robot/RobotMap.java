@@ -1,8 +1,10 @@
 package org.usfirst.frc.team5442.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -30,11 +32,8 @@ public class RobotMap {
 	// FORMAT:
 	// public static [Controller type] (name);
 	public static VictorSP leftController1;
-	public static VictorSP leftController2;
-	public static VictorSP leftController3;
 	public static VictorSP rightController1;
-	public static VictorSP rightController2;
-	public static VictorSP rightController3;
+	public static VictorSP winchMotor;
 	
 	public static Compressor compressor;
 	
@@ -42,30 +41,37 @@ public class RobotMap {
 	public static DoubleSolenoid gearShiftRight;
     public static PowerDistributionPanel pdp;
     
+    public static Solenoid winchCylinder;
+    public static Solenoid latchCylinder;
+    
+    public static DigitalInput limitSwitch;
+    public static DigitalInput limitSwitch2;
+    public static DigitalInput windSwitch;
+    
 	// Setting SpeedControllerGroups per side
 	SpeedControllerGroup leftControllers,rightControllers;
 	
 	public RobotMap() {
 		// Setting port numbers for speed controllers
 		rightController1 = new VictorSP(0);
-		rightController2 = new VictorSP(1);
-		rightController3 = new VictorSP(2);
-		leftController1 = new VictorSP(5);
-		leftController2 = new VictorSP(6);
-		leftController3 = new VictorSP(7);
-		
+		leftController1 = new VictorSP(1);
 
-		// Setting speed controllers to their respective groups
-		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
-		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
-		
-		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
-		
-		compressor = new Compressor();
-		
 		gearShiftLeft = new DoubleSolenoid(0, 1);
 		gearShiftRight = new DoubleSolenoid(2, 3);
 		
+		//driveTrain = new DifferentialDrive(leftControllers, rightControllers);
+		driveTrain = new DifferentialDrive(leftController1, rightController1);
+		// Needs port number
+		winchMotor = new VictorSP(2);
+		
+
+		winchCylinder = new Solenoid(4);
+		latchCylinder = new Solenoid(5);
+		
+		compressor = new Compressor();
+		
+		windSwitch = new DigitalInput(0);
+		//Turn on if debugging
 		pdp = new PowerDistributionPanel(1);
 	}
 	

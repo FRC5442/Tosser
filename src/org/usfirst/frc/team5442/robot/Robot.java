@@ -26,6 +26,8 @@ public class Robot extends IterativeRobot {
 	public static RobotMap robotMap;
 	public static DriveTrain driveTrain;
 	public static Pneumatics pneumatics;
+	public static Cylinders cylinders;
+	public static Catapult catapult;
 
 	Command autonomousCommand;
 	SendableChooser<Command> driveChooser;
@@ -122,12 +124,6 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(0));
-		SmartDashboard.putNumber("PDP1", RobotMap.pdp.getCurrent(1));
-		SmartDashboard.putNumber("PDP2", RobotMap.pdp.getCurrent(2));
-		SmartDashboard.putNumber("PDP5", RobotMap.pdp.getCurrent(5));
-		SmartDashboard.putNumber("PDP6", RobotMap.pdp.getCurrent(6));
-		SmartDashboard.putNumber("PDP7", RobotMap.pdp.getCurrent(7));
 		
 	}
 
@@ -136,5 +132,12 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(0));
+		SmartDashboard.putNumber("PDP1", RobotMap.pdp.getCurrent(1));
+		SmartDashboard.putNumber("PDP2", RobotMap.pdp.getCurrent(2));
+		SmartDashboard.putNumber("PDP5", RobotMap.pdp.getCurrent(5));
+		SmartDashboard.putNumber("PDP6", RobotMap.pdp.getCurrent(6));
+		SmartDashboard.putNumber("PDP7", RobotMap.pdp.getCurrent(7));
 	}
 }
