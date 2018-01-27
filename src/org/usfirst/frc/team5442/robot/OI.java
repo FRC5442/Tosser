@@ -2,8 +2,11 @@ package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
+import org.usfirst.frc.team5442.robot.commands.Shoot;
+import org.usfirst.frc.team5442.robot.commands.Wind;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -39,10 +42,16 @@ public class OI {
 	 *   until it is finished as determined by it's isFinished method.
 	 *   button.whenReleased(new ExampleCommand());
 	 **/
+	public static XboxController xboxController1;
+	public static XboxController xboxController2;
+	//Controller 1 buttons
+	public JoystickButton xboxLBumper;
+	public JoystickButton xboxRBumper;
+	
+	//Controller 2 buttons
+	public static JoystickButton xbox2AButton;
+	public static JoystickButton xbox2XButton;
 
-	public static Joystick xboxJoystick;
-	public static JoystickButton leftBumper;
-	public static JoystickButton rightBumper;
 	
 	public OI(){
 		//xboxController = new XboxController(1);
@@ -50,16 +59,31 @@ public class OI {
 		//Remove all xboxJoystick stuff when we replace with XboxController
 		
 		// Assign Joysticks and their ports
-		xboxJoystick = new Joystick(0);
+		xboxController1 = new XboxController(0);
+		xboxController2 = new XboxController(1);
 		
-		// Assign button names to mapping
-		leftBumper = new JoystickButton(xboxJoystick, 5);
-		rightBumper = new JoystickButton(xboxJoystick, 6);
+		// Assign button names to mapping to Controller 1
+		xboxLBumper = new JoystickButton(xboxController1, 5);
+		xboxRBumper = new JoystickButton(xboxController1, 6);
 		
+		// Assign button names to mapping to Controller 2
+		xbox2AButton = new JoystickButton(xboxController2, 1);
+		xbox2XButton = new JoystickButton(xboxController2, 3);
+		
+
 		// Assign commands to buttons
-		leftBumper.whileHeld(new HighShift());
-		rightBumper.whileHeld(new LowShift());
+		xboxLBumper.whileHeld(new HighShift());
+		xboxRBumper.whileHeld(new LowShift());
+		xbox2AButton.whileHeld(new Wind());
+		xbox2XButton.whileHeld(new Shoot());
+		
 		
 	}
-		
+	public XboxController getXboxController1() {
+        return xboxController1;
+    }
+	public XboxController getXboxController2() {
+        return xboxController2;
+    }
 }
+
