@@ -67,8 +67,8 @@ public class OI {
 		xboxRBumper = new JoystickButton(xboxController1, 6);
 		
 		// Assign button names to mapping to Controller 2
-		xbox2AButton = new JoystickButton(xboxController1, 1);
-		xbox2XButton = new JoystickButton(xboxController1, 3);
+		xbox2AButton = new JoystickButton(xboxController2, 1);
+		xbox2XButton = new JoystickButton(xboxController2, 3);
 		
 
 		// Assign commands to buttons
