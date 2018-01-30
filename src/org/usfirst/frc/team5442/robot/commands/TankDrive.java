@@ -12,13 +12,14 @@ public class TankDrive extends Command{
 		requires(Robot.driveTrain);
 	}
 	
+	@Override
 	protected void execute() {
-		DriveTrain.Driving(OI.xboxController.getRawAxis(1), OI.xboxController.getRawAxis(5));
+		//DriveTrain.Driving(OI.xboxController.getRawAxis(1), OI.xboxController.getRawAxis(5));
+    	DriveTrain.Driving((OI.xboxController1.getRawAxis(1)), (OI.xboxController1.getRawAxis(5)));
 		
 	}
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
