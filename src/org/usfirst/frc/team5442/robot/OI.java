@@ -45,8 +45,8 @@ public class OI {
 	public static XboxController xboxController1;
 	public static XboxController xboxController2;
 	//Controller 1 buttons
-	public JoystickButton xboxLBumper;
-	public JoystickButton xboxRBumper;
+	public static JoystickButton xboxLBumper;
+	public static JoystickButton xboxRBumper;
 	
 	//Controller 2 buttons
 	public static JoystickButton xbox2AButton;
@@ -67,8 +67,8 @@ public class OI {
 		xboxRBumper = new JoystickButton(xboxController1, 6);
 		
 		// Assign button names to mapping to Controller 2
-		xbox2AButton = new JoystickButton(xboxController2, 1);
-		xbox2XButton = new JoystickButton(xboxController2, 3);
+		xbox2AButton = new JoystickButton(xboxController1, 1);
+		xbox2XButton = new JoystickButton(xboxController1, 3);
 		
 
 		// Assign commands to buttons

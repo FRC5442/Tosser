@@ -9,17 +9,26 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Wind extends Command {
 	
 	protected void intialize() {
-			RobotMap.winchCylinder.set(true);
-			Timer.delay(.5);
-	}
+		}
 	protected void execute() {
+		RobotMap.winchCylinder.set(true);
+		Timer.delay(.2);
 		Catapult.wind(.8);
 	}
 	protected boolean isFinished() {
 		return !RobotMap.windSwitch.get();
+		//reversed????
 	}
 	protected void end() {
+		Catapult.wind(0);
+		Timer.delay(.15);
 		RobotMap.winchCylinder.set(false);
+		
+	}
+	
+	protected void interrupted() {
+		RobotMap.winchCylinder.set(false);
+		Catapult.wind(0);
 	}
 
 }

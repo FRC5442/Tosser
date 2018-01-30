@@ -53,7 +53,7 @@ public class Robot extends IterativeRobot {
 		
 	
 		pneumatics = new Pneumatics();
-
+		catapult = new Catapult();
 	}
 
 	/**
