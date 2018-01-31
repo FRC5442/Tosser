@@ -19,8 +19,8 @@ public class StraightDrive extends Command{
 	}
 	
 	protected void initialize() {
-		Robot.pidDrive.direction = m_direction;
-		Robot.pidDrive.drive_speed = m_speed;
+		Robot.pidDrive.setDirection(m_direction);
+		Robot.pidDrive.setDrive_speed(m_speed);
 		Robot.pidDrive.enable();
 		Robot.pidDrive.setSetpointRelative(0);
 	}

@@ -34,6 +34,7 @@ public class Robot extends IterativeRobot {
 	public static Pneumatics pneumatics;
 
 	public static PIDDrive pidDrive;
+	public static PIDTurn pidTurn;
 	public static Cylinders cylinders;
 	public static Catapult catapult;
 
@@ -50,7 +51,8 @@ public class Robot extends IterativeRobot {
 		robotMap = new RobotMap();
 		driveTrain = new DriveTrain();
 		pneumatics = new Pneumatics();
-		pidDrive = new PIDDrive();
+		pidDrive = new PIDDrive(); //don't forget to set values before calling the subsystem
+		pidTurn = new PIDTurn(); //same thing
 		
 		
 		driveChooser = new SendableChooser<>();
