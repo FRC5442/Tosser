@@ -15,7 +15,7 @@ public class StraightDrive extends Command{
 			double distance, double speed, int direction) {
 		m_distance = distance;
 		m_speed = speed;
-		m_direction = direction;
+		m_direction = direction; // positive or negative 1
 	}
 	
 	protected void initialize() {

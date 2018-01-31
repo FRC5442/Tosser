@@ -18,7 +18,7 @@ public class TurnToAngle extends Command{
 	protected void initialize() {
 		Robot.pidTurn.setTurn_speed(speed);
 		Robot.pidTurn.enable();
-		Robot.pidTurn.setSetpoint(setpoint);
+		Robot.pidTurn.setSetpointRelative(setpoint);
 	}
 	
 	@Override
