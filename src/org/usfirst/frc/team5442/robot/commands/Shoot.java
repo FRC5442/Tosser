@@ -15,7 +15,6 @@ public class Shoot extends Command{
 	protected void end() {
 		RobotMap.latchCylinder.set(false);
 	}
-	
 	protected void interrupted() {
 		RobotMap.latchCylinder.set(false);
 	}

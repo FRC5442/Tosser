@@ -58,6 +58,7 @@ public class RobotMap {
     
     public static Solenoid winchCylinder;
     public static Solenoid latchCylinder;
+   
     
 	// Setting SpeedControllerGroups per side
 	SpeedControllerGroup leftControllers,rightControllers;
@@ -82,7 +83,6 @@ public class RobotMap {
 		// Needs port number
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
 		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
-		
 	
 		latchCylinder = new Solenoid(5);
 		
