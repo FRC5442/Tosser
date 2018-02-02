@@ -28,6 +28,7 @@ public class Robot extends IterativeRobot {
 	public static Pneumatics pneumatics;
 	public static Cylinders cylinders;
 	public static Catapult catapult;
+	public static Climber climber;
 
 	Command autonomousCommand;
 	SendableChooser<Command> driveChooser;
@@ -54,6 +55,7 @@ public class Robot extends IterativeRobot {
 	
 		pneumatics = new Pneumatics();
 		catapult = new Catapult();
+		climber = new Climber();
 	}
 
 	/**

@@ -34,7 +34,13 @@ public class RobotMap {
 	// public static [Controller type] (name);
 	public static VictorSP leftController1;
 	public static VictorSP rightController1;
+<<<<<<< HEAD
 	public static VictorSP spinRodMotor;
+=======
+	public static VictorSP winchMotor;
+	public static VictorSP telescopeMotor;
+	public static VictorSP hookMotor;
+>>>>>>> fd78e76e3856473c73597c7376f2e0f84b8a08c9
 	
 	public static Compressor compressor;
 	
@@ -67,6 +73,13 @@ public class RobotMap {
 		// Needs port number
 		spinRodMotor = new VictorSP(2);
 		
+<<<<<<< HEAD
+=======
+		telescopeMotor = new VictorSP(-1);
+		hookMotor = new VictorSP(-1);
+
+		winchCylinder = new Solenoid(4);
+>>>>>>> fd78e76e3856473c73597c7376f2e0f84b8a08c9
 		latchCylinder = new Solenoid(5);
 		
 		latchSwitch1 = new DigitalInput(-1);
