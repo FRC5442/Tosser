@@ -1,3 +1,4 @@
+
 package org.usfirst.frc.team5442.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
@@ -33,7 +34,7 @@ public class RobotMap {
 	// public static [Controller type] (name);
 	public static VictorSP leftController1;
 	public static VictorSP rightController1;
-	public static VictorSP winchMotor;
+	public static VictorSP spinRodMotor;
 	
 	public static Compressor compressor;
 	
@@ -41,12 +42,14 @@ public class RobotMap {
 	public static DoubleSolenoid gearShiftRight;
     public static PowerDistributionPanel pdp;
     
-    public static Solenoid winchCylinder;
     public static Solenoid latchCylinder;
     
     public static DigitalInput limitSwitch;
     public static DigitalInput limitSwitch2;
     public static DigitalInput windSwitch;
+    public static DigitalInput latchSwitch1;
+    public static DigitalInput latchSwitch2;
+    
     
 	// Setting SpeedControllerGroups per side
 	SpeedControllerGroup leftControllers,rightControllers;
@@ -62,11 +65,12 @@ public class RobotMap {
 		//driveTrain = new DifferentialDrive(leftControllers, rightControllers);
 		driveTrain = new DifferentialDrive(leftController1, rightController1);
 		// Needs port number
-		winchMotor = new VictorSP(2);
+		spinRodMotor = new VictorSP(2);
 		
-
-		winchCylinder = new Solenoid(4);
 		latchCylinder = new Solenoid(5);
+		
+		latchSwitch1 = new DigitalInput(-1);
+		latchSwitch2 = new DigitalInput(-1);
 		
 		compressor = new Compressor();
 		

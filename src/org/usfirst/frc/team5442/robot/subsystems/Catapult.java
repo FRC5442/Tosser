@@ -10,7 +10,7 @@ public class Catapult extends Subsystem {
 	private static VictorSP winchMotor;
 	
 	public Catapult() {
-		winchMotor = RobotMap.winchMotor;
+		winchMotor = RobotMap.spinRodMotor;
 	}
 
 	@Override

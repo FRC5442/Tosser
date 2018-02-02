@@ -7,11 +7,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Cylinders extends Subsystem {
 	
-	private Solenoid latchCylinder, winchCylinder;
+	private Solenoid latchCylinder;
 	
 	public Cylinders() {
 		latchCylinder = RobotMap.latchCylinder;
-		winchCylinder = RobotMap.winchCylinder;
 	}
 
 	@Override
@@ -21,10 +20,6 @@ public class Cylinders extends Subsystem {
 	
 	public void setLatchCylinder(boolean set) {
 		latchCylinder.set(set);
-	}
-	
-	public void setWinchCylinder(boolean set) {
-		winchCylinder.set(set);
 	}
 
 }

@@ -1,11 +1,10 @@
 package org.usfirst.frc.team5442.robot;
 
+import org.usfirst.frc.team5442.robot.commandgroups.LatchPlusArm;
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
 import org.usfirst.frc.team5442.robot.commands.Shoot;
-import org.usfirst.frc.team5442.robot.commands.Wind;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -74,7 +73,7 @@ public class OI {
 		// Assign commands to buttons
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
-		xbox2AButton.whileHeld(new Wind());
+		xbox2AButton.whileHeld(new LatchPlusArm());
 		xbox2XButton.whileHeld(new Shoot());
 		
 		
