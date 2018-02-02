@@ -29,7 +29,7 @@ public class Robot extends IterativeRobot {
 	public static Cylinders cylinders;
 	public static Catapult catapult;
 	public static Climber climber;
-
+	
 	Command autonomousCommand;
 	SendableChooser<Command> driveChooser;
 	/**

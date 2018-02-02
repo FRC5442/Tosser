@@ -6,19 +6,20 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Catapult extends Subsystem {
-	
+
 	private static VictorSP winchMotor;
 	
 	public Catapult() {
 		winchMotor = RobotMap.spinRodMotor;
+
 	}
 
 	@Override
 	protected void initDefaultCommand() {
 		
 	}
-	
-	public static void wind(double speed) {
+
+	public void launch(double speed) {
 		winchMotor.set(speed);
 	}
 }

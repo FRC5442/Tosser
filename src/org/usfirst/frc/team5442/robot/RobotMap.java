@@ -33,22 +33,21 @@ public class RobotMap {
 	// FORMAT:
 	// public static [Controller type] (name);
 	public static VictorSP leftController1;
+	public static VictorSP leftController2;
+	public static VictorSP leftController3;
 	public static VictorSP rightController1;
-<<<<<<< HEAD
+	public static VictorSP rightController2;
+	public static VictorSP rightController3;
 	public static VictorSP spinRodMotor;
-=======
 	public static VictorSP winchMotor;
 	public static VictorSP telescopeMotor;
 	public static VictorSP hookMotor;
->>>>>>> fd78e76e3856473c73597c7376f2e0f84b8a08c9
-	
+
 	public static Compressor compressor;
 	
 	public static DoubleSolenoid gearShiftLeft;
 	public static DoubleSolenoid gearShiftRight;
     public static PowerDistributionPanel pdp;
-    
-    public static Solenoid latchCylinder;
     
     public static DigitalInput limitSwitch;
     public static DigitalInput limitSwitch2;
@@ -57,37 +56,42 @@ public class RobotMap {
     public static DigitalInput latchSwitch2;
     
     
+    public static Solenoid winchCylinder;
+    public static Solenoid latchCylinder;
+    
 	// Setting SpeedControllerGroups per side
 	SpeedControllerGroup leftControllers,rightControllers;
 	
 	public RobotMap() {
 		// Setting port numbers for speed controllers
 		rightController1 = new VictorSP(0);
+		//rightController2 = new VictorSP(1);
+		//rightController3 = new VictorSP(2);
 		leftController1 = new VictorSP(1);
-
+		//leftController2 = new VictorSP(4);
+		//leftController3 = new VictorSP(5):
+		spinRodMotor = new VictorSP(2);
+		telescopeMotor = new VictorSP(-1);
+		hookMotor = new VictorSP(-1);
+		
 		gearShiftLeft = new DoubleSolenoid(0, 1);
 		gearShiftRight = new DoubleSolenoid(2, 3);
 		
 		//driveTrain = new DifferentialDrive(leftControllers, rightControllers);
 		driveTrain = new DifferentialDrive(leftController1, rightController1);
 		// Needs port number
-		spinRodMotor = new VictorSP(2);
+		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
+		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
 		
-<<<<<<< HEAD
-=======
-		telescopeMotor = new VictorSP(-1);
-		hookMotor = new VictorSP(-1);
-
-		winchCylinder = new Solenoid(4);
->>>>>>> fd78e76e3856473c73597c7376f2e0f84b8a08c9
+	
 		latchCylinder = new Solenoid(5);
 		
 		latchSwitch1 = new DigitalInput(-1);
 		latchSwitch2 = new DigitalInput(-1);
 		
-		compressor = new Compressor();
 		
-		windSwitch = new DigitalInput(0);
+		
+		compressor = new Compressor();
 		//Turn on if debugging
 		pdp = new PowerDistributionPanel(1);
 	}
