@@ -1,9 +1,12 @@
 package org.usfirst.frc.team5442.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -41,6 +44,7 @@ public class RobotMap {
 	public static DoubleSolenoid gearShiftRight;
     public static PowerDistributionPanel pdp;
     
+    
     public static Solenoid winchCylinder;
     public static Solenoid latchCylinder;
     
@@ -48,6 +52,7 @@ public class RobotMap {
     public static DigitalInput limitSwitch2;
     public static DigitalInput windSwitch;
     
+    public static AHRS navx;
 	// Setting SpeedControllerGroups per side
 	SpeedControllerGroup leftControllers,rightControllers;
 	
@@ -73,6 +78,8 @@ public class RobotMap {
 		windSwitch = new DigitalInput(0);
 		//Turn on if debugging
 		pdp = new PowerDistributionPanel(1);
+		
+		navx = new AHRS(SerialPort.Port.kMXP);
 	}
 	
 	public static DifferentialDrive GetDriver()
