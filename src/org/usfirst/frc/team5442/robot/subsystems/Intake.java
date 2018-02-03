@@ -16,7 +16,7 @@ public class Intake extends Subsystem{
 	}
 	
 	public void doFlip(double speed) {
-		RobotMap.flipper.set(speed);
+		RobotMap.flipper.set(.5*speed);
 	}
 	
 	public void doIntake(double intake_speed) {

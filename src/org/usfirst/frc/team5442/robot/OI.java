@@ -3,6 +3,7 @@ package org.usfirst.frc.team5442.robot;
 import org.usfirst.frc.team5442.robot.commandgroups.LatchPlusArm;
 import org.usfirst.frc.team5442.robot.commands.FlipBack;
 import org.usfirst.frc.team5442.robot.commands.FlipForward;
+import org.usfirst.frc.team5442.robot.commands.FlipToAngle;
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
 import org.usfirst.frc.team5442.robot.commands.IntakeOut;
@@ -92,10 +93,12 @@ public class OI {
 		xboxYButton2 = new JoystickButton(xboxController2, 4);
 		
 		
+		
 		//Driver Joystick 1
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
 		xboxAButton.whileHeld(new Shoot());
+		xboxBButton.whileHeld(new FlipToAngle(1));
 		xboxXButton.whileHeld(new LatchPlusArm());
 		
 		//Control Joystick 2
