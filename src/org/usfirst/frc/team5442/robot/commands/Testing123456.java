@@ -20,7 +20,7 @@ public class Testing123456 extends PIDCommand{
 
 	@Override
 	protected void usePIDOutput(double output) {
-		if(OI.xboxController1.getRawAxis(1) - OI.xboxController1.getRawAxis(5) < 0.05) {
+		if(Math.abs(OI.xboxController1.getRawAxis(1) - OI.xboxController1.getRawAxis(5)) < 0.05) {
 			setSetpointRelative(0);
 			RobotMap.GetDriver().arcadeDrive(OI.xboxController1.getRawAxis(1), output);
 		}
@@ -31,7 +31,6 @@ public class Testing123456 extends PIDCommand{
 	
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
