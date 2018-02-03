@@ -27,6 +27,7 @@ public class RobotMap {
 	// Declare Motor Controllers Here
 	// FORMAT:
 	// public static [Controller type] (name);
+	/*
 	public static VictorSP leftController1;
 	public static VictorSP leftController2;
 	public static VictorSP leftController3;
@@ -40,7 +41,20 @@ public class RobotMap {
 	public static VictorSP leftIntake;
 	public static VictorSP rightIntake;
 	public static VictorSP flipper;
-	
+	*/
+	public static Spark leftController1;
+	public static Spark leftController2;
+	public static Spark leftController3;
+	public static Spark rightController1;
+	public static Spark rightController2;
+	public static Spark rightController3;
+	public static Spark spinRodMotor;
+	public static Spark winchMotor;
+	public static Spark telescopeMotor;
+	public static Spark hookMotor;
+	public static Spark leftIntake;
+	public static Spark rightIntake;
+	public static Spark flipper;
 	public static Compressor compressor;
 	
 	public static DoubleSolenoid gearShiftLeft;
@@ -60,6 +74,7 @@ public class RobotMap {
     
 	// Setting SpeedControllerGroups per side
 	SpeedControllerGroup leftControllers,rightControllers;
+	
 	public static Solenoid pincerLeft;
 	public static Solenoid pincerRight;
 	
@@ -71,20 +86,36 @@ public class RobotMap {
 	public static PowerDistributionPanel pdp;
 	public RobotMap() {
 		// Setting port numbers for speed controllers
+		/*
 		rightController1 = new VictorSP(0);
-		//rightController2 = new VictorSP(1);
-		//rightController3 = new VictorSP(2);
-		leftController1 = new VictorSP(1);
-		//leftController2 = new VictorSP(4);
-		//leftController3 = new VictorSP(5):
+		rightController2 = new VictorSP(-1);
+		rightController3 = new VictorSP(-1);
+		leftController1 = new VictorSP(3);
+		leftController2 = new VictorSP(4);
+		leftController3 = new VictorSP(5);
 		
-		spinRodMotor = new VictorSP(2);
-		telescopeMotor = new VictorSP(-1);
-		hookMotor = new VictorSP(-1);
+		spinRodMotor = new VictorSP(6);
+		telescopeMotor = new VictorSP(1);
+		hookMotor = new VictorSP(2);
 		//Intake
 		leftIntake = new VictorSP(-1);
 		rightIntake = new VictorSP(-1);
 		flipper = new VictorSP(-1);		
+		*/
+		rightController1 = new Spark(0);
+		rightController2 = new Spark(-1);
+		rightController3 = new Spark(-1);
+		leftController1 = new Spark(3);
+		leftController2 = new Spark(4);
+		leftController3 = new Spark(5);
+		
+		spinRodMotor = new Spark(6);
+		telescopeMotor = new Spark(1);
+		hookMotor = new Spark(2);
+		//Intake
+		leftIntake = new Spark(9);
+		rightIntake = new Spark(8);
+		flipper = new Spark(7);		
 		//Gear Shift
 		gearShiftLeft = new DoubleSolenoid(0, 1);
 		gearShiftRight = new DoubleSolenoid(2, 3);

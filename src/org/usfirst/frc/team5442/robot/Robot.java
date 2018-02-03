@@ -26,7 +26,6 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain driveTrain;
 	public static Pneumatics pneumatics;
 	public static Cylinders cylinders;
-	public static Catapult catapult;
 	public static Climber climber;
 	public static Intake intake;
 
@@ -54,7 +53,6 @@ public class Robot extends IterativeRobot {
 		
 	
 		pneumatics = new Pneumatics();
-		catapult = new Catapult();
 		climber = new Climber();
 		intake = new Intake();
 	}
