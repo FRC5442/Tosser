@@ -103,8 +103,8 @@ public class RobotMap {
 		flipper = new VictorSP(-1);		
 		*/
 		rightController1 = new Spark(0);
-		rightController2 = new Spark(-1);
-		rightController3 = new Spark(-1);
+		rightController2 = new Spark(10); // This is above 9 b/c the navx code will just check to make sure that it is 
+		rightController3 = new Spark(11);
 		leftController1 = new Spark(3);
 		leftController2 = new Spark(4);
 		leftController3 = new Spark(5);

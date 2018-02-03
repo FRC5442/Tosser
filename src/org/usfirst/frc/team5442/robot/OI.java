@@ -106,8 +106,8 @@ public class OI {
 		xboxRBumper2.whileHeld(new PincerIn());
 		xboxAButton2.whileHeld(new IntakeIn(.5));
 		xboxBButton2.whileHeld(new IntakeOut(.5));
-		xboxXButton2.whileHeld(new FlipBack(.5));
-		xboxYButton2.whileHeld(new FlipForward(.5));
+		xboxXButton2.whileHeld(new FlipBack(1));
+		xboxYButton2.whileHeld(new FlipForward(1));
 		
 		
 	}
