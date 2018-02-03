@@ -2,10 +2,11 @@ package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
+import org.usfirst.frc.team5442.robot.commands.SelectArcadeDrive;
+import org.usfirst.frc.team5442.robot.commands.SelectTankDrive;
 import org.usfirst.frc.team5442.robot.commands.Shoot;
 import org.usfirst.frc.team5442.robot.commands.Wind;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -52,6 +53,8 @@ public class OI {
 	public static JoystickButton xbox2AButton;
 	public static JoystickButton xbox2XButton;
 
+	public static JoystickButton xboxLeftJoyButton;
+	public static JoystickButton xboxRightJoyButton;
 	
 	public OI(){
 		//xboxController = new XboxController(1);
@@ -70,12 +73,17 @@ public class OI {
 		xbox2AButton = new JoystickButton(xboxController2, 1);
 		xbox2XButton = new JoystickButton(xboxController2, 3);
 		
+		xboxLeftJoyButton = new JoystickButton(xboxController2, 10);
+		xboxRightJoyButton = new JoystickButton(xboxController2, 9);
+		
 
 		// Assign commands to buttons
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
 		xbox2AButton.whileHeld(new Wind());
 		xbox2XButton.whileHeld(new Shoot());
+		xboxLeftJoyButton.toggleWhenPressed(new SelectArcadeDrive());
+		xboxRightJoyButton.toggleWhenPressed(new SelectTankDrive());
 		
 		
 	}

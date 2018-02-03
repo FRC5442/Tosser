@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Pneumatics extends Subsystem{
-
 	
 	public Pneumatics() {
 		// Starting compressor when code is called, which is at beginning on enabled mode

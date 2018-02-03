@@ -24,7 +24,8 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 	public static RobotMap robotMap;
-	public static DriveTrain driveTrain;
+	public static TankControl tankControl;
+	public static ArcadeControl arcadeControl;
 	public static Pneumatics pneumatics;
 	public static Cylinders cylinders;
 	public static Catapult catapult;
@@ -40,20 +41,28 @@ public class Robot extends IterativeRobot {
 		// Initialize variables 
 		oi = new OI();
 		robotMap = new RobotMap();
-		driveTrain = new DriveTrain();
+		arcadeControl = new ArcadeControl();
+		tankControl = new TankControl();
 		driveChooser = new SendableChooser<>();
 		// Add objects to "driveChooser" sendablechooser on shuffleboard/smartdashboard
-		driveChooser.addDefault("Tank Drive", new TankDrive());
-		driveChooser.addObject("Arcade Drive", new ArcadeDrive());
-		//driveChooser.addObject("My Auto", new MyAutoCommand());
-		//driveChooser.addObject("My Auto", new MyAutoCommand());
+		//driveChooser.addDefault("Tank Drive", new TankDrive());
+		//driveChooser.addObject("Arcade Drive", new ArcadeDrive());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 
-		SmartDashboard.putData("Drive mode", driveChooser);
-		
+		//SmartDashboard.putData("Drive mode", driveChooser);
 	
 		pneumatics = new Pneumatics();
 		catapult = new Catapult();
+	}
+	
+	public static void StartTankDriving() {
+		arcadeControl.getCurrentCommand().cancel();
+		tankControl.getCurrentCommand().start();
+	}
+
+	public static void StartArcadeDriving() {
+		tankControl.getCurrentCommand().cancel();
+		arcadeControl.getCurrentCommand().start();
 	}
 
 	/**
