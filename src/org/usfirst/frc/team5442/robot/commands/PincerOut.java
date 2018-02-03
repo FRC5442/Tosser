@@ -5,15 +5,17 @@ import org.usfirst.frc.team5442.robot.Robot;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class HighShift extends Command {
-	
+public class PincerOut extends Command{
 	@Override
 	protected void initialize() {
-		Robot.pneumatics.gearShift(DoubleSolenoid.Value.kReverse);
+		Robot.pneumatics.pincing(false);
+		
 	}
 
 	@Override
 	protected boolean isFinished() {
+		// TODO Auto-generated method stub
 		return false;
 	}
+
 }

@@ -3,7 +3,6 @@ package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.*;
 import org.usfirst.frc.team5442.robot.subsystems.*;
-
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -29,7 +28,8 @@ public class Robot extends IterativeRobot {
 	public static Cylinders cylinders;
 	public static Catapult catapult;
 	public static Climber climber;
-	
+	public static Intake intake;
+
 	Command autonomousCommand;
 	SendableChooser<Command> driveChooser;
 	/**
@@ -56,6 +56,7 @@ public class Robot extends IterativeRobot {
 		pneumatics = new Pneumatics();
 		catapult = new Catapult();
 		climber = new Climber();
+		intake = new Intake();
 	}
 
 	/**
@@ -86,6 +87,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		
+		RobotMap.FlipEncoder.reset();
+		
 		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
 
 		/*
@@ -106,6 +110,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.getNumber("FlipEncoder", RobotMap.FlipEncoder.getDistance());
 	}
 
 	@Override

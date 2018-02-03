@@ -23,5 +23,10 @@ public class Pneumatics extends Subsystem{
 		RobotMap.gearShiftRight.set(position);
 		// This method allows the gear shifts to be set a position, either forward or reverse
 	}
+	public void pincing(boolean pince) {
+		RobotMap.pincerLeft.set(pince);
+		RobotMap.pincerRight.set(pince);
+		
+	}
 
 }

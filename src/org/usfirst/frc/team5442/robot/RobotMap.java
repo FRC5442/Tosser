@@ -1,13 +1,8 @@
 
 package org.usfirst.frc.team5442.robot;
 
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
@@ -42,12 +37,15 @@ public class RobotMap {
 	public static VictorSP winchMotor;
 	public static VictorSP telescopeMotor;
 	public static VictorSP hookMotor;
-
+	public static VictorSP leftIntake;
+	public static VictorSP rightIntake;
+	public static VictorSP flipper;
+	
 	public static Compressor compressor;
 	
 	public static DoubleSolenoid gearShiftLeft;
 	public static DoubleSolenoid gearShiftRight;
-    public static PowerDistributionPanel pdp;
+    public static PowerDistributionPanel pdp1;
     
     public static DigitalInput limitSwitch;
     public static DigitalInput limitSwitch2;
@@ -62,7 +60,15 @@ public class RobotMap {
     
 	// Setting SpeedControllerGroups per side
 	SpeedControllerGroup leftControllers,rightControllers;
+	public static Solenoid pincerLeft;
+	public static Solenoid pincerRight;
 	
+	public static Encoder FlipEncoder;
+	
+	public static DigitalInput backFlipStop;
+	public static DigitalInput frontFlipStop;
+	
+	public static PowerDistributionPanel pdp;
 	public RobotMap() {
 		// Setting port numbers for speed controllers
 		rightController1 = new VictorSP(0);
@@ -71,16 +77,21 @@ public class RobotMap {
 		leftController1 = new VictorSP(1);
 		//leftController2 = new VictorSP(4);
 		//leftController3 = new VictorSP(5):
+		
 		spinRodMotor = new VictorSP(2);
 		telescopeMotor = new VictorSP(-1);
 		hookMotor = new VictorSP(-1);
-		
+		//Intake
+		leftIntake = new VictorSP(-1);
+		rightIntake = new VictorSP(-1);
+		flipper = new VictorSP(-1);		
+		//Gear Shift
 		gearShiftLeft = new DoubleSolenoid(0, 1);
 		gearShiftRight = new DoubleSolenoid(2, 3);
 		
 		//driveTrain = new DifferentialDrive(leftControllers, rightControllers);
 		driveTrain = new DifferentialDrive(leftController1, rightController1);
-		// Needs port number
+		
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
 		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
 	
@@ -89,11 +100,20 @@ public class RobotMap {
 		latchSwitch1 = new DigitalInput(-1);
 		latchSwitch2 = new DigitalInput(-1);
 		
-		
-		
 		compressor = new Compressor();
+		
+		pincerLeft = new Solenoid(-1);
+		pincerRight = new Solenoid(-1);
 		//Turn on if debugging
-		pdp = new PowerDistributionPanel(1);
+		pdp1 = new PowerDistributionPanel(1);
+		
+		backFlipStop = new DigitalInput(-1);
+		frontFlipStop = new DigitalInput(-1);
+		
+		FlipEncoder = new Encoder(-1, -1, false, EncodingType.k4X);
+        FlipEncoder.setSamplesToAverage(5);
+        FlipEncoder.setDistancePerPulse(1.0/360);
+		
 	}
 	
 	public static DifferentialDrive GetDriver()
