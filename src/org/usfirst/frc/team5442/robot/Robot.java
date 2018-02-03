@@ -1,6 +1,12 @@
 
 package org.usfirst.frc.team5442.robot;
 
+import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
+import org.usfirst.frc.team5442.robot.commands.TankDrive;
+import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5442.robot.subsystems.PIDDrive;
+import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team5442.robot.commands.*;
 import org.usfirst.frc.team5442.robot.subsystems.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -25,6 +31,9 @@ public class Robot extends IterativeRobot {
 	public static RobotMap robotMap;
 	public static DriveTrain driveTrain;
 	public static Pneumatics pneumatics;
+
+	public static PIDDrive pidDrive;
+	public static PIDTurn pidTurn;
 	public static Cylinders cylinders;
 	public static Climber climber;
 	public static Intake intake;
@@ -41,6 +50,11 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		robotMap = new RobotMap();
 		driveTrain = new DriveTrain();
+		pneumatics = new Pneumatics();
+		pidDrive = new PIDDrive(); //don't forget to set values before calling the subsystem
+		pidTurn = new PIDTurn(); //same thing
+		
+		
 		driveChooser = new SendableChooser<>();
 		// Add objects to "driveChooser" sendablechooser on shuffleboard/smartdashboard
 		driveChooser.addDefault("Tank Drive", new TankDrive());
@@ -51,7 +65,6 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putData("Drive mode", driveChooser);
 		
-	
 		pneumatics = new Pneumatics();
 		climber = new Climber();
 		intake = new Intake();
@@ -98,6 +111,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
+		RobotMap.navx.reset();
+		
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}

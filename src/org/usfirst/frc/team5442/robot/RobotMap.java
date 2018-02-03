@@ -1,8 +1,20 @@
 
 package org.usfirst.frc.team5442.robot;
 
-import edu.wpi.first.wpilibj.*;
+
+import com.kauailabs.navx.frc.AHRS;
+
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
@@ -23,7 +35,12 @@ public class RobotMap {
 	 * public static int rangefinderModule = 1;
 	 */
 
-	private static DifferentialDrive driveTrain;
+	// If you are using multiple modules, make sure to define both the port
+	// number and the module. For example you with a rangefinder:
+	// public static int rangefinderPort = 1;
+	// public static int rangefinderModule = 1;
+	public static DifferentialDrive driveTrain;
+
 	// Declare Motor Controllers Here
 	// FORMAT:
 	// public static [Controller type] (name);
@@ -57,6 +74,7 @@ public class RobotMap {
 	public static Spark flipper;
 	public static Compressor compressor;
 	
+
 	public static DoubleSolenoid gearShiftLeft;
 	public static DoubleSolenoid gearShiftRight;
     public static PowerDistributionPanel pdp1;
@@ -84,6 +102,11 @@ public class RobotMap {
 	public static DigitalInput frontFlipStop;
 	
 	public static PowerDistributionPanel pdp;
+	public static Encoder encoderLeft;
+	public static Encoder encoderRight;
+	
+	public static AHRS navx;
+	
 	public RobotMap() {
 		// Setting port numbers for speed controllers
 		/*
@@ -127,7 +150,7 @@ public class RobotMap {
 		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
 	
 		latchCylinder = new Solenoid(5);
-		
+
 		latchSwitch1 = new DigitalInput(-1);
 		latchSwitch2 = new DigitalInput(-1);
 		
@@ -135,6 +158,21 @@ public class RobotMap {
 		
 		pincerLeft = new Solenoid(-1);
 		pincerRight = new Solenoid(-1);
+
+		//pneumatics
+		compressor = new Compressor();
+		
+		navx = new AHRS(SerialPort.Port.kMXP);
+		
+		//encoders
+		encoderLeft = new Encoder(3, 4, false, EncodingType.k4X);
+		encoderLeft.setSamplesToAverage(5);
+		encoderLeft.setDistancePerPulse(1.0/360);
+		
+		encoderRight = new Encoder(3, 4, false, EncodingType.k4X);
+		encoderRight.setSamplesToAverage(5);
+		encoderRight.setDistancePerPulse(1.0/360);
+
 		//Turn on if debugging
 		pdp1 = new PowerDistributionPanel(1);
 		
