@@ -50,7 +50,6 @@ public class Robot extends IterativeRobot {
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 
 		SmartDashboard.putData("Drive mode", driveChooser);
-		
 	
 		pneumatics = new Pneumatics();
 		climber = new Climber();
@@ -129,7 +128,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
-		
+		RobotMap.compressor.start();
 	}
 
 	/**

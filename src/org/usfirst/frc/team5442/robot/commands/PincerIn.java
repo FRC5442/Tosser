@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class PincerIn extends Command{
 	@Override
 	protected void initialize() {
-		Robot.pneumatics.pincing(true);
+		Robot.pneumatics.pincing(DoubleSolenoid.Value.kForward);
 		
 	}
 

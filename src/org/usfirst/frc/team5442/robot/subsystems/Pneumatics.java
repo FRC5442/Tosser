@@ -10,7 +10,7 @@ public class Pneumatics extends Subsystem{
 	
 	public Pneumatics() {
 		// Starting compressor when code is called, which is at beginning on enabled mode
-		RobotMap.compressor.start();
+		//RobotMap.compressor.start();
 	}
 	
 	@Override
@@ -19,13 +19,11 @@ public class Pneumatics extends Subsystem{
 	}
 	
 	public void gearShift(Value position) {
-		RobotMap.gearShiftLeft.set(position);
-		RobotMap.gearShiftRight.set(position);
+		RobotMap.gearShift.set(position);
 		// This method allows the gear shifts to be set a position, either forward or reverse
 	}
-	public void pincing(boolean pince) {
-		RobotMap.pincerLeft.set(pince);
-		RobotMap.pincerRight.set(pince);
+	public void pincing(Value pince) {
+		RobotMap.pincer.set(pince);
 		
 	}
 

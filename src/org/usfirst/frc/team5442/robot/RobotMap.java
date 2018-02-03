@@ -1,8 +1,14 @@
 
 package org.usfirst.frc.team5442.robot;
 
-import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
@@ -23,7 +29,7 @@ public class RobotMap {
 	 * public static int rangefinderModule = 1;
 	 */
 
-	private static DifferentialDrive driveTrain;
+	public static DifferentialDrive driveTrain;
 	// Declare Motor Controllers Here
 	// FORMAT:
 	// public static [Controller type] (name);
@@ -57,8 +63,7 @@ public class RobotMap {
 	public static Spark flipper;
 	public static Compressor compressor;
 	
-	public static DoubleSolenoid gearShiftLeft;
-	public static DoubleSolenoid gearShiftRight;
+	public static DoubleSolenoid gearShift;
     public static PowerDistributionPanel pdp1;
     
     public static DigitalInput limitSwitch;
@@ -73,10 +78,10 @@ public class RobotMap {
    
     
 	// Setting SpeedControllerGroups per side
-	SpeedControllerGroup leftControllers,rightControllers;
+	static SpeedControllerGroup leftControllers;
+	static SpeedControllerGroup rightControllers;
 	
-	public static Solenoid pincerLeft;
-	public static Solenoid pincerRight;
+	public static DoubleSolenoid pincer;
 	
 	public static Encoder FlipEncoder;
 	
@@ -84,7 +89,7 @@ public class RobotMap {
 	public static DigitalInput frontFlipStop;
 	
 	public static PowerDistributionPanel pdp;
-	public RobotMap() {
+	public static void init() {
 		// Setting port numbers for speed controllers
 		/*
 		rightController1 = new VictorSP(0);
@@ -117,33 +122,31 @@ public class RobotMap {
 		rightIntake = new Spark(8);
 		flipper = new Spark(7);		
 		//Gear Shift
-		gearShiftLeft = new DoubleSolenoid(0, 1);
-		gearShiftRight = new DoubleSolenoid(2, 3);
+		gearShift = new DoubleSolenoid(0, 1);
 		
-		//driveTrain = new DifferentialDrive(leftControllers, rightControllers);
-		driveTrain = new DifferentialDrive(leftController1, rightController1);
+		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
+		//driveTrain = new DifferentialDrive(leftControllers1, rightController1);
 		
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
 		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
 	
-		latchCylinder = new Solenoid(5);
+		latchCylinder = new Solenoid(4);
 		
-		latchSwitch1 = new DigitalInput(-1);
-		latchSwitch2 = new DigitalInput(-1);
+		//latchSwitch1 = new DigitalInput(-1);
+		//latchSwitch2 = new DigitalInput(-1);
 		
 		compressor = new Compressor();
 		
-		pincerLeft = new Solenoid(-1);
-		pincerRight = new Solenoid(-1);
+		pincer = new DoubleSolenoid(2, 3);
 		//Turn on if debugging
-		pdp1 = new PowerDistributionPanel(1);
+		//pdp1 = new PowerDistributionPanel(1);
 		
-		backFlipStop = new DigitalInput(-1);
-		frontFlipStop = new DigitalInput(-1);
+		//backFlipStop = new DigitalInput(-1);
+		//frontFlipStop = new DigitalInput(-1);
 		
-		FlipEncoder = new Encoder(-1, -1, false, EncodingType.k4X);
-        FlipEncoder.setSamplesToAverage(5);
-        FlipEncoder.setDistancePerPulse(1.0/360);
+		//FlipEncoder = new Encoder(-1, -1, false, EncodingType.k4X);
+        //FlipEncoder.setSamplesToAverage(5);
+        //FlipEncoder.setDistancePerPulse(1.0/360);
 		
 	}
 	

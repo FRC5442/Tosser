@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commandgroups.LatchPlusArm;
+import org.usfirst.frc.team5442.robot.commands.ArmLatch;
 import org.usfirst.frc.team5442.robot.commands.FlipBack;
 import org.usfirst.frc.team5442.robot.commands.FlipForward;
 import org.usfirst.frc.team5442.robot.commands.FlipToAngle;
@@ -12,6 +13,7 @@ import org.usfirst.frc.team5442.robot.commands.PincerIn;
 import org.usfirst.frc.team5442.robot.commands.PincerOut;
 import org.usfirst.frc.team5442.robot.commands.Shoot;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -98,16 +100,17 @@ public class OI {
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
 		xboxAButton.whileHeld(new Shoot());
-		xboxBButton.whileHeld(new FlipToAngle(1));
-		xboxXButton.whileHeld(new LatchPlusArm());
+		//xboxBButton.whileHeld(new FlipToAngle(1));
+		xboxXButton.whileHeld(new ArmLatch(Math.abs(xboxController1.getTriggerAxis(GenericHID.Hand.kLeft))));
+		xboxXButton.whileHeld(new ArmLatch(-1* Math.abs(xboxController1.getTriggerAxis(GenericHID.Hand.kRight))));
 		
 		//Control Joystick 2
 		xboxLBumper2.whileHeld(new PincerOut());
 		xboxRBumper2.whileHeld(new PincerIn());
-		xboxAButton2.whileHeld(new IntakeIn(.5));
-		xboxBButton2.whileHeld(new IntakeOut(.5));
-		xboxXButton2.whileHeld(new FlipBack(1));
-		xboxYButton2.whileHeld(new FlipForward(1));
+		xboxAButton2.whileHeld(new IntakeIn(1));
+		xboxBButton2.whileHeld(new IntakeOut(1));
+		xboxXButton2.whileHeld(new FlipBack(xboxController1.getRawAxis(1)));
+		//xboxYButton2.whileHeld(new FlipForward(1));
 		
 		
 	}
