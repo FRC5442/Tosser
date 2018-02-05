@@ -1,12 +1,16 @@
 package org.usfirst.frc.team5442.robot;
 
+import java.io.Console;
+
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
+import org.usfirst.frc.team5442.robot.commands.RumbleRight;
 import org.usfirst.frc.team5442.robot.commands.SelectArcadeDrive;
 import org.usfirst.frc.team5442.robot.commands.SelectTankDrive;
 import org.usfirst.frc.team5442.robot.commands.Shoot;
 import org.usfirst.frc.team5442.robot.commands.Wind;
 
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -44,7 +48,7 @@ public class OI {
 	 *   button.whenReleased(new ExampleCommand());
 	 **/
 	public static XboxController xboxController1;
-	public static XboxController xboxController2;
+	//public static XboxController xboxController2;
 	//Controller 1 buttons
 	public static JoystickButton xboxLBumper;
 	public static JoystickButton xboxRBumper;
@@ -56,6 +60,8 @@ public class OI {
 	public static JoystickButton xboxLeftJoyButton;
 	public static JoystickButton xboxRightJoyButton;
 	
+	public static JoystickButton xboxButtonB;
+	
 	public OI(){
 		//xboxController = new XboxController(1);
 		
@@ -63,19 +69,20 @@ public class OI {
 		
 		// Assign Joysticks and their ports
 		xboxController1 = new XboxController(0);
-		xboxController2 = new XboxController(1);
+		//xboxController2 = new XboxController(1);
 		
 		// Assign button names to mapping to Controller 1
 		xboxLBumper = new JoystickButton(xboxController1, 5);
 		xboxRBumper = new JoystickButton(xboxController1, 6);
 		
 		// Assign button names to mapping to Controller 2
-		xbox2AButton = new JoystickButton(xboxController2, 1);
-		xbox2XButton = new JoystickButton(xboxController2, 3);
+		xbox2AButton = new JoystickButton(xboxController1, 1);
+		xbox2XButton = new JoystickButton(xboxController1, 3);
 		
-		xboxLeftJoyButton = new JoystickButton(xboxController2, 10);
-		xboxRightJoyButton = new JoystickButton(xboxController2, 9);
+		xboxLeftJoyButton = new JoystickButton(xboxController1, 10);
+		xboxRightJoyButton = new JoystickButton(xboxController1, 9);
 		
+		xboxButtonB = new JoystickButton(xboxController1, 2);
 
 		// Assign commands to buttons
 		xboxLBumper.whileHeld(new HighShift());
@@ -84,14 +91,18 @@ public class OI {
 		xbox2XButton.whileHeld(new Shoot());
 		xboxLeftJoyButton.toggleWhenPressed(new SelectArcadeDrive());
 		xboxRightJoyButton.toggleWhenPressed(new SelectTankDrive());
-		
+		xboxButtonB.whileHeld(new RumbleRight());
 		
 	}
 	public XboxController getXboxController1() {
         return xboxController1;
     }
-	public XboxController getXboxController2() {
-        return xboxController2;
-    }
+	//public XboxController getXboxController2() {
+    //    return xboxController2;
+    //}
+	public static void setRumbleRight(double power) {
+		//System.console().printf("Rumble!!");
+		xboxController1.setRumble(RumbleType.kRightRumble, power);
+	}
 }
 
