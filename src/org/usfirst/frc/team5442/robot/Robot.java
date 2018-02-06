@@ -38,8 +38,8 @@ public class Robot extends IterativeRobot {
 
 	public void robotInit() {
 		// Initialize variables 
-		oi = new OI();
 		robotMap = new RobotMap();
+		oi = new OI();
 		driveTrain = new DriveTrain();
 		driveChooser = new SendableChooser<>();
 		// Add objects to "driveChooser" sendablechooser on shuffleboard/smartdashboard
@@ -128,7 +128,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
-		RobotMap.compressor.start();
+		//RobotMap.compressor.start();
 	}
 
 	/**
