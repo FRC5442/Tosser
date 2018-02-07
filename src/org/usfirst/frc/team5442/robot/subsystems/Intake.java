@@ -16,11 +16,11 @@ public class Intake extends Subsystem{
 	}
 	
 	public void doFlip(double speed) {
-		RobotMap.flipper.set(.5*speed);
+		RobotMap.flipper.set(1*speed);
 	}
 	
 	public void doIntake(double intake_speed) {
-		RobotMap.leftIntake.set(-intake_speed);
-		RobotMap.rightIntake.set(intake_speed);
+		RobotMap.leftIntake.set(.8*intake_speed);
+		RobotMap.rightIntake.set(.8*intake_speed);
 	}
 }

@@ -16,5 +16,4 @@ public class LowShift extends Command {
 	protected boolean isFinished() {
 		return false;
 	}
-
 }

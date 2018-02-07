@@ -10,7 +10,7 @@ public class FlipBack extends Command {
 	private double speed;
 
 	public FlipBack(double speed) {
-		this.speed = -Math.abs(speed);
+		this.speed = speed;
 	}
 	
 	@Override
@@ -20,7 +20,7 @@ public class FlipBack extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return RobotMap.backFlipStop.get();
+		return false/**RobotMap.backFlipStop.get()**/;
 	}
 	
 	@Override

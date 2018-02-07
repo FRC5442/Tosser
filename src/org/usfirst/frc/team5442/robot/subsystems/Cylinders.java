@@ -2,12 +2,13 @@ package org.usfirst.frc.team5442.robot.subsystems;
 
 import org.usfirst.frc.team5442.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Cylinders extends Subsystem {
 	
-	private Solenoid latchCylinder;
+	private DoubleSolenoid latchCylinder;
 	
 	public Cylinders() {
 		latchCylinder = RobotMap.latchCylinder;
@@ -18,7 +19,7 @@ public class Cylinders extends Subsystem {
 		// TODO Auto-generated method stub
 	}
 	
-	public void setLatchCylinder(boolean set) {
+	public void setLatchCylinder(Value set) {
 		latchCylinder.set(set);
 	}
 

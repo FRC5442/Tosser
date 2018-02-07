@@ -62,6 +62,8 @@ public class OI {
 	public JoystickButton xboxBButton;
 	public JoystickButton xboxXButton;
 	public JoystickButton xboxYButton;
+	public JoystickButton xboxBack;
+	public JoystickButton xboxStart;
 	
 	//Controller 2 buttons
 	public JoystickButton xboxLBumper2;
@@ -71,6 +73,7 @@ public class OI {
 	public JoystickButton xboxBButton2;
 	public JoystickButton xboxXButton2;
 	public JoystickButton xboxYButton2;
+	public JoystickButton xboxStart2;
 	
 	public OI(){		
 		// Assign Joysticks and their ports
@@ -85,6 +88,8 @@ public class OI {
 		xboxBButton = new JoystickButton(xboxController1, 2);
 		xboxXButton = new JoystickButton(xboxController1, 3);
 		xboxYButton = new JoystickButton(xboxController1, 4);
+		xboxBack = new JoystickButton(xboxController1, 7);
+		xboxStart = new JoystickButton(xboxController1, 8);
 		
 		//Control Joystick 2
 		xboxLBumper2 = new JoystickButton(xboxController2, 5);
@@ -93,7 +98,7 @@ public class OI {
 		xboxBButton2 = new JoystickButton(xboxController2, 2);
 		xboxXButton2 = new JoystickButton(xboxController2, 3);
 		xboxYButton2 = new JoystickButton(xboxController2, 4);
-		
+		xboxStart2 = new JoystickButton(xboxController2, 8);
 		
 		
 		//Driver Joystick 1
@@ -103,13 +108,16 @@ public class OI {
 		//xboxBButton.whileHeld(new FlipToAngle(1));
 		xboxXButton.whileHeld(new ArmLatch(Math.abs(xboxController1.getTriggerAxis(GenericHID.Hand.kLeft))));
 		xboxXButton.whileHeld(new ArmLatch(-1* Math.abs(xboxController1.getTriggerAxis(GenericHID.Hand.kRight))));
+		xboxBack.whileHeld(new ArmLatch(1));
+		xboxStart.whileHeld(new ArmLatch(-1));
 		
 		//Control Joystick 2
 		xboxLBumper2.whileHeld(new PincerOut());
 		xboxRBumper2.whileHeld(new PincerIn());
 		xboxAButton2.whileHeld(new IntakeIn(1));
 		xboxBButton2.whileHeld(new IntakeOut(1));
-		xboxXButton2.whileHeld(new FlipBack(xboxController1.getRawAxis(1)));
+		xboxXButton2.whileHeld(new FlipBack(-1));
+		xboxStart2.whileHeld(new FlipBack(1));
 		//xboxYButton2.whileHeld(new FlipForward(1));
 		
 		

@@ -20,7 +20,7 @@ public class ArmLatch extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return RobotMap.latchSwitch1.get() || RobotMap.latchSwitch2.get();
+		return false /**RobotMap.latchSwitch1.get() || RobotMap.latchSwitch2.get()**/;
 	}
 	
 	@Override

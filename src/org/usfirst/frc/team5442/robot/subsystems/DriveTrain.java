@@ -20,7 +20,8 @@ public class DriveTrain extends Subsystem{
 	}
 	
 	public static void Driving(double leftJoystick, double rightJoystick) {
-		//if (DriveTrain == null) DriveTrain = RobotMap.GetDriver();
+		if (DriveTrain == null) DriveTrain = RobotMap.GetDriver();
+		DriveTrain.tankDrive(leftJoystick, rightJoystick);
 		//RobotMap.driveTrain.tankDrive(leftJoystick, rightJoystick);
 	}
 	/// Arcade Drive vs. Tank Drive

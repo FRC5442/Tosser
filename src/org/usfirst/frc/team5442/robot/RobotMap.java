@@ -29,7 +29,7 @@ public class RobotMap {
 	 * public static int rangefinderModule = 1;
 	 */
 
-	public static DifferentialDrive driveTrain;
+	private static DifferentialDrive driveTrain;
 	// Declare Motor Controllers Here
 	// FORMAT:
 	// public static [Controller type] (name);
@@ -74,7 +74,7 @@ public class RobotMap {
     
     
     public static Solenoid winchCylinder;
-    public static Solenoid latchCylinder;
+    public static DoubleSolenoid latchCylinder;
    
     
 	// Setting SpeedControllerGroups per side
@@ -89,6 +89,7 @@ public class RobotMap {
 	public static DigitalInput frontFlipStop;
 	
 	public static PowerDistributionPanel pdp;
+	
 	public static void init() {
 		// Setting port numbers for speed controllers
 		/*
@@ -124,13 +125,15 @@ public class RobotMap {
 		//Gear Shift
 		gearShift = new DoubleSolenoid(0, 1);
 		
-		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
+		
 		//driveTrain = new DifferentialDrive(leftControllers1, rightController1);
 		
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
 		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
 	
-		latchCylinder = new Solenoid(4);
+		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
+		
+		latchCylinder = new DoubleSolenoid(4, 5);
 		
 		//latchSwitch1 = new DigitalInput(-1);
 		//latchSwitch2 = new DigitalInput(-1);
