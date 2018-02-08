@@ -1,10 +1,7 @@
 package org.usfirst.frc.team5442.robot;
 
-import org.usfirst.frc.team5442.robot.commandgroups.LatchPlusArm;
 import org.usfirst.frc.team5442.robot.commands.ArmLatch;
 import org.usfirst.frc.team5442.robot.commands.FlipBack;
-import org.usfirst.frc.team5442.robot.commands.FlipForward;
-import org.usfirst.frc.team5442.robot.commands.FlipToAngle;
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
 import org.usfirst.frc.team5442.robot.commands.IntakeOut;
