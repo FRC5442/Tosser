@@ -2,6 +2,12 @@
 package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.*;
+import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddle;
+import org.usfirst.frc.team5442.robot.commands.autonomous.DisableScale;
+import org.usfirst.frc.team5442.robot.commands.autonomous.DisableSwitch;
+import org.usfirst.frc.team5442.robot.commands.autonomous.OurSide;
+import org.usfirst.frc.team5442.robot.commands.autonomous.PrimaryObjective;
+import org.usfirst.frc.team5442.robot.commands.autonomous.PrimaryObjectiveChoice;
 import org.usfirst.frc.team5442.robot.subsystems.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -27,10 +33,16 @@ public class Robot extends IterativeRobot {
 	public static Cylinders cylinders;
 	public static Climber climber;
 	public static Intake intake;
+	
 
 	Command autonomousCommand;
 	SendableChooser<Command> driveChooser;
-	/**
+	SendableChooser<Command> ourSide;
+	SendableChooser<Command> primaryObjective;
+	SendableChooser<Command> disableScale;
+	SendableChooser<Command> disableSwitch;
+	SendableChooser<Command> crossMiddle;
+ 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
@@ -47,8 +59,36 @@ public class Robot extends IterativeRobot {
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
-
 		SmartDashboard.putData("Drive mode", driveChooser);
+		
+		ourSide = new SendableChooser<>();
+		ourSide.addDefault("Left", new OurSide("Left"));
+		ourSide.addObject("Middle", new OurSide("Middle"));
+		ourSide.addObject("Right", new OurSide("Right"));
+		SmartDashboard.putData("Our Side", ourSide);
+		
+		primaryObjective = new SendableChooser<>();
+		primaryObjective.addDefault("AutoLine", new PrimaryObjective("AutoLine"));
+		primaryObjective.addObject("Scale", new PrimaryObjective("Scale"));
+		primaryObjective.addObject("Switch", new PrimaryObjective("Switch"));
+		SmartDashboard.putData("Primary Objective", primaryObjective);
+		
+		disableScale = new SendableChooser<>();
+		disableScale.addDefault("No", new DisableScale("No"));
+		disableScale.addObject("Yes", new DisableScale("Yes"));
+		SmartDashboard.putData("Disable Scale?", disableScale);
+		
+		disableSwitch = new SendableChooser<>();
+		disableSwitch.addDefault("No", new DisableSwitch("No"));
+		disableSwitch.addObject("Yes", new DisableSwitch("Yes"));
+		SmartDashboard.putData("Disable Switch?", disableSwitch);
+		
+		crossMiddle = new SendableChooser<>();
+		crossMiddle.addDefault("Yes", new CrossMiddle("Yes"));
+		crossMiddle.addObject("No", new CrossMiddle("No"));
+		SmartDashboard.putData("Cross Middle?", crossMiddle);
+		
+		
 	
 		pneumatics = new Pneumatics();
 		climber = new Climber();
@@ -85,7 +125,11 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		
 		RobotMap.FlipEncoder.reset();
-		
+		PrimaryObjective po = (PrimaryObjective) primaryObjective.getSelected();
+		if (po.get_choice() == PrimaryObjectiveChoice.Switch)
+		{
+			
+		}
 		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
 
 		/*
