@@ -1,14 +1,21 @@
 
 package org.usfirst.frc.team5442.robot;
 
-import org.usfirst.frc.team5442.robot.commands.*;
+import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
+import org.usfirst.frc.team5442.robot.commands.TankDrive;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.DisableScale;
 import org.usfirst.frc.team5442.robot.commands.autonomous.DisableSwitch;
 import org.usfirst.frc.team5442.robot.commands.autonomous.OurSide;
 import org.usfirst.frc.team5442.robot.commands.autonomous.PrimaryObjective;
 import org.usfirst.frc.team5442.robot.commands.autonomous.PrimaryObjectiveChoice;
-import org.usfirst.frc.team5442.robot.subsystems.*;
+import org.usfirst.frc.team5442.robot.subsystems.Climber;
+import org.usfirst.frc.team5442.robot.subsystems.Cylinders;
+import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5442.robot.subsystems.Intake;
+import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
