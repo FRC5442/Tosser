@@ -70,6 +70,7 @@ public class OI {
 	public JoystickButton xboxBButton2;
 	public JoystickButton xboxXButton2;
 	public JoystickButton xboxYButton2;
+	public JoystickButton xboxBack2;
 	public JoystickButton xboxStart2;
 	
 	public OI(){		
@@ -77,7 +78,7 @@ public class OI {
 		xboxController1 = new XboxController(0);
 		xboxController2 = new XboxController(1);
 		
-		// Assign button names to mapping to Controller 1
+		//Controller 1
 		xboxLBumper = new JoystickButton(xboxController1, 5);
 		xboxRBumper = new JoystickButton(xboxController1, 6);
 		
@@ -88,7 +89,7 @@ public class OI {
 		xboxBack = new JoystickButton(xboxController1, 7);
 		xboxStart = new JoystickButton(xboxController1, 8);
 		
-		//Control Joystick 2
+		//Controller 2
 		xboxLBumper2 = new JoystickButton(xboxController2, 5);
 		xboxRBumper2 = new JoystickButton(xboxController2, 6);
 		xboxAButton2 = new JoystickButton(xboxController2, 1);

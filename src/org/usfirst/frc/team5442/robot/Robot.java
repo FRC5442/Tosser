@@ -22,7 +22,6 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	
 	public static OI oi;
-	//public static RobotMap robotMap;
 	public static DriveTrain driveTrain;
 	public static Pneumatics pneumatics;
 	public static Cylinders cylinders;
@@ -38,7 +37,6 @@ public class Robot extends IterativeRobot {
 
 	public void robotInit() {
 		// Initialize variables 
-		//robotMap = new RobotMap();
 		RobotMap.init();
 		oi = new OI();
 		driveTrain = new DriveTrain();

@@ -94,8 +94,8 @@ public class RobotMap {
 		// Setting port numbers for speed controllers
 		/*
 		rightController1 = new VictorSP(0);
-		rightController2 = new VictorSP(-1);
-		rightController3 = new VictorSP(-1);
+		rightController2 = new VictorSP(10);
+		rightController3 = new VictorSP(11);
 		leftController1 = new VictorSP(3);
 		leftController2 = new VictorSP(4);
 		leftController3 = new VictorSP(5);
@@ -104,13 +104,13 @@ public class RobotMap {
 		telescopeMotor = new VictorSP(1);
 		hookMotor = new VictorSP(2);
 		//Intake
-		leftIntake = new VictorSP(-1);
-		rightIntake = new VictorSP(-1);
-		flipper = new VictorSP(-1);		
+		leftIntake = new VictorSP(9);
+		rightIntake = new VictorSP(8);
+		flipper = new VictorSP(7);		
 		*/
 		rightController1 = new Spark(0);
 		rightController2 = new Spark(10); // This is above 9 b/c the navx code will just check to make sure that it is 
-		rightController3 = new Spark(11);
+		rightController3 = new Spark(11); // ^ That applies here too
 		leftController1 = new Spark(3);
 		leftController2 = new Spark(4);
 		leftController3 = new Spark(5);
@@ -121,28 +121,24 @@ public class RobotMap {
 		//Intake
 		leftIntake = new Spark(9);
 		rightIntake = new Spark(8);
-		flipper = new Spark(7);		
-		//Gear Shift
+		flipper = new Spark(7);	
+		
 		gearShift = new DoubleSolenoid(0, 1);
-		
-		
-		//driveTrain = new DifferentialDrive(leftControllers1, rightController1);
+		pincer = new DoubleSolenoid(2, 3);
+		latchCylinder = new DoubleSolenoid(4, 5);
 		
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
 		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
 	
 		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
 		
-		latchCylinder = new DoubleSolenoid(4, 5);
-		
 		//latchSwitch1 = new DigitalInput(-1);
 		//latchSwitch2 = new DigitalInput(-1);
 		
 		compressor = new Compressor();
-		
-		pincer = new DoubleSolenoid(2, 3);
+	
 		//Turn on if debugging
-		//pdp1 = new PowerDistributionPanel(1);
+		//pdp = new PowerDistributionPanel(1);
 		
 		//backFlipStop = new DigitalInput(-1);
 		//frontFlipStop = new DigitalInput(-1);
