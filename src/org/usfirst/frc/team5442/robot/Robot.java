@@ -4,9 +4,13 @@ package org.usfirst.frc.team5442.robot;
 import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddle;
+import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddleChoice;
 import org.usfirst.frc.team5442.robot.commands.autonomous.DisableScale;
+import org.usfirst.frc.team5442.robot.commands.autonomous.DisableScaleChoice;
 import org.usfirst.frc.team5442.robot.commands.autonomous.DisableSwitch;
+import org.usfirst.frc.team5442.robot.commands.autonomous.DisableSwitchChoice;
 import org.usfirst.frc.team5442.robot.commands.autonomous.OurSide;
+import org.usfirst.frc.team5442.robot.commands.autonomous.OurSideChoice;
 import org.usfirst.frc.team5442.robot.commands.autonomous.PrimaryObjective;
 import org.usfirst.frc.team5442.robot.commands.autonomous.PrimaryObjectiveChoice;
 import org.usfirst.frc.team5442.robot.subsystems.Climber;
@@ -69,30 +73,30 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Drive mode", driveChooser);
 		
 		ourSide = new SendableChooser<>();
-		ourSide.addDefault("Left", new OurSide("Left"));
-		ourSide.addObject("Middle", new OurSide("Middle"));
-		ourSide.addObject("Right", new OurSide("Right"));
+		ourSide.addDefault("Left", new OurSide(OurSideChoice.Left));
+		ourSide.addObject("Middle", new OurSide(OurSideChoice.Middle));
+		ourSide.addObject("Right", new OurSide(OurSideChoice.Right));
 		SmartDashboard.putData("Our Side", ourSide);
 		
 		primaryObjective = new SendableChooser<>();
-		primaryObjective.addDefault("AutoLine", new PrimaryObjective("AutoLine"));
-		primaryObjective.addObject("Scale", new PrimaryObjective("Scale"));
-		primaryObjective.addObject("Switch", new PrimaryObjective("Switch"));
+		primaryObjective.addDefault("AutoLine", new PrimaryObjective(PrimaryObjectiveChoice.Autoline));
+		primaryObjective.addObject("Scale", new PrimaryObjective(PrimaryObjectiveChoice.Scale));
+		primaryObjective.addObject("Switch", new PrimaryObjective(PrimaryObjectiveChoice.Switch));
 		SmartDashboard.putData("Primary Objective", primaryObjective);
 		
 		disableScale = new SendableChooser<>();
-		disableScale.addDefault("No", new DisableScale("No"));
-		disableScale.addObject("Yes", new DisableScale("Yes"));
+		disableScale.addDefault("No", new DisableScale(DisableScaleChoice.No));
+		disableScale.addObject("Yes", new DisableScale(DisableScaleChoice.Yes));
 		SmartDashboard.putData("Disable Scale?", disableScale);
 		
 		disableSwitch = new SendableChooser<>();
-		disableSwitch.addDefault("No", new DisableSwitch("No"));
-		disableSwitch.addObject("Yes", new DisableSwitch("Yes"));
+		disableSwitch.addDefault("No", new DisableSwitch(DisableSwitchChoice.No));
+		disableSwitch.addObject("Yes", new DisableSwitch(DisableSwitchChoice.Yes));
 		SmartDashboard.putData("Disable Switch?", disableSwitch);
 		
 		crossMiddle = new SendableChooser<>();
-		crossMiddle.addDefault("Yes", new CrossMiddle("Yes"));
-		crossMiddle.addObject("No", new CrossMiddle("No"));
+		crossMiddle.addDefault("Yes", new CrossMiddle(CrossMiddleChoice.Yes));
+		crossMiddle.addObject("No", new CrossMiddle(CrossMiddleChoice.No));
 		SmartDashboard.putData("Cross Middle?", crossMiddle);
 		
 		

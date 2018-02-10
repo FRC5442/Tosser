@@ -9,18 +9,8 @@ public class PrimaryObjective extends Command {
 		return _choice;
 	}
 
-	public PrimaryObjective(String choice) {
-		switch(choice.toLowerCase()) {
-		case "switch":
-			_choice = PrimaryObjectiveChoice.Switch;
-			break;
-		case "autoline":
-			_choice = PrimaryObjectiveChoice.Autoline;
-			break;
-		case "scale":
-			_choice = PrimaryObjectiveChoice.Scale;
-			break;
-		}
+	public PrimaryObjective(PrimaryObjectiveChoice choice) {
+		_choice = choice;
 	}
 
 	@Override

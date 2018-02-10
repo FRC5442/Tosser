@@ -9,15 +9,8 @@ public class DisableSwitch extends Command{
 		return _choice;
 	}
 	
-	public DisableSwitch(String choice) {
-		switch(choice.toLowerCase()) {
-		case "Yes":
-			_choice = DisableSwitchChoice.Yes;
-			break;
-		case "No":
-			_choice = DisableSwitchChoice.No;
-			break;
-		}
+	public DisableSwitch(DisableSwitchChoice choice) {
+		_choice = choice;
 	}
 
 	@Override

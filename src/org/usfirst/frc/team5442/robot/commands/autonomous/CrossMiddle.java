@@ -9,15 +9,8 @@ public class CrossMiddle extends Command{
 		return _choice;
 	}
 	
-	public CrossMiddle(String choice) {
-		switch(choice.toLowerCase()) {
-		case "Yes":
-			_choice = CrossMiddleChoice.Yes;
-			break;
-		case "No":
-			_choice = CrossMiddleChoice.No;
-			break;
-		}
+	public CrossMiddle(CrossMiddleChoice choice) {
+		_choice = choice;
 	}
 
 	@Override

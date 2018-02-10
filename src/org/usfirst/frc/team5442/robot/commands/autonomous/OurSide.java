@@ -9,21 +9,9 @@ public class OurSide  extends Command{
 		return _choice;
 	}
 	
-	public OurSide(String choice) {
-		switch(choice.toLowerCase()) {
-		case "Left":
-			_choice = OurSideChoice.Left;
-			break;
-		case "Middle":
-			_choice = OurSideChoice.Middle;
-			break;
-		case "Right":
-			_choice = OurSideChoice.Right;
-			break;
-		}
+	public OurSide(OurSideChoice choice) {
+		_choice = choice;
 	}
-	
-	
 
 	@Override
 	protected boolean isFinished() {
