@@ -122,6 +122,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 	}
 
+	
 	/**
 	 * This function is called periodically during operator control
 	 */
@@ -129,6 +130,17 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
+		
+		boolean pdpVoltage = RobotMap.pdp.getVoltage() <= 12;
+		
+		SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(0));
+
+		SmartDashboard.putNumber("PDP1", RobotMap.pdp.getCurrent(1));
+		SmartDashboard.putNumber("PDP2", RobotMap.pdp.getCurrent(2));
+		SmartDashboard.putNumber("PDP5", RobotMap.pdp.getCurrent(5));
+		SmartDashboard.putNumber("PDP6", RobotMap.pdp.getCurrent(6));
+		SmartDashboard.putNumber("PDP7", RobotMap.pdp.getCurrent(7));
+		SmartDashboard.putBoolean("PDP Voltage Less Than 12", pdpVoltage);
 
 		if(Timer.getMatchTime() >= 120 && RobotMap.compressor.enabled()) {
 			new CompressorToggle().start();
@@ -141,11 +153,5 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(0));
-		SmartDashboard.putNumber("PDP1", RobotMap.pdp.getCurrent(1));
-		SmartDashboard.putNumber("PDP2", RobotMap.pdp.getCurrent(2));
-		SmartDashboard.putNumber("PDP5", RobotMap.pdp.getCurrent(5));
-		SmartDashboard.putNumber("PDP6", RobotMap.pdp.getCurrent(6));
-		SmartDashboard.putNumber("PDP7", RobotMap.pdp.getCurrent(7));
 	}
 }
