@@ -3,6 +3,8 @@ package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.*;
 import org.usfirst.frc.team5442.robot.subsystems.*;
+
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -127,7 +129,10 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
-		//RobotMap.compressor.start();
+
+		if(Timer.getMatchTime() >= 120 && RobotMap.compressor.enabled()) {
+			new CompressorToggle().start();
+		}
 	}
 
 	/**
