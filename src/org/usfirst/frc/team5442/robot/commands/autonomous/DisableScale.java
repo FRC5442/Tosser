@@ -5,12 +5,21 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DisableScale extends Command{
 	private DisableScaleChoice _choice;
 	
+	public boolean set_choice(DisableScaleChoice _choice) {
+		boolean value_changed = false;
+		if (this._choice != _choice) {
+			value_changed = true;
+			this._choice = _choice;
+		}
+		return value_changed;
+	}
+	
 	public DisableScaleChoice get_choice() {
 		return _choice;
 	}
 	
-	public DisableScale(DisableScaleChoice choice) {
-		_choice = choice; 
+	public DisableScale() {
+		_choice = DisableScaleChoice.undefined; 
 	}
 
 	@Override
