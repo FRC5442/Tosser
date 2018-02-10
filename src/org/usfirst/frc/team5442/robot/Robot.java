@@ -7,6 +7,7 @@ import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5442.robot.subsystems.PIDDrive;
 import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team5442.robot.commandgroups.AutoLineOnly;
 import org.usfirst.frc.team5442.robot.commands.*;
 import org.usfirst.frc.team5442.robot.subsystems.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -51,8 +52,8 @@ public class Robot extends IterativeRobot {
 		robotMap = new RobotMap();
 		driveTrain = new DriveTrain();
 		pneumatics = new Pneumatics();
-		pidDrive = new PIDDrive(); //don't forget to set values before calling the subsystem
-		pidTurn = new PIDTurn(); //same thing
+		pidDrive = new PIDDrive(); 
+		pidTurn = new PIDTurn(); 
 		
 		
 		driveChooser = new SendableChooser<>();
@@ -98,9 +99,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		
+		RobotMap.encoderLeft.reset();
+		RobotMap.encoderRight.reset();
 		RobotMap.FlipEncoder.reset();
-		
+		RobotMap.navx.reset();
 		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
 
 		/*
@@ -111,8 +113,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		RobotMap.navx.reset();
-		
+
+		autonomousCommand = new AutoLineOnly();
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}

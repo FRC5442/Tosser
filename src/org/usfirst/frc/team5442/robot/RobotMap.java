@@ -126,15 +126,15 @@ public class RobotMap {
 		flipper = new VictorSP(-1);		
 		*/
 		rightController1 = new Spark(0);
-		rightController2 = new Spark(-1);
-		rightController3 = new Spark(-1);
+		rightController2 = new Spark(10);
+		rightController3 = new Spark(11);
 		leftController1 = new Spark(3);
 		leftController2 = new Spark(4);
 		leftController3 = new Spark(5);
 		
 		spinRodMotor = new Spark(6);
-		telescopeMotor = new Spark(1);
-		hookMotor = new Spark(2);
+		telescopeMotor = new Spark(2);
+		hookMotor = new Spark(1);
 		//Intake
 		leftIntake = new Spark(9);
 		rightIntake = new Spark(8);
@@ -144,20 +144,22 @@ public class RobotMap {
 		gearShiftRight = new DoubleSolenoid(2, 3);
 		
 		//driveTrain = new DifferentialDrive(leftControllers, rightControllers);
-		driveTrain = new DifferentialDrive(leftController1, rightController1);
 		
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
 		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
 	
+		driveTrain = new DifferentialDrive(leftController1, rightController1);
+		
+		
 		latchCylinder = new Solenoid(5);
 
-		latchSwitch1 = new DigitalInput(-1);
-		latchSwitch2 = new DigitalInput(-1);
+		latchSwitch1 = new DigitalInput(5);
+		latchSwitch2 = new DigitalInput(5);
 		
 		compressor = new Compressor();
 		
-		pincerLeft = new Solenoid(-1);
-		pincerRight = new Solenoid(-1);
+		pincerLeft = new Solenoid(4);
+		pincerRight = new Solenoid(5);
 
 		//pneumatics
 		compressor = new Compressor();
@@ -165,21 +167,21 @@ public class RobotMap {
 		navx = new AHRS(SerialPort.Port.kMXP);
 		
 		//encoders
-		encoderLeft = new Encoder(3, 4, false, EncodingType.k4X);
+		encoderLeft = new Encoder(8, 9, false, EncodingType.k4X);
 		encoderLeft.setSamplesToAverage(5);
 		encoderLeft.setDistancePerPulse(1.0/360);
 		
-		encoderRight = new Encoder(3, 4, false, EncodingType.k4X);
+		encoderRight = new Encoder(6, 7, false, EncodingType.k4X);
 		encoderRight.setSamplesToAverage(5);
 		encoderRight.setDistancePerPulse(1.0/360);
 
 		//Turn on if debugging
 		pdp1 = new PowerDistributionPanel(1);
 		
-		backFlipStop = new DigitalInput(-1);
-		frontFlipStop = new DigitalInput(-1);
+		backFlipStop = new DigitalInput(1);
+		frontFlipStop = new DigitalInput(2);
 		
-		FlipEncoder = new Encoder(-1, -1, false, EncodingType.k4X);
+		FlipEncoder = new Encoder(4, 5, false, EncodingType.k4X);
         FlipEncoder.setSamplesToAverage(5);
         FlipEncoder.setDistancePerPulse(1.0/360);
 		

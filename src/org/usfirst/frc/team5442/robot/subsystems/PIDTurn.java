@@ -2,6 +2,7 @@ package org.usfirst.frc.team5442.robot.subsystems;
 
 import org.usfirst.frc.team5442.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 public class PIDTurn extends PIDSubsystem{
@@ -11,12 +12,14 @@ public class PIDTurn extends PIDSubsystem{
 	public PIDTurn() {
 		super("Turn to Angle PID", .5, 10, 0.1);
 		setAbsoluteTolerance(1.0);
-		getPIDController().setOutputRange(-1, 1);
+		setInputRange(-180, 180);
+		setOutputRange(-1, 1);
+		getPIDController().setContinuous();
 	}
 
 	@Override
 	protected double returnPIDInput() {
-		return RobotMap.navx.getAngle();
+		return RobotMap.navx.getPitch();
 	}
 
 	@Override

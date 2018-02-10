@@ -12,12 +12,14 @@ public class PIDDrive extends PIDSubsystem{
 	public PIDDrive() {
 		super("Straight Driving", .1, .001, 0);
 		setAbsoluteTolerance(5.0);
+		setInputRange(-180, 180);
 		setOutputRange(-1, 1);
+		getPIDController().setContinuous();
 	}
 
 	@Override
 	protected double returnPIDInput() {
-		return RobotMap.navx.getAngle();
+		return RobotMap.navx.getPitch();
 	}
 
 	@Override
