@@ -9,6 +9,7 @@ import org.usfirst.frc.team5442.robot.commands.autonomous.DisableScale;
 import org.usfirst.frc.team5442.robot.commands.autonomous.DisableScaleChoice;
 import org.usfirst.frc.team5442.robot.commands.autonomous.DisableSwitch;
 import org.usfirst.frc.team5442.robot.commands.autonomous.DisableSwitchChoice;
+import org.usfirst.frc.team5442.robot.commands.autonomous.FlowChartChooser;
 import org.usfirst.frc.team5442.robot.commands.autonomous.OurSide;
 import org.usfirst.frc.team5442.robot.commands.autonomous.OurSideChoice;
 import org.usfirst.frc.team5442.robot.commands.autonomous.PrimaryObjective;
@@ -20,6 +21,7 @@ import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5442.robot.subsystems.Intake;
 import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -45,8 +47,9 @@ public class Robot extends IterativeRobot {
 	public static Climber climber;
 	public static Intake intake;
 	
+	public static FlowChartChooser autonomousFlowchart;
 
-	Command autonomousCommand;
+	//Command autonomousCommand;
 	SendableChooser<Command> driveChooser;
 	SendableChooser<Command> ourSide;
 	SendableChooser<Command> primaryObjective;
@@ -136,11 +139,13 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		
 		RobotMap.FlipEncoder.reset();
+		OurSide os = (OurSide) ourSide.getSelected();
 		PrimaryObjective po = (PrimaryObjective) primaryObjective.getSelected();
-		if (po.get_choice() == PrimaryObjectiveChoice.Switch)
-		{
-			
-		}
+		CrossMiddle cm = (CrossMiddle) crossMiddle.getSelected();
+		DisableScale dsc = (DisableScale) disableScale.getSelected();
+		DisableSwitch dsw = (DisableSwitch) disableSwitch.getSelected();
+		autonomousFlowchart = new FlowChartChooser(os, po, cm, dsc, dsw);
+
 		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
 
 		/*
@@ -151,8 +156,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-			autonomousCommand.start();
+		if (autonomousFlowchart != null)
+			autonomousFlowchart.start();
 	}
 
 	/**
@@ -171,8 +176,8 @@ public class Robot extends IterativeRobot {
 		 * If you want the autonomous to continue until interrupted by another command, remove this line or comment it out.
 		 */
 		
-		if (autonomousCommand != null)
-			autonomousCommand.cancel();
+		if (autonomousFlowchart != null)
+			autonomousFlowchart.cancel();
 	}
 
 	/**

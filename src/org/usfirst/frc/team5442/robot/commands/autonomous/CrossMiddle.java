@@ -2,7 +2,8 @@ package org.usfirst.frc.team5442.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class CrossMiddle extends Command{
+public class CrossMiddle extends Command
+{
 	private CrossMiddleChoice _choice;
 	
 	public CrossMiddleChoice get_choice() {
@@ -15,7 +16,7 @@ public class CrossMiddle extends Command{
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
