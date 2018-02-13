@@ -19,15 +19,17 @@ public class StraightDrive extends Command{
 	}
 	
 	protected void initialize() {
+		RobotMap.encoderLeft.reset();
+		RobotMap.encoderRight.reset();
 		Robot.pidDrive.setDirection(m_direction);
 		Robot.pidDrive.setDrive_speed(m_speed);
 		Robot.pidDrive.enable();
-		Robot.pidDrive.setSetpointRelative(0);
+		Robot.pidDrive.setSetpoint(0);
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		return (Math.abs(RobotMap.encoderLeft.getDistance()) > m_distance);
+		return (Math.abs(RobotMap.encoderRight.getDistance()) > m_distance);
 	}
 
 	protected void end() {

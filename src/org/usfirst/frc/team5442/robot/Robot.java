@@ -149,6 +149,15 @@ public class Robot extends IterativeRobot {
 		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("Left  Encoder", RobotMap.encoderLeft.getDistance());
+		SmartDashboard.putNumber("NavX Pitch", RobotMap.navx.getPitch());
+		SmartDashboard.putNumber("NavX Yaw", RobotMap.navx.getYaw());
+		SmartDashboard.putNumber("NavX Angle", RobotMap.navx.getAngle());
+		SmartDashboard.putNumber("NavX Roll", RobotMap.navx.getRoll());
+		
+		SmartDashboard.putNumber("NavX Gyro X", RobotMap.navx.getRawGyroX());
+		SmartDashboard.putNumber("NavX Gyro Y", RobotMap.navx.getRawGyroY());
+		SmartDashboard.putNumber("NavX Gyro Z", RobotMap.navx.getRawGyroZ());
+		
 		SmartDashboard.putNumber("Right  Encoder", RobotMap.encoderRight.getDistance());
 	}
 

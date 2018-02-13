@@ -3,6 +3,7 @@ package org.usfirst.frc.team5442.robot.subsystems;
 import org.usfirst.frc.team5442.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class PIDDrive extends PIDSubsystem{
 
@@ -10,21 +11,22 @@ public class PIDDrive extends PIDSubsystem{
 	private int direction; //direction must be +1 or -1
 	
 	public PIDDrive() {
-		super("Straight Driving", .00, .0, 0);
-		setAbsoluteTolerance(5.0);
-		setInputRange(-180, 180);
+		super("Straight Driving", .001, .001, 0);
+		setAbsoluteTolerance(20.0);
 		setOutputRange(-1, 1);
-		getPIDController().setContinuous();
 	}
 
 	@Override
 	protected double returnPIDInput() {
-		return RobotMap.navx.getPitch();
+		return RobotMap.navx.getAngle();
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
-		RobotMap.driveTrain.curvatureDrive(getDrive_speed(), getDirection()*output, false);
+		//RobotMap.driveTrain.curvatureDrive(getDrive_speed(), getDirection()*output, false);
+		//RobotMap.driveTrain.curvatureDrive(.35, 0, false);
+		RobotMap.driveTrain.tankDrive(.5, .5);
+		SmartDashboard.putNumber("Output", output);
 	}
 
 	@Override
