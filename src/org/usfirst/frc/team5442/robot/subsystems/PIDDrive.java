@@ -10,7 +10,7 @@ public class PIDDrive extends PIDSubsystem{
 	private int direction; //direction must be +1 or -1
 	
 	public PIDDrive() {
-		super("Straight Driving", .1, .001, 0);
+		super("Straight Driving", .00, .0, 0);
 		setAbsoluteTolerance(5.0);
 		setInputRange(-180, 180);
 		setOutputRange(-1, 1);

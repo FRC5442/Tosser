@@ -154,12 +154,12 @@ public class RobotMap {
 		latchCylinder = new Solenoid(5);
 
 		latchSwitch1 = new DigitalInput(5);
-		latchSwitch2 = new DigitalInput(5);
+		latchSwitch2 = new DigitalInput(3);
 		
 		compressor = new Compressor();
 		
-		pincerLeft = new Solenoid(4);
-		pincerRight = new Solenoid(5);
+//		pincerLeft = new Solenoid(4);
+//		pincerRight = new Solenoid(6);
 
 		//pneumatics
 		compressor = new Compressor();
@@ -176,15 +176,15 @@ public class RobotMap {
 		encoderRight.setDistancePerPulse(1.0/360);
 
 		//Turn on if debugging
-		pdp1 = new PowerDistributionPanel(1);
+		//pdp1 = new PowerDistributionPanel(1);
 		
 		backFlipStop = new DigitalInput(1);
 		frontFlipStop = new DigitalInput(2);
 		
-		FlipEncoder = new Encoder(4, 5, false, EncodingType.k4X);
+		/*FlipEncoder = new Encoder(8, 9, false, EncodingType.k4X);
         FlipEncoder.setSamplesToAverage(5);
         FlipEncoder.setDistancePerPulse(1.0/360);
-		
+		*/
 	}
 	
 	public static DifferentialDrive GetDriver()

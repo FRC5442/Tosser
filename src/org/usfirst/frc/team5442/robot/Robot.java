@@ -101,7 +101,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		RobotMap.encoderLeft.reset();
 		RobotMap.encoderRight.reset();
-		RobotMap.FlipEncoder.reset();
+		//RobotMap.FlipEncoder.reset();
 		RobotMap.navx.reset();
 		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
 
@@ -125,7 +125,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.getNumber("FlipEncoder", RobotMap.FlipEncoder.getDistance());
+		SmartDashboard.putNumber("Left  Encoder", RobotMap.encoderLeft.getDistance());
+		SmartDashboard.putNumber("NavX Pitch", RobotMap.navx.getPitch());
+		//SmartDashboard.putNumber("FlipEncoder", RobotMap.FlipEncoder.getDistance());
 	}
 
 	@Override
@@ -146,7 +148,8 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
-		
+		SmartDashboard.putNumber("Left  Encoder", RobotMap.encoderLeft.getDistance());
+		SmartDashboard.putNumber("Right  Encoder", RobotMap.encoderRight.getDistance());
 	}
 
 	/**

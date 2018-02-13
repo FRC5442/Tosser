@@ -27,7 +27,6 @@ public class StraightDrive extends Command{
 	
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
 		return (Math.abs(RobotMap.encoderLeft.getDistance()) > m_distance);
 	}
 
