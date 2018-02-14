@@ -2,7 +2,7 @@ package org.usfirst.frc.team5442.robot.commands.autonomous;
 
 public enum AutoCodes {
 	Undefined,
-	LeftSide_Baseline,
+	LeftOrRight_Baseline,
 	LeftSide_LeftSwitch,
 	LeftSide_RightSwitch,
 	LeftSide_LeftScale,
@@ -11,7 +11,6 @@ public enum AutoCodes {
 	Middle_BaseLine_Right,
 	Middle_LeftSwitch,
 	Middle_RightSwitch,
-	RightSide_Baseline,
 	RightSide_LeftSwitch,
 	RightSide_RightSwitch,
 	RightSide_LeftScale,

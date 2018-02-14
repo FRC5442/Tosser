@@ -9,6 +9,7 @@ public class FlowChartChooser { //extends Command {
 	private CrossMiddleChoice _crossMiddle;
 	private DisableScaleChoice _disableScale;
 	private DisableSwitchChoice _disableSwitch;
+	private AutoCodes _THEautoCode;
 	private String gameData;
 	public FlowChartChooser(OurSide os, PrimaryObjective po, CrossMiddle cm, DisableScale dsc, DisableSwitch dsw) {
 		_ourSide = os.get_choice();
@@ -17,38 +18,40 @@ public class FlowChartChooser { //extends Command {
 		_disableScale = dsc.get_choice();
 		_disableSwitch = dsw.get_choice();
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		_THEautoCode = AutoCodes.Undefined;
 	}
 	private void ProcessFlowchart() {
 		if (_ourSide == OurSideChoice.Left) {
 			if (_primaryObjective == PrimaryObjectiveChoice.Switch) {
 				if (gameData.length() > 0) {
 					if (gameData.charAt(0) == 'L') {
-						// Put box in left switch, cross baseline
+						_THEautoCode = AutoCodes.LeftSide_LeftSwitch; // Put box in left switch, cross baseline
 					} else if (gameData.charAt(0) == 'R') {
 						if (gameData.charAt(1) == 'R') {
 							if (_crossMiddle == CrossMiddleChoice.Yes) {
-								// cross middle, go for right side of switch
+								_THEautoCode = AutoCodes.LeftSide_RightSwitch; // cross middle, go for right side of switch
 							} else if (_crossMiddle == CrossMiddleChoice.No) {
-								// Cross Baseline
+								
+								_THEautoCode = AutoCodes.LeftOrRight_Baseline; // Cross Baseline
 							} else {
-								// Place Undefined Code here
+								_THEautoCode = AutoCodes.Undefined; // Place Undefined Code Here
 							}
 						} else if (gameData.charAt(1) == 'L') {
 							if (_crossMiddle == CrossMiddleChoice.Yes) {
-								// Cross Middle, go for right side of switch
+								_THEautoCode = AutoCodes.LeftSide_RightSwitch; // Cross Middle, go for right side of switch
 							} else if (_crossMiddle == CrossMiddleChoice.No) {
 								if (_disableScale == DisableScaleChoice.Yes) {
-									// Cross Baseline
+									_THEautoCode = AutoCodes.LeftOrRight_Baseline; // Cross Baseline
 								} else if (_disableScale == DisableScaleChoice.No) {
-									// Go for left Scale
+									_THEautoCode = AutoCodes.LeftSide_LeftScale; // Go for left Scale
 								} else {
-									// Place Undefined Code here
+									_THEautoCode = AutoCodes.Undefined; // Place Undefined Code here
 								}
 							} else {
-								// Put undefined code here
+								_THEautoCode = AutoCodes.Undefined; // Put undefined code here
 							}
 						} else {
-							// Put undefined code here
+							_THEautoCode = AutoCodes.Undefined; // Put undefined code here
 						}
 					} 
 					
@@ -56,154 +59,154 @@ public class FlowChartChooser { //extends Command {
 			} else if (_primaryObjective == PrimaryObjectiveChoice.Scale) {
 				if (gameData.length() > 0) {
 					if (gameData.charAt(1) =='L') {
-						// Cross Baseline, go for scale
+						_THEautoCode = AutoCodes.LeftSide_LeftScale; // Cross Baseline, go for scale
 					} else if (gameData.charAt(1) == 'R') {
 						if (gameData.charAt(0) == 'L') {
 							if (_crossMiddle == CrossMiddleChoice.Yes) {
-								// Cross middle, go for right scale
+								_THEautoCode = AutoCodes.LeftSide_RightScale; // Cross middle, go for right scale
 							} else if (_crossMiddle == CrossMiddleChoice.No) {
 								if (_disableSwitch == DisableSwitchChoice.Yes) {
-									// Cross Baseline
+									_THEautoCode = AutoCodes.LeftOrRight_Baseline; // Cross Baseline
 								} else if (_disableSwitch == DisableSwitchChoice.No) {
-									// Go for left switch
+									_THEautoCode = AutoCodes.LeftSide_LeftSwitch; // Go for left switch
 								} else {
-									// Place undefined code here
+									_THEautoCode = AutoCodes.Undefined; // Place undefined code here
 								}
 							} else {
-								// place undefined code here
+								_THEautoCode = AutoCodes.Undefined; // place undefined code here
 							}
 						} else if (gameData.charAt(0) == 'R') {
 							if (_crossMiddle == CrossMiddleChoice.Yes) {
-								// Cross Middle, go for right side of scale
+								_THEautoCode = AutoCodes.LeftSide_RightScale; // Cross Middle, go for right side of scale
 							} else if (_crossMiddle == CrossMiddleChoice.No) {
-								// Cross Baseline
+								_THEautoCode = AutoCodes.LeftOrRight_Baseline; // Cross Baseline
 							} else {
-								// Place Undefined Code Here
+								_THEautoCode = AutoCodes.Undefined; // Place Undefined Code Here
 							}
 						} else {
-							// place undefined code here
+							_THEautoCode = AutoCodes.Undefined; // place undefined code here
 						}
 					} else {
-						// Place undefined code here
+						_THEautoCode = AutoCodes.Undefined; // Place undefined code here
 					}
 				} else {
-					// plase undefined code here
+					_THEautoCode = AutoCodes.Undefined;// plase undefined code here
 				}
 				
 			} else if (_primaryObjective == PrimaryObjectiveChoice.Autoline) {
-				// Cross Baseline
+				_THEautoCode = AutoCodes.Undefined; // Cross Baseline
 			} else {
-				// Place Undefined Code Here
+				_THEautoCode = AutoCodes.Undefined; // Place Undefined Code Here
 			}
 		} else if (_ourSide == OurSideChoice.Middle) {
 			if (_disableSwitch == DisableSwitchChoice.Yes) {
 				if (gameData.length() > 0) {
 					if (gameData.charAt(0) == 'R') {
-						// Cross Baseline on left of switch
+						_THEautoCode = AutoCodes.Middle_BaseLine_Left; // Cross Baseline on left of switch
 					} else if (gameData.charAt(0) == 'L') {
-						// Cross Baseline on Right of Switch
+						_THEautoCode = AutoCodes.Middle_BaseLine_Right; // Cross Baseline on Right of Switch
 					} else {
-						// Place undefined code here
+						_THEautoCode = AutoCodes.Undefined; // Place undefined code here
 					}
 				} else {
-					// Place undefined code here
+					_THEautoCode = AutoCodes.Undefined; // Place undefined code here
 				}
 			} else if (_disableSwitch == DisableSwitchChoice.No) {
 				if (gameData.length() > 0) {
 					if (gameData.charAt(0) == 'R') {
-						// Put box in right side of switch, then cross baseline
+						_THEautoCode = AutoCodes.Middle_RightSwitch; // Put box in right side of switch, then cross baseline
 					} else if (gameData.charAt(0) == 'L') {
-						// Put box in left side of switch, then cross baseline
+						_THEautoCode = AutoCodes.Middle_LeftSwitch; // Put box in left side of switch, then cross baseline
 					} else {
-						// Place undefined code here
+						_THEautoCode = AutoCodes.Undefined; // Place undefined code here
 					}
 				} else {
-					// place undefined code here
+					_THEautoCode = AutoCodes.Undefined; // place undefined code here
 				}
 			} else {
-				// Place undefined code here
+				_THEautoCode = AutoCodes.Undefined; // Place undefined code here
 			}
 			
 		} else if(_ourSide == OurSideChoice.Right) {
 			if (_primaryObjective == PrimaryObjectiveChoice.Switch) {
 				if (gameData.length() > 0) {
 					if (gameData.charAt(0) == 'R') {
-						// Put box in right switch, cross baseline
+						_THEautoCode = AutoCodes.RightSide_RightSwitch; // Put box in right switch, cross baseline
 					} else if (gameData.charAt(0) == 'L') {
 						if (gameData.charAt(1) == 'L') {
 							if (_crossMiddle == CrossMiddleChoice.Yes) {
-								// Cross middle, go for left side of switch
+								_THEautoCode = AutoCodes.RightSide_LeftSwitch; // Cross middle, go for left side of switch
 							} else if (_crossMiddle == CrossMiddleChoice.No) {
-								// Cross Baseline
+								_THEautoCode = AutoCodes.LeftOrRight_Baseline; // Cross Baseline
 							} else {
-								// place undefined code here
+								_THEautoCode = AutoCodes.LeftOrRight_Baseline;// place undefined code here
 							}
 						} else if (gameData.charAt(1) == 'R') {
 							if (_crossMiddle == CrossMiddleChoice.No) {
 								if (_disableScale == DisableScaleChoice.Yes) {
-									// Cross Baseline
+									_THEautoCode = AutoCodes.LeftOrRight_Baseline; // Cross Baseline
 								} else if (_disableScale == DisableScaleChoice.No) {
-									// Go for scale
+									_THEautoCode = AutoCodes.RightSide_RightScale; // Go for scale
 								} else {
-									// Place undefined code here
+									_THEautoCode = AutoCodes.Undefined; // Place undefined code here
 								}
 							} else if (_crossMiddle == CrossMiddleChoice.Yes) {
-								// Cross middle, go for Left side of switch
+								_THEautoCode = AutoCodes.RightSide_LeftSwitch; // Cross middle, go for Left side of switch
 							} else {
-								// place Undefined code here
+								_THEautoCode = AutoCodes.Undefined; // place Undefined code here
 							}
 						} else {
-							// Place undefined code here
+							_THEautoCode = AutoCodes.Undefined; // Place undefined code here
 						}
 					} else {
-						// Place undefined code
+						_THEautoCode = AutoCodes.Undefined; // Place undefined code
 					}
 				} else {
-					// place Undefined code here
+					_THEautoCode = AutoCodes.Undefined; // place Undefined code here
 				}
 			} else if (_primaryObjective == PrimaryObjectiveChoice.Autoline) {
-				// Cross baseline
+				_THEautoCode = AutoCodes.LeftOrRight_Baseline; // Cross baseline
 			} else if (_primaryObjective == PrimaryObjectiveChoice.Scale) {
 				if (gameData.length() > 0) {
 					if (gameData.charAt(1) == 'R') {
-						// Cross Baseline, go for scale
+						_THEautoCode = AutoCodes.RightSide_RightScale; // Cross Baseline, go for scale
 					} else if (gameData.charAt(1) == 'L') {
 						if (gameData.charAt(0) == 'R') {
 							if (_crossMiddle == CrossMiddleChoice.Yes) {
-								// Cross middle, go for Left scale
+								_THEautoCode = AutoCodes.RightSide_LeftScale; // Cross middle, go for Left scale
 							} else if (_crossMiddle == CrossMiddleChoice.No) {
 								if (_disableSwitch == DisableSwitchChoice.Yes) {
-									// Cross Baseline
+									_THEautoCode = AutoCodes.LeftOrRight_Baseline; // Cross Baseline
 								} else if (_disableSwitch == DisableSwitchChoice.No) {
-									// Go for Right Switch
+									_THEautoCode = AutoCodes.RightSide_RightSwitch; // Go for Right Switch
 								} else {
-									// place Undefined code here
+									_THEautoCode = AutoCodes.Undefined; // place Undefined code here
 								}
 							} else {
-								// place Undefined code here
+								_THEautoCode = AutoCodes.Undefined; // place Undefined code here
 							}
 						} else if (gameData.charAt(0) == 'L') {
 							if (_crossMiddle == CrossMiddleChoice.Yes) {
-								// Cross Middle, go for left side of scale
+								_THEautoCode = AutoCodes.RightSide_LeftScale; // Cross Middle, go for left side of scale
 							} else if (_crossMiddle == CrossMiddleChoice.No) {
-								// Cross Baseline
+								_THEautoCode = AutoCodes.LeftOrRight_Baseline; // Cross Baseline
 							} else {
-								// Put undefined code here
+								_THEautoCode = AutoCodes.Undefined; // Put undefined code here
 							}
 						} else {
-							// Place undefined code here
+							_THEautoCode = AutoCodes.Undefined; // Place undefined code here
 						}
 					} else {
-						// Place undefined code here
+						_THEautoCode = AutoCodes.Undefined; // Place undefined code here
 					}
 				} else {
-					// Place undefined code
+					_THEautoCode = AutoCodes.Undefined; // Place undefined code
 				}
 			} else {
-				// Place undefined code here
+				_THEautoCode = AutoCodes.Undefined; // Place undefined code here
 			}
 		} else {
-			// Place undefined thing here
+			_THEautoCode = AutoCodes.Undefined; // Place undefined thing here
 		}
 	}
 	public void cancel() {
