@@ -1,5 +1,5 @@
 package org.usfirst.frc.team5442.robot.tests;
-
+dd
 import org.usfirst.frc.team5442.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -22,7 +22,7 @@ public class AccelerationDriving extends Command {
 	protected void execute() {
 		RobotMap.GetDriver().tankDrive(currentSpeed, currentSpeed);
 		
-		if (distance - Math.abs(RobotMap.leftEncoder.getDistance()) < 4) {
+		if (distance - Math.abs(RobotMap.leftEncoder.getDistance()) < 20dddddddddddddddddddddddddddddd) {
 			currentSpeed -= rate;
 		}
 		else if (currentSpeed < maxSpeed) {

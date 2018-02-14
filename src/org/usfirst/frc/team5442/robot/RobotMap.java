@@ -152,11 +152,13 @@ public class RobotMap {
 		
 		leftEncoder = new Encoder(8, 9, false, EncodingType.k4X);
 		leftEncoder.setSamplesToAverage(5);
-		leftEncoder.setDistancePerPulse(1/360);
+		leftEncoder.setDistancePerPulse(1.0/360);
+		leftEncoder.reset();
 		
 		rightEncoder = new Encoder(6, 7, false, EncodingType.k4X);
 		rightEncoder.setSamplesToAverage(5);
-		rightEncoder.setDistancePerPulse(1/360);
+		rightEncoder.setDistancePerPulse(1.0/360);
+		rightEncoder.reset();
 		
 	}
 	
