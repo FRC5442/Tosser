@@ -99,6 +99,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		Robot.pidDrive.disable();
+		Robot.pidTurn.disable();
 		RobotMap.encoderLeft.reset();
 		RobotMap.encoderRight.reset();
 		//RobotMap.FlipEncoder.reset();
@@ -127,6 +129,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("Left  Encoder", RobotMap.encoderLeft.getDistance());
 		SmartDashboard.putNumber("NavX Pitch", RobotMap.navx.getPitch());
+		SmartDashboard.putNumber("Left Motor Speed", RobotMap.encoderLeft.getRate());
 		//SmartDashboard.putNumber("FlipEncoder", RobotMap.FlipEncoder.getDistance());
 	}
 

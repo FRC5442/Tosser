@@ -11,7 +11,7 @@ public class PIDDrive extends PIDSubsystem{
 	private int direction; //direction must be +1 or -1
 	
 	public PIDDrive() {
-		super("Straight Driving", .001, .001, 0);
+		super("Straight Driving", .1, .001, 0);
 		setAbsoluteTolerance(20.0);
 		setOutputRange(-1, 1);
 	}
@@ -24,8 +24,8 @@ public class PIDDrive extends PIDSubsystem{
 	@Override
 	protected void usePIDOutput(double output) {
 		//RobotMap.driveTrain.curvatureDrive(getDrive_speed(), getDirection()*output, false);
-		//RobotMap.driveTrain.curvatureDrive(.35, 0, false);
-		RobotMap.driveTrain.tankDrive(.5, .5);
+		RobotMap.driveTrain.curvatureDrive(.35, 0, false);
+		//RobotMap.driveTrain.tankDrive(.5, .5);
 		SmartDashboard.putNumber("Output", output);
 	}
 

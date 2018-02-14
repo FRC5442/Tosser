@@ -3,16 +3,17 @@ package org.usfirst.frc.team5442.robot.commands;
 import org.usfirst.frc.team5442.robot.Robot;
 import org.usfirst.frc.team5442.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.PIDCommand;
 
-public class StraightDrive extends Command{
+public class PIDdriveCommand extends PIDCommand{
 
 	double m_distance;
 	double m_speed;
 	int m_direction;
 	
-	public StraightDrive(
+	public PIDdriveCommand(
 			double distance, double speed, int direction) {
+		super("Straight DrivingPID", .1, .001, 0);
 		m_distance = distance;
 		m_speed = speed;
 		m_direction = direction; // positive or negative 1
@@ -21,10 +22,7 @@ public class StraightDrive extends Command{
 	protected void initialize() {
 		RobotMap.encoderLeft.reset();
 		RobotMap.encoderRight.reset();
-		Robot.pidDrive.setDirection(m_direction);
-		Robot.pidDrive.setDrive_speed(m_speed);
-		Robot.pidDrive.enable();
-		Robot.pidDrive.setSetpointRelative(0);
+		//setSetpointRelative(0);
 	}
 	
 	@Override
@@ -35,5 +33,17 @@ public class StraightDrive extends Command{
 	protected void end() {
 		Robot.pidDrive.disable();
 		RobotMap.driveTrain.curvatureDrive(0, 0, false);
+	}
+
+	@Override
+	protected double returnPIDInput() {
+		return RobotMap.navx.getAngle();
+	}
+
+	@Override
+	protected void usePIDOutput(double output) {
+		RobotMap.driveTrain.curvatureDrive(.35, output, false);
+		
+
 	}
 }
