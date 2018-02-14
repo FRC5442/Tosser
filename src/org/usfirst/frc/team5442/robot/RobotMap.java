@@ -2,6 +2,7 @@
 package org.usfirst.frc.team5442.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -84,6 +85,8 @@ public class RobotMap {
 	public static DoubleSolenoid pincer;
 	
 	public static Encoder FlipEncoder;
+	public static Encoder leftEncoder;
+	public static Encoder rightEncoder;
 	
 	public static DigitalInput backFlipStop;
 	public static DigitalInput frontFlipStop;
@@ -146,6 +149,14 @@ public class RobotMap {
 		//FlipEncoder = new Encoder(-1, -1, false, EncodingType.k4X);
         //FlipEncoder.setSamplesToAverage(5);
         //FlipEncoder.setDistancePerPulse(1.0/360);
+		
+		leftEncoder = new Encoder(8, 9, false, EncodingType.k4X);
+		leftEncoder.setSamplesToAverage(5);
+		leftEncoder.setDistancePerPulse(1/360);
+		
+		rightEncoder = new Encoder(6, 7, false, EncodingType.k4X);
+		rightEncoder.setSamplesToAverage(5);
+		rightEncoder.setDistancePerPulse(1/360);
 		
 	}
 	

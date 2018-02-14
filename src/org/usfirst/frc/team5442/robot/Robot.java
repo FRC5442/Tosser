@@ -1,8 +1,16 @@
 
 package org.usfirst.frc.team5442.robot;
 
-import org.usfirst.frc.team5442.robot.commands.*;
-import org.usfirst.frc.team5442.robot.subsystems.*;
+import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
+import org.usfirst.frc.team5442.robot.commands.TankDrive;
+import org.usfirst.frc.team5442.robot.subsystems.Climber;
+import org.usfirst.frc.team5442.robot.subsystems.Cylinders;
+import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5442.robot.subsystems.Intake;
+import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team5442.robot.tests.StraightDriveTest;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -84,9 +92,12 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		
-		RobotMap.FlipEncoder.reset();
+		//RobotMap.FlipEncoder.reset();
+		RobotMap.leftEncoder.reset();
+		RobotMap.rightEncoder.reset();
 		
 		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
+		autonomousCommand = new StraightDriveTest();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -106,7 +117,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.getNumber("FlipEncoder", RobotMap.FlipEncoder.getDistance());
+		//SmartDashboard.getNumber("FlipEncoder", RobotMap.FlipEncoder.getDistance());
+		SmartDashboard.putNumber("Left Encoder", RobotMap.leftEncoder.getDistance());
+		SmartDashboard.putNumber("Right Encoder", RobotMap.rightEncoder.getDistance());
 	}
 
 	@Override
@@ -128,6 +141,8 @@ public class Robot extends IterativeRobot {
 		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
 		//RobotMap.compressor.start();
+		SmartDashboard.putNumber("Left Encoder", RobotMap.leftEncoder.getDistance());
+		SmartDashboard.putNumber("Right Encoder", RobotMap.rightEncoder.getDistance());
 	}
 
 	/**
