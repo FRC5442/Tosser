@@ -9,7 +9,7 @@ import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5442.robot.subsystems.Intake;
 import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
-import org.usfirst.frc.team5442.robot.tests.StraightDriveTest;
+import org.usfirst.frc.team5442.robot.tests.TurnTest;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -97,7 +97,7 @@ public class Robot extends IterativeRobot {
 		RobotMap.rightEncoder.reset();
 		
 		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
-		autonomousCommand = new StraightDriveTest();
+		autonomousCommand = new TurnTest();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -120,6 +120,8 @@ public class Robot extends IterativeRobot {
 		//SmartDashboard.getNumber("FlipEncoder", RobotMap.FlipEncoder.getDistance());
 		SmartDashboard.putNumber("Left Encoder", RobotMap.leftEncoder.getDistance());
 		SmartDashboard.putNumber("Right Encoder", RobotMap.rightEncoder.getDistance());
+		SmartDashboard.putNumber("NavX Angle", RobotMap.navx.getAngle());
+		
 	}
 
 	@Override
