@@ -9,7 +9,7 @@ public class IntakeIn extends Command {
 	private double speed;
 	
 	public IntakeIn(double speed) {
-		this.speed = Math.abs(speed);
+		this.speed = -Math.abs(speed);
 	}
 	
 	@Override

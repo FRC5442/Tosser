@@ -59,6 +59,7 @@ public class OI {
 	public JoystickButton xboxLBumper;
 	public JoystickButton xboxRBumper;
 	public JoystickButton xboxXButton;
+	public JoystickButton xboxAButton;
 	
 	
 	//Controller 2 buttons
@@ -83,7 +84,8 @@ public class OI {
 		//Controller 1
 		xboxLBumper = new JoystickButton(xboxController1, 5);
 		xboxRBumper = new JoystickButton(xboxController1, 6);
-		xboxXButton = new JoystickButton(xboxController1, 1);
+		xboxXButton = new JoystickButton(xboxController1, 3);
+		xboxAButton = new JoystickButton(xboxController1, 1);
 		
 
 		//Controller 2
@@ -103,17 +105,15 @@ public class OI {
 		//Driver Joystick 1
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
-		xboxXButton.whileHeld(new Flip());
-		if (xboxController1.getTriggerAxis(Hand.kRight) > 0.1)
-			new Shoot().start();
+		xboxAButton.whileHeld(new Shoot());
 
 		
 		//Control Joystick 2
 		Button1.whileHeld(new Flip());
 		Button7.whileHeld(new PincerOut());
 		Button8.whileHeld(new PincerIn());
-		Button3.whileHeld(new IntakeIn(.5));
-		Button5.whileHeld(new IntakeOut(.75));
+		Button3.whileHeld(new IntakeIn(.85));
+		Button5.whileHeld(new IntakeOut(.85));
 		Button2.whileHeld(new IntakeSpin(.5));
 		Button9.whileHeld(new Telescope(1));
 		Button10.whileHeld(new Telescope(-1));
