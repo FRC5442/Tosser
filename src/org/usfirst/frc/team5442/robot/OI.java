@@ -6,14 +6,11 @@ import org.usfirst.frc.team5442.robot.commands.Flip;
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
 import org.usfirst.frc.team5442.robot.commands.IntakeOut;
-import org.usfirst.frc.team5442.robot.commands.IntakeSpin;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
-import org.usfirst.frc.team5442.robot.commands.PincerIn;
-import org.usfirst.frc.team5442.robot.commands.PincerOut;
+import org.usfirst.frc.team5442.robot.commands.PincerToggle;
 import org.usfirst.frc.team5442.robot.commands.Shoot;
 import org.usfirst.frc.team5442.robot.commands.Telescope;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -63,17 +60,18 @@ public class OI {
 	
 	
 	//Controller 2 buttons
-	public JoystickButton Button4;
+	public JoystickButton Button1;
 	public JoystickButton Button2;
+	public JoystickButton Button3;
+	public JoystickButton Button4;
+	public JoystickButton Button5;	
 	public JoystickButton Button6;
 	public JoystickButton Button7;
 	public JoystickButton Button8;
-	public JoystickButton Button3;
-	public JoystickButton Button5;
-	public JoystickButton Button1;
 	public JoystickButton Button9;
 	public JoystickButton Button10;
 	public JoystickButton Button11;
+	public JoystickButton Button12;
 
 	
 	public OI(){		
@@ -89,35 +87,35 @@ public class OI {
 		
 
 		//Controller 2
-		Button4 = new JoystickButton(Controller2, 4);
+		Button1 = new JoystickButton(Controller2, 1);
 		Button2 = new JoystickButton(Controller2, 2);
+		Button3 = new JoystickButton(Controller2, 3);
+		Button4 = new JoystickButton(Controller2, 4);
+		Button5 = new JoystickButton(Controller2, 5);		
 		Button6 = new JoystickButton(Controller2, 6);
 		Button7 = new JoystickButton(Controller2, 7);
 		Button8 = new JoystickButton(Controller2, 8);
-		Button3 = new JoystickButton(Controller2, 3);
-		Button5 = new JoystickButton(Controller2, 5);
-		Button1 = new JoystickButton(Controller2, 1);
 		Button9 = new JoystickButton(Controller2, 9);
 		Button10 = new JoystickButton(Controller2, 10);
 		Button11 = new JoystickButton(Controller2, 11);
-		
+		Button12 = new JoystickButton(Controller2, 12);
 		
 		//Driver Joystick 1
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
 		xboxAButton.whileHeld(new Shoot());
+		
 
 		
 		//Control Joystick 2
 		Button1.whileHeld(new Flip());
-		Button7.whileHeld(new PincerOut());
-		Button8.whileHeld(new PincerIn());
+		Button7.whenPressed(new PincerToggle());
 		Button3.whileHeld(new IntakeIn(.85));
 		Button5.whileHeld(new IntakeOut(.85));
-		Button2.whileHeld(new IntakeSpin(.5));
 		Button9.whileHeld(new Telescope(1));
 		Button10.whileHeld(new Telescope(-1));
 		Button11.whileHeld(new Climber_Hook(1));
+		Button12.whileHeld(new Climber_Hook(-1));
 		Button4.whileHeld(new ArmLatch(1));
 		Button6.whileHeld(new ArmLatch(-1));
 		//xboxYButton2.whileHeld(new FlipForward(1));
