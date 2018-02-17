@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Intake extends Subsystem{
 	
+	double scaleValue = .8;
 	public Intake() {
 		
 	}
@@ -19,8 +20,15 @@ public class Intake extends Subsystem{
 		RobotMap.flipper.set(1*speed);
 	}
 	
-	public void doIntake(double intake_speed) {
-		RobotMap.leftIntake.set(.8*intake_speed);
-		RobotMap.rightIntake.set(.8*intake_speed);
+	public void doIntake(double intake_speed, boolean spin) {
+		double flipDirection;
+		if (spin == true) {
+			flipDirection = -1;
+		}
+		else {
+			flipDirection = 1;
+		}
+		RobotMap.leftIntake.set(scaleValue*intake_speed);
+		RobotMap.rightIntake.set(flipDirection*scaleValue*intake_speed);
 	}
 }

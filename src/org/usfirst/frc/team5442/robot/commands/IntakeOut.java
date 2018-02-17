@@ -15,7 +15,7 @@ public class IntakeOut extends Command {
 	
 	@Override
 	protected void initialize() {
-		Robot.intake.doIntake(speed);
+		Robot.intake.doIntake(speed, false);
 	}
 	
 	@Override
@@ -26,7 +26,7 @@ public class IntakeOut extends Command {
 	
 	@Override
 	protected void end() {
-		Robot.intake.doIntake(0);
+		Robot.intake.doIntake(0, false);
 	}
 
 }

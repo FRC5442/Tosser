@@ -4,17 +4,17 @@ import org.usfirst.frc.team5442.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class IntakeIn extends Command {
+public class IntakeSpin extends Command {
 	
 	private double speed;
 	
-	public IntakeIn(double speed) {
+	public IntakeSpin(double speed) {
 		this.speed = Math.abs(speed);
 	}
 	
 	@Override
 	protected void initialize() {
-		Robot.intake.doIntake(speed, false);
+		Robot.intake.doIntake(speed, true);
 	}
 	
 	@Override

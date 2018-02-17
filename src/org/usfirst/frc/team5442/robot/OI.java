@@ -6,6 +6,7 @@ import org.usfirst.frc.team5442.robot.commands.Flip;
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
 import org.usfirst.frc.team5442.robot.commands.IntakeOut;
+import org.usfirst.frc.team5442.robot.commands.IntakeSpin;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
 import org.usfirst.frc.team5442.robot.commands.PincerIn;
 import org.usfirst.frc.team5442.robot.commands.PincerOut;
@@ -62,6 +63,7 @@ public class OI {
 	
 	//Controller 2 buttons
 	public JoystickButton Button4;
+	public JoystickButton Button2;
 	public JoystickButton Button6;
 	public JoystickButton Button7;
 	public JoystickButton Button8;
@@ -86,6 +88,7 @@ public class OI {
 
 		//Controller 2
 		Button4 = new JoystickButton(Controller2, 4);
+		Button2 = new JoystickButton(Controller2, 2);
 		Button6 = new JoystickButton(Controller2, 6);
 		Button7 = new JoystickButton(Controller2, 7);
 		Button8 = new JoystickButton(Controller2, 8);
@@ -109,8 +112,9 @@ public class OI {
 		Button1.whileHeld(new Flip());
 		Button7.whileHeld(new PincerOut());
 		Button8.whileHeld(new PincerIn());
-		Button3.whileHeld(new IntakeIn(1));
-		Button5.whileHeld(new IntakeOut(1));
+		Button3.whileHeld(new IntakeIn(.5));
+		Button5.whileHeld(new IntakeOut(.75));
+		Button2.whileHeld(new IntakeSpin(.5));
 		Button9.whileHeld(new Telescope(1));
 		Button10.whileHeld(new Telescope(-1));
 		Button11.whileHeld(new Climber_Hook(1));
