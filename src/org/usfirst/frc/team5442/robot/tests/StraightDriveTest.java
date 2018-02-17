@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class StraightDriveTest extends CommandGroup {
 
 	public StraightDriveTest() {
-		addSequential(new AccelerationDriving(0.005, -0.75, 10));
+		addSequential(new AccelerationDriving(0.005, -0.75, 100));
 	}
 
 }

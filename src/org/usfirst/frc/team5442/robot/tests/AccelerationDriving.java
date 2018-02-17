@@ -24,9 +24,9 @@ public class AccelerationDriving extends Command {
 		RobotMap.GetDriver().tankDrive(currentSpeed, currentSpeed);
 		
 		if (distance - Math.abs(RobotMap.leftEncoder.getDistance()) < 20) {
-			currentSpeed -= Math.signum(maxSpeed)*rate;
+			currentSpeed -= Math.signum(maxSpeed)*3*rate;
 		}
-		else if (currentSpeed < maxSpeed) {
+		else if (Math.abs(currentSpeed) < Math.abs(maxSpeed)) {
 			currentSpeed += Math.signum(maxSpeed)*rate;
 		}
 	}
