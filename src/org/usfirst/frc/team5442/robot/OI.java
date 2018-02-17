@@ -106,6 +106,7 @@ public class OI {
 
 		
 		//Control Joystick 2
+		Button1.whileHeld(new Flip());
 		Button7.whileHeld(new PincerOut());
 		Button8.whileHeld(new PincerIn());
 		Button3.whileHeld(new IntakeIn(1));

@@ -20,7 +20,8 @@ public class Flip extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return RobotMap.frontFlipStop.get() && OI.Controller2.getRawAxis(1) < 0 || RobotMap.backFlipStop.get() && OI.Controller2.getRawAxis(1) > 0;
+		return false;
+		//return RobotMap.frontFlipStop.get() && OI.Controller2.getRawAxis(1) < 0 || RobotMap.backFlipStop.get() && OI.Controller2.getRawAxis(1) > 0;
 	}
 	
 	@Override
