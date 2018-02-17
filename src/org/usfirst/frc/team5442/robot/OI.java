@@ -1,7 +1,8 @@
 package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.ArmLatch;
-import org.usfirst.frc.team5442.robot.commands.FlipBack;
+import org.usfirst.frc.team5442.robot.commands.Climber_Hook;
+import org.usfirst.frc.team5442.robot.commands.Flip;
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
 import org.usfirst.frc.team5442.robot.commands.IntakeOut;
@@ -9,8 +10,10 @@ import org.usfirst.frc.team5442.robot.commands.LowShift;
 import org.usfirst.frc.team5442.robot.commands.PincerIn;
 import org.usfirst.frc.team5442.robot.commands.PincerOut;
 import org.usfirst.frc.team5442.robot.commands.Shoot;
+import org.usfirst.frc.team5442.robot.commands.Telescope;
 
-import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -50,72 +53,68 @@ public class OI {
 	 **/
 	
 	public static XboxController xboxController1;
-	public static XboxController xboxController2;
+	public static Joystick Controller2;
 	//Controller 1 buttons
 	public JoystickButton xboxLBumper;
 	public JoystickButton xboxRBumper;
-	
-	public JoystickButton xboxAButton;
-	public JoystickButton xboxBButton;
 	public JoystickButton xboxXButton;
-	public JoystickButton xboxYButton;
-	public JoystickButton xboxBack;
-	public JoystickButton xboxStart;
+	
 	
 	//Controller 2 buttons
-	public JoystickButton xboxLBumper2;
-	public JoystickButton xboxRBumper2;
-	
-	public JoystickButton xboxAButton2;
-	public JoystickButton xboxBButton2;
-	public JoystickButton xboxXButton2;
-	public JoystickButton xboxYButton2;
-	public JoystickButton xboxBack2;
-	public JoystickButton xboxStart2;
+	public JoystickButton Button4;
+	public JoystickButton Button6;
+	public JoystickButton Button7;
+	public JoystickButton Button8;
+	public JoystickButton Button3;
+	public JoystickButton Button5;
+	public JoystickButton Button1;
+	public JoystickButton Button9;
+	public JoystickButton Button10;
+	public JoystickButton Button11;
+
 	
 	public OI(){		
 		// Assign Joysticks and their ports
 		xboxController1 = new XboxController(0);
-		xboxController2 = new XboxController(1);
+		Controller2 = new Joystick(1);
 		
 		//Controller 1
 		xboxLBumper = new JoystickButton(xboxController1, 5);
 		xboxRBumper = new JoystickButton(xboxController1, 6);
+		xboxXButton = new JoystickButton(xboxController1, 1);
 		
-		xboxAButton = new JoystickButton(xboxController1, 1);
-		xboxBButton = new JoystickButton(xboxController1, 2);
-		xboxXButton = new JoystickButton(xboxController1, 3);
-		xboxYButton = new JoystickButton(xboxController1, 4);
-		xboxBack = new JoystickButton(xboxController1, 7);
-		xboxStart = new JoystickButton(xboxController1, 8);
-		
+
 		//Controller 2
-		xboxLBumper2 = new JoystickButton(xboxController2, 5);
-		xboxRBumper2 = new JoystickButton(xboxController2, 6);
-		xboxAButton2 = new JoystickButton(xboxController2, 1);
-		xboxBButton2 = new JoystickButton(xboxController2, 2);
-		xboxXButton2 = new JoystickButton(xboxController2, 3);
-		xboxYButton2 = new JoystickButton(xboxController2, 4);
-		xboxStart2 = new JoystickButton(xboxController2, 8);
+		Button4 = new JoystickButton(Controller2, 4);
+		Button6 = new JoystickButton(Controller2, 6);
+		Button7 = new JoystickButton(Controller2, 7);
+		Button8 = new JoystickButton(Controller2, 8);
+		Button3 = new JoystickButton(Controller2, 3);
+		Button5 = new JoystickButton(Controller2, 5);
+		Button1 = new JoystickButton(Controller2, 1);
+		Button9 = new JoystickButton(Controller2, 9);
+		Button10 = new JoystickButton(Controller2, 10);
+		Button11 = new JoystickButton(Controller2, 11);
 		
 		
 		//Driver Joystick 1
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
-		xboxAButton.whileHeld(new Shoot());
-		//xboxBButton.whileHeld(new FlipToAngle(1));
-		xboxXButton.whileHeld(new ArmLatch(Math.abs(xboxController1.getTriggerAxis(GenericHID.Hand.kLeft))));
-		xboxXButton.whileHeld(new ArmLatch(-1* Math.abs(xboxController1.getTriggerAxis(GenericHID.Hand.kRight))));
-		xboxBack.whileHeld(new ArmLatch(1));
-		xboxStart.whileHeld(new ArmLatch(-1));
+		xboxXButton.whileHeld(new Flip());
+		if (xboxController1.getTriggerAxis(Hand.kRight) > 0.1)
+			new Shoot().start();
+
 		
 		//Control Joystick 2
-		xboxLBumper2.whileHeld(new PincerOut());
-		xboxRBumper2.whileHeld(new PincerIn());
-		xboxAButton2.whileHeld(new IntakeIn(1));
-		xboxBButton2.whileHeld(new IntakeOut(1));
-		xboxXButton2.whileHeld(new FlipBack(-1));
-		xboxStart2.whileHeld(new FlipBack(1));
+		Button7.whileHeld(new PincerOut());
+		Button8.whileHeld(new PincerIn());
+		Button3.whileHeld(new IntakeIn(1));
+		Button5.whileHeld(new IntakeOut(1));
+		Button9.whileHeld(new Telescope(1));
+		Button10.whileHeld(new Telescope(-1));
+		Button11.whileHeld(new Climber_Hook(1));
+		Button4.whileHeld(new ArmLatch(1));
+		Button6.whileHeld(new ArmLatch(-1));
 		//xboxYButton2.whileHeld(new FlipForward(1));
 		
 		
@@ -123,8 +122,8 @@ public class OI {
 	public XboxController getXboxController1() {
         return xboxController1;
     }
-	public XboxController getXboxController2() {
-        return xboxController2;
+	public Joystick getXboxController2() {
+        return Controller2;
     }
 }
 

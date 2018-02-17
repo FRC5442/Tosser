@@ -22,4 +22,13 @@ public class Climber_Hook extends Command {
 		return false;
 	}
 
+	@Override
+	protected void end() {
+		Robot.climber.moveHook(0);
+	}
+	
+	@Override
+	protected void interrupted() {
+		Robot.climber.moveHook(0);
+	}
 }

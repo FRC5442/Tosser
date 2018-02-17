@@ -18,13 +18,19 @@ public class Telescope extends Command {
 	}
 	
 	@Override
+	protected boolean isFinished() {
+		return false;
+	}
+
+	@Override
+	protected void end() {
+		Robot.climber.moveTelescope(0);
+	}
+
+	@Override
 	protected void interrupted() {
 		Robot.climber.moveTelescope(0);
 	}
 	
-	@Override
-	protected boolean isFinished() {
-		return false;
-	}
 
 }
