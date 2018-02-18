@@ -15,7 +15,7 @@ public class TankDrive extends Command{
 	
 	protected void execute() {
 		//DriveTrain.Driving(OI.xboxController.getRawAxis(1), OI.xboxController.getRawAxis(5));
-    	DriveTrain.Driving(1* (OI.xboxController1.getRawAxis(1)), 1* (OI.xboxController1.getRawAxis(5)));
+    	DriveTrain.Driving(-1* (OI.xboxController1.getRawAxis(1)), -1* (OI.xboxController1.getRawAxis(5)));
 		
 	}
 	@Override
