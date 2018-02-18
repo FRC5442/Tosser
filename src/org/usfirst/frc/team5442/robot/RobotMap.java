@@ -95,20 +95,20 @@ public class RobotMap {
 	public static void init() {
 		// Setting port numbers for speed controllers
 		
-		rightController1 = new VictorSP(0);
-		rightController2 = new VictorSP(10);
-		rightController3 = new VictorSP(11);
-		leftController1 = new VictorSP(3);
-		leftController2 = new VictorSP(4);
-		leftController3 = new VictorSP(5);
+		rightController1 = new VictorSP(6);
+		rightController2 = new VictorSP(7);
+		rightController3 = new VictorSP(8);
+		leftController1 = new VictorSP(0);
+		leftController2 = new VictorSP(1);
+		leftController3 = new VictorSP(2);
 		
-		spinRodMotor = new VictorSP(6);
-		telescopeMotor = new VictorSP(1);
-		hookMotor = new VictorSP(2);
+		spinRodMotor = new VictorSP(3);
+		telescopeMotor = new VictorSP(11);
+		hookMotor = new VictorSP(9);
 		//Intake
-		leftIntake = new VictorSP(9);
-		rightIntake = new VictorSP(8);
-		flipper = new VictorSP(7);		
+		leftIntake = new VictorSP(5);
+		rightIntake = new VictorSP(4);
+		flipper = new VictorSP(10);		
 		
 		
 		/*
