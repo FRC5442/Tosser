@@ -13,10 +13,10 @@ public class FlipToAngle extends Command{
 	}
 
 	protected void execute() {
-		if(RobotMap.FlipEncoder.getDistance() < 15) {
+		if(RobotMap.flipEncoder.getDistance() < 15) {
 			Robot.intake.doFlip(speed);
 		}
-		else if (RobotMap.FlipEncoder.getDistance() > 25) {
+		else if (RobotMap.flipEncoder.getDistance() > 25) {
 			Robot.intake.doFlip(-speed);
 		}
 	}

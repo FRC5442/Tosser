@@ -2,14 +2,15 @@ package org.usfirst.frc.team5442.robot.commands;
 
 import org.usfirst.frc.team5442.robot.OI;
 import org.usfirst.frc.team5442.robot.Robot;
+import org.usfirst.frc.team5442.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Flip extends Command {
+public class FlipDown extends Command {
 
 	//private double speed;
 
-	public Flip() {
+	public FlipDown() {
 	}
 	
 	@Override
@@ -19,8 +20,7 @@ public class Flip extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return false;
-		//return RobotMap.frontFlipStop.get() && OI.Controller2.getRawAxis(1) < 0 || RobotMap.backFlipStop.get() && OI.Controller2.getRawAxis(1) > 0;
+		return RobotMap.frontFlipStop.get();
 	}
 	
 	@Override

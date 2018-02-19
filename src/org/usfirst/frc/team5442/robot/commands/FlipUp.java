@@ -1,26 +1,24 @@
 package org.usfirst.frc.team5442.robot.commands;
 
+import org.usfirst.frc.team5442.robot.OI;
 import org.usfirst.frc.team5442.robot.Robot;
 import org.usfirst.frc.team5442.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
-public class FlipStop extends Command{
-	
-	private double speed, distance;
-	
-	public FlipStop(double speed, double distance) {
-		this.speed = speed;
-		this.distance = distance;
+public class FlipUp extends Command {
+
+	public FlipUp() {
 	}
 	
 	@Override
 	protected void execute() {
-		Robot.intake.doFlip(speed);
+		Robot.intake.doFlip(-OI.Controller2.getRawAxis(1));
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		return Math.abs(RobotMap.FlipEncoder.getDistance()) < distance;
+		return RobotMap.backFlipStop.get();
 	}
 	
 	@Override
