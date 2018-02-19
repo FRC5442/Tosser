@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -33,7 +34,7 @@ public class RobotMap {
 	// Declare Motor Controllers Here
 	// FORMAT:
 	// public static [Controller type] (name);
-	
+	/*
 	public static VictorSP leftController1;
 	public static VictorSP leftController2;
 	public static VictorSP leftController3;
@@ -47,8 +48,8 @@ public class RobotMap {
 	public static VictorSP leftIntake;
 	public static VictorSP rightIntake;
 	public static VictorSP flipper;
-	 
-	/*
+	 */
+	
 	public static Spark leftController1;
 	public static Spark leftController2;
 	public static Spark leftController3;
@@ -62,7 +63,7 @@ public class RobotMap {
 	public static Spark leftIntake;
 	public static Spark rightIntake;
 	public static Spark flipper;
-	*/
+	
 	
 	public static Compressor compressor;
 	public static DoubleSolenoid gearShift;
@@ -94,7 +95,7 @@ public class RobotMap {
 	
 	public static void init() {
 		// Setting port numbers for speed controllers
-		
+		/*
 		rightController1 = new VictorSP(0);
 		rightController2 = new VictorSP(1);
 		rightController3 = new VictorSP(2);
@@ -109,9 +110,9 @@ public class RobotMap {
 		leftIntake = new VictorSP(5);
 		rightIntake = new VictorSP(4);
 		flipper = new VictorSP(10);		
+		*/
 		
 		
-		/*
 		rightController1 = new Spark(0);
 		rightController2 = new Spark(10); // This is above 9 b/c the navx code will just check to make sure that it is 
 		rightController3 = new Spark(11); // ^ That applies here too
@@ -126,7 +127,7 @@ public class RobotMap {
 		leftIntake = new Spark(9);
 		rightIntake = new Spark(8);
 		flipper = new Spark(7);	
-		 */
+		 
 		
 		gearShift = new DoubleSolenoid(0, 1);
 		pincer = new DoubleSolenoid(2, 3);
