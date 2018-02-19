@@ -3,6 +3,8 @@ package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.*;
 import org.usfirst.frc.team5442.robot.subsystems.*;
+
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -82,10 +84,7 @@ public class Robot extends IterativeRobot {
 	 * to the switch structure below with additional strings & commands.
 	 */
 	@Override
-	public void autonomousInit() {
-		
-		RobotMap.FlipEncoder.reset();
-		
+	public void autonomousInit() {		
 		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
 
 		/*
@@ -106,7 +105,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.getNumber("FlipEncoder", RobotMap.FlipEncoder.getDistance());
+		
 	}
 
 	@Override
@@ -120,6 +119,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 	}
 
+	
 	/**
 	 * This function is called periodically during operator control
 	 */
@@ -127,7 +127,12 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
-		//RobotMap.compressor.start();
+		
+		SmartDashboardPostings.updateTeleopValues();
+
+		if(Timer.getMatchTime() >= 120 && RobotMap.compressor.enabled()) {
+			new CompressorToggle().start();
+		}
 	}
 
 	/**
@@ -136,11 +141,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(0));
-		SmartDashboard.putNumber("PDP1", RobotMap.pdp.getCurrent(1));
-		SmartDashboard.putNumber("PDP2", RobotMap.pdp.getCurrent(2));
-		SmartDashboard.putNumber("PDP5", RobotMap.pdp.getCurrent(5));
-		SmartDashboard.putNumber("PDP6", RobotMap.pdp.getCurrent(6));
-		SmartDashboard.putNumber("PDP7", RobotMap.pdp.getCurrent(7));
+		
 	}
 }
