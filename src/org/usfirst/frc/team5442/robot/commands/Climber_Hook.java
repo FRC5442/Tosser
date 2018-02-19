@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5442.robot.commands;
 
 import org.usfirst.frc.team5442.robot.Robot;
+import org.usfirst.frc.team5442.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -14,6 +15,7 @@ public class Climber_Hook extends Command {
 	
 	@Override
 	protected void initialize() {
+		RobotMap.compressor.stop();
 		Robot.climber.moveHook(speed);
 	}
 	

@@ -2,6 +2,7 @@ package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commandgroups.LoadPlusArm;
 import org.usfirst.frc.team5442.robot.commands.Climber_Hook;
+import org.usfirst.frc.team5442.robot.commands.CompressorToggle;
 import org.usfirst.frc.team5442.robot.commands.FlipExecutable;
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
@@ -57,6 +58,7 @@ public class OI {
 	public JoystickButton xboxRBumper;
 	public JoystickButton xboxBButton;
 	public JoystickButton xboxAButton;
+	public JoystickButton xboxXButton;
 	
 	
 	//Controller 2 buttons
@@ -84,6 +86,7 @@ public class OI {
 		xboxRBumper = new JoystickButton(xboxController1, 6);
 		xboxBButton = new JoystickButton(xboxController1, 2);
 		xboxAButton = new JoystickButton(xboxController1, 1);
+		xboxXButton = new JoystickButton(xboxController1, 3);
 		
 
 		//Controller 2
@@ -105,6 +108,7 @@ public class OI {
 		xboxRBumper.whileHeld(new LowShift());
 		xboxAButton.whileHeld(new Shoot());
 		xboxBButton.whileHeld(new LoadPlusArm());
+		xboxXButton.whenPressed(new CompressorToggle());
 
 		
 		//Control Joystick 2

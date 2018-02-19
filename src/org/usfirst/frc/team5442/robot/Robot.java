@@ -84,10 +84,7 @@ public class Robot extends IterativeRobot {
 	 * to the switch structure below with additional strings & commands.
 	 */
 	@Override
-	public void autonomousInit() {
-		
-		RobotMap.FlipEncoder.reset();
-		
+	public void autonomousInit() {		
 		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
 
 		/*
@@ -108,7 +105,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.getNumber("Flip Encoder", RobotMap.FlipEncoder.getDistance());
+		
 	}
 
 	@Override
@@ -131,10 +128,7 @@ public class Robot extends IterativeRobot {
 		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
 		
-		boolean pdpVoltage = RobotMap.pdp.getVoltage() <= 12;
-		
-		
-		SmartDashboard.putBoolean("PDP Voltage Less Than 12", pdpVoltage);
+		SmartDashboardPostings.updateTeleopValues();
 
 		if(Timer.getMatchTime() >= 120 && RobotMap.compressor.enabled()) {
 			new CompressorToggle().start();
@@ -147,11 +141,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(0));
-		SmartDashboard.putNumber("PDP1", RobotMap.pdp.getCurrent(1));
-		SmartDashboard.putNumber("PDP2", RobotMap.pdp.getCurrent(2));
-		SmartDashboard.putNumber("PDP5", RobotMap.pdp.getCurrent(5));
-		SmartDashboard.putNumber("PDP6", RobotMap.pdp.getCurrent(6));
-		SmartDashboard.putNumber("PDP7", RobotMap.pdp.getCurrent(7));
+		
 	}
 }
