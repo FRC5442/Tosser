@@ -1,8 +1,8 @@
 package org.usfirst.frc.team5442.robot;
 
-import org.usfirst.frc.team5442.robot.commands.ArmLatch;
+import org.usfirst.frc.team5442.robot.commandgroups.LoadPlusArm;
 import org.usfirst.frc.team5442.robot.commands.Climber_Hook;
-import org.usfirst.frc.team5442.robot.commands.Flip;
+import org.usfirst.frc.team5442.robot.commands.FlipExecutable;
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
 import org.usfirst.frc.team5442.robot.commands.IntakeOut;
@@ -55,7 +55,7 @@ public class OI {
 	//Controller 1 buttons
 	public JoystickButton xboxLBumper;
 	public JoystickButton xboxRBumper;
-	public JoystickButton xboxXButton;
+	public JoystickButton xboxBButton;
 	public JoystickButton xboxAButton;
 	
 	
@@ -82,7 +82,7 @@ public class OI {
 		//Controller 1
 		xboxLBumper = new JoystickButton(xboxController1, 5);
 		xboxRBumper = new JoystickButton(xboxController1, 6);
-		xboxXButton = new JoystickButton(xboxController1, 3);
+		xboxBButton = new JoystickButton(xboxController1, 2);
 		xboxAButton = new JoystickButton(xboxController1, 1);
 		
 
@@ -104,11 +104,11 @@ public class OI {
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
 		xboxAButton.whileHeld(new Shoot());
-		
+		xboxBButton.whileHeld(new LoadPlusArm());
 
 		
 		//Control Joystick 2
-		Button1.whileHeld(new Flip());
+		Button1.whileHeld(new FlipExecutable());
 		Button7.whenPressed(new PincerToggle());
 		Button5.whileHeld(new IntakeIn(.85));
 		Button3.whileHeld(new IntakeOut(.85));
@@ -116,13 +116,13 @@ public class OI {
 		Button10.whileHeld(new Telescope(-1));
 		Button11.whileHeld(new Climber_Hook(1));
 		Button12.whileHeld(new Climber_Hook(-1));
-		Button4.whileHeld(new ArmLatch(1));
-		Button6.whileHeld(new ArmLatch(-1));
+		
 		//xboxYButton2.whileHeld(new FlipForward(1));
 		
 		//12 loosen
 		//11 tighten
 	}
+	
 	public XboxController getXboxController1() {
         return xboxController1;
     }

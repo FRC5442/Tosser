@@ -4,22 +4,21 @@ import org.usfirst.frc.team5442.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ArmLatch extends Command {
-	
-	private double speed;
-	
-	public ArmLatch(double speed) {
+public class ArmingCatapult extends Command{
+	double speed;
+	public ArmingCatapult(double speed) {
+		// TODO Auto-generated constructor stub
 		this.speed = speed;
 	}
-	
 	@Override
 	protected void execute() {
+		
 		RobotMap.spinRodMotor.set(speed);
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		return false /**RobotMap.latchSwitch1.get() || RobotMap.latchSwitch2.get()**/;
+		return RobotMap.latchSwitch2.get();
 	}
 	
 	@Override
