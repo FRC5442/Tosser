@@ -3,6 +3,8 @@ package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.*;
 import org.usfirst.frc.team5442.robot.subsystems.*;
+
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -106,7 +108,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.getNumber("FlipEncoder", RobotMap.FlipEncoder.getDistance());
+		SmartDashboard.getNumber("Flip Encoder", RobotMap.FlipEncoder.getDistance());
 	}
 
 	@Override
@@ -120,6 +122,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 	}
 
+	
 	/**
 	 * This function is called periodically during operator control
 	 */
@@ -127,7 +130,15 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
-		//RobotMap.compressor.start();
+		
+		boolean pdpVoltage = RobotMap.pdp.getVoltage() <= 12;
+		
+		
+		SmartDashboard.putBoolean("PDP Voltage Less Than 12", pdpVoltage);
+
+		if(Timer.getMatchTime() >= 120 && RobotMap.compressor.enabled()) {
+			new CompressorToggle().start();
+		}
 	}
 
 	/**

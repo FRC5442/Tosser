@@ -10,7 +10,7 @@ public class Pneumatics extends Subsystem{
 	
 	public Pneumatics() {
 		// Starting compressor when code is called, which is at beginning on enabled mode
-		//RobotMap.compressor.start();
+		RobotMap.compressor.start();
 	}
 	
 	@Override

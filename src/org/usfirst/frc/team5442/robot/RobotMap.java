@@ -143,7 +143,7 @@ public class RobotMap {
 		compressor = new Compressor();
 	
 		//Turn on if debugging
-		//pdp = new PowerDistributionPanel(1);
+		pdp = new PowerDistributionPanel(1);
 		
 		//backFlipStop = new DigitalInput(-1);
 		//frontFlipStop = new DigitalInput(-1);
