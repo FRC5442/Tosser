@@ -110,8 +110,8 @@ public class OI {
 		//Control Joystick 2
 		Button1.whileHeld(new Flip());
 		Button7.whenPressed(new PincerToggle());
-		Button3.whileHeld(new IntakeIn(.85));
-		Button5.whileHeld(new IntakeOut(.85));
+		Button5.whileHeld(new IntakeIn(.85));
+		Button3.whileHeld(new IntakeOut(.85));
 		Button9.whileHeld(new Telescope(1));
 		Button10.whileHeld(new Telescope(-1));
 		Button11.whileHeld(new Climber_Hook(1));
@@ -120,7 +120,8 @@ public class OI {
 		Button6.whileHeld(new ArmLatch(-1));
 		//xboxYButton2.whileHeld(new FlipForward(1));
 		
-		
+		//12 loosen
+		//11 tighten
 	}
 	public XboxController getXboxController1() {
         return xboxController1;

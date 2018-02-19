@@ -28,7 +28,7 @@ public class Intake extends Subsystem{
 		else {
 			flipDirection = 1;
 		}
-		RobotMap.leftIntake.set(scaleValue*intake_speed);
+		RobotMap.leftIntake.set(-1*scaleValue*intake_speed);
 		RobotMap.rightIntake.set(flipDirection*scaleValue*intake_speed);
 	}
 }
