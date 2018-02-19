@@ -11,6 +11,7 @@ public class FlowChartChooser { //extends Command {
 	private DisableSwitchChoice _disableSwitch;
 	private AutoCodes _THEautoCode;
 	private String gameData;
+	
 	public FlowChartChooser(OurSide os, PrimaryObjective po, CrossMiddle cm, DisableScale dsc, DisableSwitch dsw) {
 		_ourSide = os.get_choice();
 		_primaryObjective = po.get_choice();
@@ -20,6 +21,7 @@ public class FlowChartChooser { //extends Command {
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		_THEautoCode = AutoCodes.Undefined;
 	}
+	
 	private void ProcessFlowchart() {
 		if (_ourSide == OurSideChoice.Left) {
 			if (_primaryObjective == PrimaryObjectiveChoice.Switch) {
@@ -244,4 +246,63 @@ public class FlowChartChooser { //extends Command {
 		
 	}
 */
+	private String TheCodes = "_UD_UD_UD_UD_UD";
+	private void ProcessWithStingCode() {
+		switch(_ourSide) {
+		case Left:
+			TheCodes = SetCode(TheCodes, 0, "_LF");
+			break;
+		case Right:
+			TheCodes = SetCode(TheCodes, 0, "_RT");
+			break;
+		case Middle:
+			TheCodes = SetCode(TheCodes, 0, "_MD");
+			break;
+		}
+		switch(_primaryObjective) {
+		case Scale:
+			TheCodes = SetCode(TheCodes, 1, "_SC");
+			break;
+		case Switch:
+			TheCodes = SetCode(TheCodes, 1, "_SW");
+			break;
+		case Autoline:
+			TheCodes = SetCode(TheCodes, 1, "_AL");
+			break;
+		}
+		switch(_crossMiddle) {
+		case Yes:
+			TheCodes = SetCode(TheCodes, 2, "_");
+			break;
+		case No:
+			TheCodes = SetCode(TheCodes, 2, "_");
+			break;
+		}
+		switch(_disableScale) {
+		case Yes:
+			TheCodes = SetCode(TheCodes, 1, "_AL");
+			break;
+		case No:
+			TheCodes = SetCode(TheCodes, 1, "_SC");
+			break;
+		}
+		switch(_disableSwitch) {
+		case Yes:
+			TheCodes = SetCode(TheCodes, 1, "_AL");
+			break;
+		case No:
+			TheCodes = SetCode(TheCodes, 1, "_SW");
+			break;
+		}
+	}
+	
+	private String SetCode(String codes, int codePosition, String code) {
+		int insertIndex = codePosition * 3;
+		char[] codesAsChars = codes.toCharArray();
+		char[] newCodeAsChars = code.toCharArray();
+		codesAsChars[insertIndex] = newCodeAsChars[0];
+		codesAsChars[insertIndex + 1] = newCodeAsChars[1];
+		codesAsChars[insertIndex + 2] = newCodeAsChars[2];
+		return codesAsChars.toString();
+	}
 }
