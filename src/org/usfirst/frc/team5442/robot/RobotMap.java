@@ -154,11 +154,11 @@ public class RobotMap {
         //FlipEncoder.setSamplesToAverage(5);
         //FlipEncoder.setDistancePerPulse(1.0/360);
 		
-		leftEncoder = new Encoder(-1, -1, false, EncodingType.k4X);
+		leftEncoder = new Encoder(8, 9, false, EncodingType.k4X);
         leftEncoder.setSamplesToAverage(5);
         leftEncoder.setDistancePerPulse(1.0/360);
 		
-        rightEncoder = new Encoder(-1, -1, false, EncodingType.k4X);
+        rightEncoder = new Encoder(6, 7, false, EncodingType.k4X);
         rightEncoder.setSamplesToAverage(5);
         rightEncoder.setDistancePerPulse(1.0/360);
 		
