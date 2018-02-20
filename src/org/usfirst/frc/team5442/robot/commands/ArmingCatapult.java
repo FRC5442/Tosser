@@ -5,9 +5,10 @@ import org.usfirst.frc.team5442.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ArmingCatapult extends Command{
+	
 	double speed;
+	
 	public ArmingCatapult(double speed) {
-		// TODO Auto-generated constructor stub
 		this.speed = speed;
 	}
 	@Override
@@ -18,7 +19,8 @@ public class ArmingCatapult extends Command{
 	
 	@Override
 	protected boolean isFinished() {
-		return RobotMap.latchSwitch2.get();
+		//return RobotMap.latchSwitch2.get();
+		return false;
 	}
 	
 	@Override

@@ -19,7 +19,8 @@ public class LoadingCatapult extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return RobotMap.latchSwitch1.get();
+		//return RobotMap.latchSwitch1.get();
+		return false;
 	}
 	
 	@Override
