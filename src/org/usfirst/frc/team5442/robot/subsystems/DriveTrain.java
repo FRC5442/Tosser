@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class DriveTrain extends Subsystem{
-
+	private static boolean _normalHeading;
 	
 	public static DifferentialDrive DriveTrain;
 	
@@ -17,11 +17,16 @@ public class DriveTrain extends Subsystem{
 	{
 		//I'm a constructor...
 		//DriveTrain = RobotMap.GetDriver();
+		_normalHeading = true;
 	}
 	
 	public static void Driving(double leftJoystick, double rightJoystick) {
 		if (DriveTrain == null) DriveTrain = RobotMap.GetDriver();
-		DriveTrain.tankDrive(leftJoystick, rightJoystick);
+		if (_normalHeading)
+			DriveTrain.tankDrive(leftJoystick, rightJoystick);
+		else
+			DriveTrain.tankDrive(-1*rightJoystick, -1*leftJoystick);
+			
 		//RobotMap.driveTrain.tankDrive(leftJoystick, rightJoystick);
 	}
 	/// Arcade Drive vs. Tank Drive
@@ -36,4 +41,7 @@ public class DriveTrain extends Subsystem{
 		setDefaultCommand(new TankDrive());
 	}
 
+	public void SwitchHeading() {
+		_normalHeading = !_normalHeading;
+	}
 }

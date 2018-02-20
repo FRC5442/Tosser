@@ -10,6 +10,7 @@ import org.usfirst.frc.team5442.robot.commands.IntakeOut;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
 import org.usfirst.frc.team5442.robot.commands.PincerToggle;
 import org.usfirst.frc.team5442.robot.commands.Shoot;
+import org.usfirst.frc.team5442.robot.commands.SwitchHeading;
 import org.usfirst.frc.team5442.robot.commands.Telescope;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -59,6 +60,7 @@ public class OI {
 	public JoystickButton xboxBButton;
 	public JoystickButton xboxAButton;
 	public JoystickButton xboxXButton;
+	public JoystickButton xboxLeftJoybutton;
 	
 	
 	//Controller 2 buttons
@@ -87,6 +89,7 @@ public class OI {
 		xboxBButton = new JoystickButton(xboxController1, 2);
 		xboxAButton = new JoystickButton(xboxController1, 1);
 		xboxXButton = new JoystickButton(xboxController1, 3);
+		xboxLeftJoybutton = new JoystickButton(xboxController1, 10);
 		
 
 		//Controller 2
@@ -109,7 +112,7 @@ public class OI {
 		xboxAButton.whileHeld(new Shoot());
 		xboxBButton.whileHeld(new LoadPlusArm());
 		xboxXButton.whenPressed(new CompressorToggle());
-
+		xboxLeftJoybutton.whenPressed(new SwitchHeading());
 		
 		//Control Joystick 2
 		Button1.whileHeld(new FlipExecutable());
