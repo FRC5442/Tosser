@@ -2,14 +2,17 @@
 package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
+import org.usfirst.frc.team5442.robot.commands.PIDTurnCommand;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
+import org.usfirst.frc.team5442.robot.subsystems.Climber;
+import org.usfirst.frc.team5442.robot.subsystems.Cylinders;
 import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5442.robot.subsystems.Intake;
 import org.usfirst.frc.team5442.robot.subsystems.PIDDrive;
+import org.usfirst.frc.team5442.robot.subsystems.PIDTurn;
 import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
-import org.usfirst.frc.team5442.robot.commandgroups.AutoLineOnly;
-import org.usfirst.frc.team5442.robot.commands.*;
-import org.usfirst.frc.team5442.robot.subsystems.*;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -116,7 +119,7 @@ public class Robot extends IterativeRobot {
 
 		// schedule the autonomous command (example)
 
-		autonomousCommand = new AutoLineOnly();
+		autonomousCommand = new PIDTurnCommand(90);
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}
@@ -128,7 +131,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("Left  Encoder", RobotMap.encoderLeft.getDistance());
-		SmartDashboard.putNumber("NavX Pitch", RobotMap.navx.getPitch());
+		SmartDashboard.putNumber("NavX Angle", RobotMap.navx.getAngle());
 		SmartDashboard.putNumber("Left Motor Speed", RobotMap.encoderLeft.getRate());
 		//SmartDashboard.putNumber("FlipEncoder", RobotMap.FlipEncoder.getDistance());
 	}
