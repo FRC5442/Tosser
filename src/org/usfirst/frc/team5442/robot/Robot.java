@@ -99,8 +99,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		Robot.pidDrive.disable();
-		Robot.pidTurn.disable();
+		//Robot.pidDrive.disable();
+		//Robot.pidTurn.disable();
 		RobotMap.encoderLeft.reset();
 		RobotMap.encoderRight.reset();
 		//RobotMap.FlipEncoder.reset();
@@ -140,8 +140,10 @@ public class Robot extends IterativeRobot {
 		 * If you want the autonomous to continue until interrupted by another command, remove this line or comment it out.
 		 */
 		
+		
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		driveTrain = new DriveTrain();
 	}
 
 	/**

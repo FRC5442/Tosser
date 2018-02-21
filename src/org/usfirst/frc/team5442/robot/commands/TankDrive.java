@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TankDrive extends Command{
 
 	public TankDrive() {
-		requires(Robot.driveTrain);
+		//requires(Robot.driveTrain);
 	}
 	
 	@Override
