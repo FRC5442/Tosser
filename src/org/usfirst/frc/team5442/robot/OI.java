@@ -7,6 +7,7 @@ import org.usfirst.frc.team5442.robot.commands.FlipUp;
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
 import org.usfirst.frc.team5442.robot.commands.IntakeOut;
+import org.usfirst.frc.team5442.robot.commands.LoadingCatapult;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
 import org.usfirst.frc.team5442.robot.commands.PincerToggle;
 import org.usfirst.frc.team5442.robot.commands.Shoot;
@@ -107,7 +108,7 @@ public class OI {
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
 		xboxAButton.whileHeld(new Shoot());
-		xboxBButton.whenPressed(new LoadPlusArm());
+		xboxBButton.whileHeld(new LoadPlusArm());
 		xboxXButton.whenPressed(new CompressorToggle());
 		xboxLeftJoybutton.whenPressed(new SwitchHeading());
 		
@@ -115,8 +116,10 @@ public class OI {
 		//Button1.whileHeld(new FlipExecutable());
 		Button1.whileHeld(new FlipUp());
 		Button7.whenPressed(new PincerToggle());
-		Button5.whileHeld(new IntakeIn(.85));
+		Button5.whileHeld(new IntakeIn(.35));
 		Button3.whileHeld(new IntakeOut(.85));
+		Button4.whileHeld(new LoadingCatapult(-1));
+		Button6.whileHeld(new LoadingCatapult(1));
 		Button9.whileHeld(new Telescope(1));
 		Button10.whileHeld(new Telescope(-1));
 		Button11.whileHeld(new Climber_Hook(1));
@@ -125,6 +128,7 @@ public class OI {
 		//xboxYButton2.whileHeld(new FlipForward(1));
 		
 		//12 loosen
+		
 		//11 tighten
 	}
 	

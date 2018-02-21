@@ -15,6 +15,7 @@ public class SmartDashboardPostings {
 		SmartDashboard.putBoolean("Compressor Running", RobotMap.compressor.enabled());
 		SmartDashboard.putBoolean("Shooter Latched", RobotMap.latchSwitch1.get());
 		SmartDashboard.putBoolean("Shooter Armed", RobotMap.latchSwitch2.get());
+		SmartDashboard.putNumber("Left ENcoder", RobotMap.leftEncoder.get());
 		//SmartDashboard.putBoolean("PDP Voltage Less Than 12", RobotMap.pdp.getVoltage() <= 12);
 	}
 	

@@ -18,7 +18,7 @@ public class ArmingCatapult extends Command{
 	
 	@Override
 	protected boolean isFinished() {
-		return RobotMap.latchSwitch2.get();
+		return !RobotMap.latchSwitch2.get();
 	}
 	
 	@Override
