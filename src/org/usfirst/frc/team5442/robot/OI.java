@@ -3,7 +3,7 @@ package org.usfirst.frc.team5442.robot;
 import org.usfirst.frc.team5442.robot.commandgroups.LoadPlusArm;
 import org.usfirst.frc.team5442.robot.commands.Climber_Hook;
 import org.usfirst.frc.team5442.robot.commands.CompressorToggle;
-import org.usfirst.frc.team5442.robot.commands.FlipExecutable;
+import org.usfirst.frc.team5442.robot.commands.FlipUp;
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
 import org.usfirst.frc.team5442.robot.commands.IntakeOut;
@@ -107,12 +107,13 @@ public class OI {
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
 		xboxAButton.whileHeld(new Shoot());
-		xboxBButton.whileHeld(new LoadPlusArm());
+		xboxBButton.whenPressed(new LoadPlusArm());
 		xboxXButton.whenPressed(new CompressorToggle());
 		xboxLeftJoybutton.whenPressed(new SwitchHeading());
 		
 		//Control Joystick 2
-		Button1.whileHeld(new FlipExecutable());
+		//Button1.whileHeld(new FlipExecutable());
+		Button1.whileHeld(new FlipUp());
 		Button7.whenPressed(new PincerToggle());
 		Button5.whileHeld(new IntakeIn(.85));
 		Button3.whileHeld(new IntakeOut(.85));
