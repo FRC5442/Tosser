@@ -71,6 +71,8 @@ public class RobotMap {
     public static DigitalInput windSwitch;
     public static DigitalInput latchSwitch1;
     public static DigitalInput latchSwitch2;
+    public static Encoder leftEncoder;
+    public static Encoder rightEncoder;
     
     
     public static Solenoid winchCylinder;
@@ -132,6 +134,8 @@ public class RobotMap {
 	
 		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
 		
+		leftEncoder = new Encoder(0, 1);
+		rightEncoder = new Encoder(2, 3);
 		//latchSwitch1 = new DigitalInput(-1);
 		//latchSwitch2 = new DigitalInput(-1);
 		

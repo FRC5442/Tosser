@@ -21,7 +21,6 @@ import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5442.robot.subsystems.Intake;
 import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
