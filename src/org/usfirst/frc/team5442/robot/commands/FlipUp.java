@@ -18,7 +18,7 @@ public class FlipUp extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return RobotMap.backFlipStop.get();
+		return false;
 	}
 	
 	@Override
