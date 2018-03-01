@@ -19,6 +19,8 @@ import org.usfirst.frc.team5442.robot.subsystems.Cylinders;
 import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5442.robot.subsystems.Intake;
+import org.usfirst.frc.team5442.robot.subsystems.PIDDrive;
+import org.usfirst.frc.team5442.robot.subsystems.PIDTurn;
 import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -42,6 +44,9 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static DriveTrain driveTrain;
 	public static Pneumatics pneumatics;
+
+	public static PIDDrive pidDrive;
+	public static PIDTurn pidTurn;
 	public static Cylinders cylinders;
 	public static Climber climber;
 	public static Intake intake;
@@ -62,9 +67,14 @@ public class Robot extends IterativeRobot {
 
 	public void robotInit() {
 		// Initialize variables 
-		RobotMap.init();
+		//RobotMap.init();
 		oi = new OI();
 		driveTrain = new DriveTrain();
+		pneumatics = new Pneumatics();
+		pidDrive = new PIDDrive(); 
+		pidTurn = new PIDTurn(); 
+		
+		
 		driveChooser = new SendableChooser<>();
 		// Add objects to "driveChooser" sendablechooser on shuffleboard/smartdashboard
 		driveChooser.addDefault("Tank Drive", new TankDrive());
@@ -101,8 +111,7 @@ public class Robot extends IterativeRobot {
 		crossMiddle.addObject("No", new CrossMiddle(CrossMiddleChoice.No));
 		SmartDashboard.putData("Cross Middle?", crossMiddle);
 		
-		
-	
+
 		pneumatics = new Pneumatics();
 		climber = new Climber();
 		intake = new Intake();
@@ -145,6 +154,13 @@ public class Robot extends IterativeRobot {
 		DisableSwitch dsw = (DisableSwitch) disableSwitch.getSelected();
 		autonomousFlowchart = new FlowChartChooser(os, po, cm, dsc, dsw);
 
+		//Robot.pidDrive.disable();
+		//Robot.pidTurn.disable();
+		RobotMap.encoderLeft.reset();
+		RobotMap.encoderRight.reset();
+		//RobotMap.FlipEncoder.reset();
+		RobotMap.navx.reset();
+
 		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
 
 		/*
@@ -155,8 +171,10 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
+
 		if (autonomousFlowchart != null)
 			autonomousFlowchart.start();
+		//autonomousCommand = new PIDTurnCommand(90);
 	}
 
 	/**
@@ -165,7 +183,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.getNumber("FlipEncoder", RobotMap.FlipEncoder.getDistance());
+		SmartDashboard.putNumber("Left  Encoder", RobotMap.encoderLeft.getDistance());
+		SmartDashboard.putNumber("NavX Angle", RobotMap.navx.getAngle());
+		SmartDashboard.putNumber("Left Motor Speed", RobotMap.encoderLeft.getRate());
+		//SmartDashboard.putNumber("FlipEncoder", RobotMap.FlipEncoder.getDistance());
 	}
 
 	@Override
@@ -174,9 +195,9 @@ public class Robot extends IterativeRobot {
 		/** This makes sure that the autonomous stops running when teleop starts running. 
 		 * If you want the autonomous to continue until interrupted by another command, remove this line or comment it out.
 		 */
-		
 		if (autonomousFlowchart != null)
 			autonomousFlowchart.cancel();
+		driveTrain = new DriveTrain();
 	}
 
 	/**
@@ -187,6 +208,7 @@ public class Robot extends IterativeRobot {
 		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
 		//RobotMap.compressor.start();
+
 	}
 
 	/**
