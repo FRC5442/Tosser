@@ -5,10 +5,8 @@ import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddleChoice;
-import org.usfirst.frc.team5442.robot.commands.autonomous.DisableScale;
-import org.usfirst.frc.team5442.robot.commands.autonomous.DisableScaleChoice;
-import org.usfirst.frc.team5442.robot.commands.autonomous.DisableSwitch;
-import org.usfirst.frc.team5442.robot.commands.autonomous.DisableSwitchChoice;
+import org.usfirst.frc.team5442.robot.commands.autonomous.EnableSecondary;
+import org.usfirst.frc.team5442.robot.commands.autonomous.EnableSecondaryChoice;
 import org.usfirst.frc.team5442.robot.commands.autonomous.FlowChartChooser;
 import org.usfirst.frc.team5442.robot.commands.autonomous.OurSide;
 import org.usfirst.frc.team5442.robot.commands.autonomous.OurSideChoice;
@@ -19,8 +17,8 @@ import org.usfirst.frc.team5442.robot.subsystems.Cylinders;
 import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5442.robot.subsystems.Intake;
-import org.usfirst.frc.team5442.robot.subsystems.PIDDrive;
-import org.usfirst.frc.team5442.robot.subsystems.PIDTurn;
+//import org.usfirst.frc.team5442.robot.subsystems.PIDDrive;
+//import org.usfirst.frc.team5442.robot.subsystems.PIDTurn;
 import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -45,8 +43,8 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain driveTrain;
 	public static Pneumatics pneumatics;
 
-	public static PIDDrive pidDrive;
-	public static PIDTurn pidTurn;
+	//public static PIDDrive pidDrive;
+	//public static PIDTurn pidTurn;
 	public static Cylinders cylinders;
 	public static Climber climber;
 	public static Intake intake;
@@ -57,8 +55,7 @@ public class Robot extends IterativeRobot {
 	SendableChooser<Command> driveChooser;
 	SendableChooser<Command> ourSide;
 	SendableChooser<Command> primaryObjective;
-	SendableChooser<Command> disableScale;
-	SendableChooser<Command> disableSwitch;
+	SendableChooser<Command> enableSecondary;
 	SendableChooser<Command> crossMiddle;
  	/**
 	 * This function is run when the robot is first started up and should be
@@ -71,8 +68,8 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		driveTrain = new DriveTrain();
 		pneumatics = new Pneumatics();
-		pidDrive = new PIDDrive(); 
-		pidTurn = new PIDTurn(); 
+		//pidDrive = new PIDDrive(); 
+		//pidTurn = new PIDTurn(); 
 		
 		
 		driveChooser = new SendableChooser<>();
@@ -96,15 +93,10 @@ public class Robot extends IterativeRobot {
 		primaryObjective.addObject("Switch", new PrimaryObjective(PrimaryObjectiveChoice.Switch));
 		SmartDashboard.putData("Primary Objective", primaryObjective);
 		
-		disableScale = new SendableChooser<>();
-		disableScale.addDefault("No", new DisableScale(DisableScaleChoice.No));
-		disableScale.addObject("Yes", new DisableScale(DisableScaleChoice.Yes));
-		SmartDashboard.putData("Disable Scale?", disableScale);
-		
-		disableSwitch = new SendableChooser<>();
-		disableSwitch.addDefault("No", new DisableSwitch(DisableSwitchChoice.No));
-		disableSwitch.addObject("Yes", new DisableSwitch(DisableSwitchChoice.Yes));
-		SmartDashboard.putData("Disable Switch?", disableSwitch);
+		enableSecondary = new SendableChooser<>();
+		enableSecondary.addDefault("No", new EnableSecondary(EnableSecondaryChoice.No));
+		enableSecondary.addObject("Yes", new EnableSecondary(EnableSecondaryChoice.Yes));
+		SmartDashboard.putData("Enable Secondary Objective?", enableSecondary);
 		
 		crossMiddle = new SendableChooser<>();
 		crossMiddle.addDefault("Yes", new CrossMiddle(CrossMiddleChoice.Yes));
@@ -150,9 +142,8 @@ public class Robot extends IterativeRobot {
 		OurSide os = (OurSide) ourSide.getSelected();
 		PrimaryObjective po = (PrimaryObjective) primaryObjective.getSelected();
 		CrossMiddle cm = (CrossMiddle) crossMiddle.getSelected();
-		DisableScale dsc = (DisableScale) disableScale.getSelected();
-		DisableSwitch dsw = (DisableSwitch) disableSwitch.getSelected();
-		autonomousFlowchart = new FlowChartChooser(os, po, cm, dsc, dsw);
+		EnableSecondary es = (EnableSecondary) enableSecondary.getSelected();
+		autonomousFlowchart = new FlowChartChooser(os, po, cm, es);
 
 		//Robot.pidDrive.disable();
 		//Robot.pidTurn.disable();

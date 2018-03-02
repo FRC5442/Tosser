@@ -2,15 +2,15 @@ package org.usfirst.frc.team5442.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DisableSwitch extends Command{
-	private DisableSwitchChoice _choice;
+public class EnableSecondary extends Command{
+	private EnableSecondaryChoice _choice;
 	
-	public DisableSwitchChoice get_choice() {
+	public EnableSecondaryChoice get_choice() {
 		return _choice;
 	}
 	
-	public DisableSwitch(DisableSwitchChoice choice) {
-		_choice = choice;
+	public EnableSecondary(EnableSecondaryChoice choice) {
+		_choice = choice; 
 	}
 
 	@Override
