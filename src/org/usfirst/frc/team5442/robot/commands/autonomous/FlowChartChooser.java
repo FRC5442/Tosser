@@ -1,5 +1,8 @@
 package org.usfirst.frc.team5442.robot.commands.autonomous;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.wpi.first.wpilibj.DriverStation;
 //import edu.wpi.first.wpilibj.command.Command;
 
@@ -73,6 +76,17 @@ public class FlowChartChooser { //extends Command {
 		return codesAsChars.toString();
 	}
 	
+	private boolean CheckCodes(String codes, ArrayList<String> matches) {
+		boolean isMatch = false;
+		
+		for(String match : matches) {
+			if(CheckCodes(codes, match))
+				isMatch = true;
+		}
+		
+		return isMatch;
+	}
+	
 	private boolean CheckCodes(String codes, String match) {
 		boolean isMatch = true;
 		
@@ -87,13 +101,41 @@ public class FlowChartChooser { //extends Command {
 	
 	private boolean CodeMatch(String codes, String match, int position) {
 		int index = position * 3;
-		return match.substring(index, index + 2) != "___" && match.substring(index, index + 2) != codes.substring(index, index + 2);
+		char wildcard = '*';
+		
+		return (match.toCharArray()[index + 1] == wildcard || match.toCharArray()[index + 1] == codes.toCharArray()[index + 1])
+				&& (match.toCharArray()[index + 2] == wildcard || match.toCharArray()[index + 2] == codes.toCharArray()[index + 2]);
 	}
 	
 	private void RunAutonomous() {
-		switch(TheCodes) {
-		//case "_LT_SC__________LL"
-		
+		if(CheckCodes(TheCodes, "_LF_SC_**_**_*L")) {
+			//Drive left-left path to scale
+		}
+		else if(CheckCodes(TheCodes, "_LF_Sw_**_**_L*")) {
+			//Drive left-left path to switch
+		}
+		else if(CheckCodes(TheCodes, "_RT_SC_**_**_*R")) {
+			//Drive right-right path to scale
+		}
+		else if(CheckCodes(TheCodes, "_RT_Sw_**_**_R*")) {
+			//Drive right-right path to switch
+		}
+		else if(CheckCodes(TheCodes, "_MD_Sw_**_**_L*")) {
+			//Drive middle-left path to switch
+		}
+		else if(CheckCodes(TheCodes, "_MD_Sw_**_**_R*")) {
+			//Drive middle-right path to switch
+		}
+
+		//DEFAULTS
+		else if(CheckCodes(TheCodes, "_LF_**_**_**_**")) {
+			//Drive left-left path to auto-line
+		}
+		else if(CheckCodes(TheCodes, "_RT_**_**_**_**")) {
+			//Drive right-right path to auto-line
+		}
+		else if(CheckCodes(TheCodes, "_MD_**_**_**_**")) {
+			//Drive middle path to auto-line
 		}
 	}
 
