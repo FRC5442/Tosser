@@ -31,7 +31,6 @@ public class PIDdriveCommand extends PIDCommand{
 	}
 
 	protected void end() {
-		Robot.pidDrive.disable();
 		RobotMap.driveTrain.curvatureDrive(0, 0, false);
 	}
 
