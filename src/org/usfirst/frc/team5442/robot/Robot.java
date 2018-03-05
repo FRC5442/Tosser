@@ -1,7 +1,10 @@
 
 package org.usfirst.frc.team5442.robot;
 
+import org.usfirst.frc.team5442.robot.commandgroups.DriveAndStop;
 import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
+import org.usfirst.frc.team5442.robot.commands.PIDTurnCommand;
+import org.usfirst.frc.team5442.robot.commands.PIDdriveCommand;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddleChoice;
@@ -40,6 +43,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	
 	public static OI oi;
+	public static RobotMap robotMap;
 	public static DriveTrain driveTrain;
 	public static Pneumatics pneumatics;
 
@@ -66,20 +70,22 @@ public class Robot extends IterativeRobot {
 		// Initialize variables 
 		//RobotMap.init();
 		oi = new OI();
-		driveTrain = new DriveTrain();
+		robotMap = new RobotMap();
+		//driveTrain = new DriveTrain();
 		pneumatics = new Pneumatics();
+		
 		//pidDrive = new PIDDrive(); 
 		//pidTurn = new PIDTurn(); 
 		
 		
-		driveChooser = new SendableChooser<>();
+		//driveChooser = new SendableChooser<>();
 		// Add objects to "driveChooser" sendablechooser on shuffleboard/smartdashboard
-		driveChooser.addDefault("Tank Drive", new TankDrive());
-		driveChooser.addObject("Arcade Drive", new ArcadeDrive());
+		//driveChooser.addDefault("Tank Drive", new TankDrive());
+		//driveChooser.addObject("Arcade Drive", new ArcadeDrive());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
 		//driveChooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Drive mode", driveChooser);
+		//SmartDashboard.putData("Drive mode", driveChooser);
 		
 		ourSide = new SendableChooser<>();
 		ourSide.addDefault("Left", new OurSide(OurSideChoice.Left));
@@ -138,18 +144,16 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		
-		RobotMap.FlipEncoder.reset();
-		OurSide os = (OurSide) ourSide.getSelected();
-		PrimaryObjective po = (PrimaryObjective) primaryObjective.getSelected();
-		CrossMiddle cm = (CrossMiddle) crossMiddle.getSelected();
-		EnableSecondary es = (EnableSecondary) enableSecondary.getSelected();
-		autonomousFlowchart = new FlowChartChooser(os, po, cm, es);
+//		OurSide os = (OurSide) ourSide.getSelected();
+//		PrimaryObjective po = (PrimaryObjective) primaryObjective.getSelected();
+//		CrossMiddle cm = (CrossMiddle) crossMiddle.getSelected();
+//		EnableSecondary es = (EnableSecondary) enableSecondary.getSelected();
+//		autonomousFlowchart = new FlowChartChooser(os, po, cm, es);
 
 		//Robot.pidDrive.disable();
 		//Robot.pidTurn.disable();
 		RobotMap.encoderLeft.reset();
 		RobotMap.encoderRight.reset();
-		//RobotMap.FlipEncoder.reset();
 		RobotMap.navx.reset();
 
 		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
@@ -163,9 +167,16 @@ public class Robot extends IterativeRobot {
 
 		// schedule the autonomous command (example)
 
-		if (autonomousFlowchart != null)
-			autonomousFlowchart.start();
-		//autonomousCommand = new PIDTurnCommand(90);
+//		//if (autonomousFlowchart != null)
+//			//autonomousFlowchart.start();
+
+		//PIDTurnCommand test = new PIDTurnCommand(90);
+		//test.start();
+		
+		DriveAndStop testForward = new DriveAndStop();
+		testForward.start();
+		
+		 
 	}
 
 	/**

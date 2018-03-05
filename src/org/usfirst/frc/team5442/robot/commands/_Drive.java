@@ -27,7 +27,7 @@ public class _Drive extends Command{
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		if (Math.abs(RobotMap.leftEncoder.getDistance()) < enc_distance) {
+		if (Math.abs(RobotMap.encoderLeft.getDistance()) < enc_distance) {
 			return false;
 		} else {
 			return true;
@@ -37,6 +37,7 @@ public class _Drive extends Command{
 	@Override
 	protected void end() {
 		DriveTrain.Driving(0, 0);
+		
 	}
 
 }

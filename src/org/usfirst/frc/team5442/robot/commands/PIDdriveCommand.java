@@ -32,6 +32,7 @@ public class PIDdriveCommand extends PIDCommand{
 
 	protected void end() {
 		RobotMap.driveTrain.curvatureDrive(0, 0, false);
+		//RobotMap.driveTrain.stopMotor();
 	}
 
 	@Override
@@ -41,8 +42,7 @@ public class PIDdriveCommand extends PIDCommand{
 
 	@Override
 	protected void usePIDOutput(double output) {
-		RobotMap.driveTrain.curvatureDrive(.35, output, false);
-		
-
+		//RobotMap.driveTrain.curvatureDrive(.35, output, false);
+		RobotMap.driveTrain.curvatureDrive(m_speed, 0, false);
 	}
 }
