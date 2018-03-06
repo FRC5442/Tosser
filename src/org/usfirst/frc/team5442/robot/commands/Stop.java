@@ -18,7 +18,11 @@ public class Stop extends Command{
 	
 	@Override
 	protected boolean isFinished() {
-		return Math.abs(RobotMap.encoderLeft.getRate()) < .3;
+		return Math.abs(RobotMap.encoderLeft.getRate()) < 1;
 	}
 
+	@Override
+	protected void end() {
+		RobotMap.driveTrain.arcadeDrive(0, 0);
+	}
 }

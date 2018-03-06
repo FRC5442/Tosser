@@ -5,13 +5,13 @@ import org.usfirst.frc.team5442.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.PIDCommand;
 
-public class PIDdriveCommand extends PIDCommand{
+public class PIDDriveCommand extends PIDCommand{
 
 	double m_distance;
 	double m_speed;
 	int m_direction;
 	
-	public PIDdriveCommand(
+	public PIDDriveCommand(
 			double distance, double speed, int direction) {
 		super("Straight DrivingPID", .1, .001, 0);
 		m_distance = distance;

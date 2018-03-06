@@ -4,7 +4,7 @@ package org.usfirst.frc.team5442.robot;
 import org.usfirst.frc.team5442.robot.commandgroups.DriveAndStop;
 import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
 import org.usfirst.frc.team5442.robot.commands.PIDTurnCommand;
-import org.usfirst.frc.team5442.robot.commands.PIDdriveCommand;
+import org.usfirst.frc.team5442.robot.commands.PIDDriveCommand;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddleChoice;
@@ -152,9 +152,6 @@ public class Robot extends IterativeRobot {
 
 		//Robot.pidDrive.disable();
 		//Robot.pidTurn.disable();
-		RobotMap.encoderLeft.reset();
-		RobotMap.encoderRight.reset();
-		RobotMap.navx.reset();
 
 		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
 
@@ -173,6 +170,9 @@ public class Robot extends IterativeRobot {
 		//PIDTurnCommand test = new PIDTurnCommand(90);
 		//test.start();
 		
+		//RobotMap.encoderLeft.reset();
+		//RobotMap.encoderRight.reset();
+
 		DriveAndStop testForward = new DriveAndStop();
 		testForward.start();
 		
