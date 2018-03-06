@@ -23,15 +23,27 @@ public class PointTurn extends Command{
 	}
 
 	protected void execute() {
+/*
 		if(Math.abs(initialAngle - RobotMap.navx.getAngle()) < 3 && Math.abs(speed) < 1) {
-			speed = speed + .02;
+			speed = speed + .04;
 		}
 		else if(Math.abs(initialAngle - RobotMap.navx.getAngle()) < 10 && Math.abs(speed) < 1) {
-			speed = speed + .004;
+			speed = speed + .005;
 		}
 		else if (Math.abs(endAngle - RobotMap.navx.getAngle()) < 25 && Math.abs(speed) > .1) {
-			speed = speed - .08;
+			speed = speed - .03;
 		}
+*/		
+
+		if(Math.abs(initialAngle - RobotMap.navx.getAngle()) < endAngle/2 && Math.abs(speed) < 1) {
+			speed = speed + .03;
+		}
+		else if(Math.abs(initialAngle - RobotMap.navx.getAngle()) >= endAngle/2 && speed > .10) {
+			speed = speed - .10;
+		}
+		
+		
+		
 		RobotMap.GetDriver().curvatureDrive(0, direction*speed, true);
 		//RobotMap.GetDriver().tankDrive(direction*speed, -direction*speed);
 		SmartDashboard.putNumber("Initial Angle", initialAngle);
