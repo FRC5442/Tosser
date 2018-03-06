@@ -3,12 +3,13 @@ package org.usfirst.frc.team5442.robot.commands;
 import org.usfirst.frc.team5442.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class PIDTurnCommand extends PIDCommand{
+public class PIDTurnCommand extends PIDCommand {
 
 	double angle;
 	public PIDTurnCommand(double angle) {
-		super(.01, 0.05, 0.001);
+		super(0.05, 0.05, 0.001);
 		this.angle = angle;
 	}
 
@@ -28,6 +29,8 @@ public class PIDTurnCommand extends PIDCommand{
 
 	@Override
 	protected void usePIDOutput(double output) {
+		SmartDashboard.putNumber("Setpoint", getSetpoint());
+		SmartDashboard.putNumber("PID Output", output);
 		RobotMap.driveTrain.curvatureDrive(0, output, true);
 	}
 

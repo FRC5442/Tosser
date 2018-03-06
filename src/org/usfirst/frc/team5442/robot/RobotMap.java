@@ -148,7 +148,7 @@ public class RobotMap {
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
 		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
 	
-		driveTrain = new DifferentialDrive(leftController1, rightController1);
+		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
 		
 		
 		latchCylinder = new Solenoid(5);
