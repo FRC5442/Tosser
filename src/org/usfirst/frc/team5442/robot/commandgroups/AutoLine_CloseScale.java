@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutoLine_CloseScale extends CommandGroup {
 	public AutoLine_CloseScale() {
-		addSequential(new PIDDriveCommand(10, 0.75, 0));
+		addSequential(new PIDDriveCommand(33.8, 0.75, 0));
 		addSequential(new PIDTurnCommand(90));
-		addSequential(new PIDDriveCommand(10, 0.75, 0));
+		addSequential(new PIDDriveCommand(33.8, 0.75, 0));
 	}
 
 }

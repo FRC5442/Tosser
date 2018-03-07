@@ -7,16 +7,22 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 
 public class PIDDriveCommand extends PIDCommand{
 
-	double m_distance;
+	double m_encoderDistance;
 	double m_speed;
 	int m_direction;
+	double m_ratio = 3.35; //how many inches per encoder rotation
+	double m_inchDistance;
 	
 	public PIDDriveCommand(
 			double distance, double speed, int direction) {
 		super("Straight DrivingPID", .1, .001, 0);
-		m_distance = distance;
+		m_inchDistance = distance;
 		m_speed = speed;
 		m_direction = direction; // positive or negative 1
+		m_encoderDistance = m_ratio * distance;
+		
+		
+		
 	}
 	
 	protected void initialize() {
@@ -27,7 +33,7 @@ public class PIDDriveCommand extends PIDCommand{
 	
 	@Override
 	protected boolean isFinished() {
-		return (Math.abs(RobotMap.encoderRight.getDistance()) > m_distance);
+		return (Math.abs(RobotMap.encoderRight.getDistance()) > m_encoderDistance);
 	}
 
 	protected void end() {

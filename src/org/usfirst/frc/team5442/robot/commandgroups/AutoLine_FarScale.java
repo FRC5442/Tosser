@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoLine_FarScale extends CommandGroup {
 
 	public AutoLine_FarScale() {
-		addSequential(new PIDDriveCommand(10, 0.75, 0));
+		addSequential(new PIDDriveCommand(33.8, 0.75, 0));
 		addSequential(new PIDTurnCommand(90));
-		addSequential(new PIDDriveCommand(10, 0.75, 0));
+		addSequential(new PIDDriveCommand(33.8, 0.75, 0));
 		addSequential(new PIDTurnCommand(-90));
-		addSequential(new PIDDriveCommand(10, 0.75, 0));
+		addSequential(new PIDDriveCommand(33.8, 0.75, 0));
 	}
 
 }
