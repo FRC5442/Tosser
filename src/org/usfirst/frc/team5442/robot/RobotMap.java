@@ -86,6 +86,7 @@ public class RobotMap {
 	static SpeedControllerGroup rightControllers;
 	
 	public static DoubleSolenoid pincer;
+	public static DoubleSolenoid shooterLatch;
 	
 	public static Encoder flipEncoder;
 	public static Encoder leftEncoder;
@@ -134,6 +135,7 @@ public class RobotMap {
 		
 		gearShift = new DoubleSolenoid(0, 1);
 		pincer = new DoubleSolenoid(2, 3);
+		shooterLatch = new DoubleSolenoid(6, 7);
 		latchCylinder = new DoubleSolenoid(4, 5);
 		
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);

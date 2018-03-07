@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.ArmingCatapult;
+import org.usfirst.frc.team5442.robot.commands.CatapultLatch;
 import org.usfirst.frc.team5442.robot.commands.Climber_Hook;
 import org.usfirst.frc.team5442.robot.commands.CompressorToggle;
 import org.usfirst.frc.team5442.robot.commands.FlipExecutable;
@@ -111,7 +112,7 @@ public class OI {
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
 		xboxAButton.whileHeld(new Shoot());
-		//xboxBButton.whileHeld(new LoadPlusArm());
+		xboxBButton.whenPressed(new CatapultLatch());
 		xboxXButton.whenPressed(new CompressorToggle());
 		xboxLeftJoybutton.whenPressed(new SwitchHeading());
 		
