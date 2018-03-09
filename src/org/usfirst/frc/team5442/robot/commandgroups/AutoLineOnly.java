@@ -9,7 +9,7 @@ public class AutoLineOnly extends CommandGroup{
 	public AutoLineOnly() {
 		//untested
 		//addSequential(new StraightDrive(10, .35, 1));
-		addSequential(new PIDDriveCommand(33.8, .7, 1));
+		addSequential(new PIDDriveCommand(120, .7, 1));
 	}
 
 }

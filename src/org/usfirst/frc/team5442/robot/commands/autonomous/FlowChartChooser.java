@@ -3,6 +3,11 @@ package org.usfirst.frc.team5442.robot.commands.autonomous;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.usfirst.frc.team5442.robot.commandgroups.AutoLineOnly;
+import org.usfirst.frc.team5442.robot.commandgroups.MidALL;
+import org.usfirst.frc.team5442.robot.commandgroups.MidALR;
+import org.usfirst.frc.team5442.robot.commands.PIDDriveCommand;
+
 import edu.wpi.first.wpilibj.DriverStation;
 //import edu.wpi.first.wpilibj.command.Command;
 
@@ -130,12 +135,19 @@ public class FlowChartChooser { //extends Command {
 		//DEFAULTS
 		else if(CheckCodes(TheCodes, "_LF_**_**_**_**")) {
 			//Drive left-left path to auto-line
+			new AutoLineOnly();
 		}
 		else if(CheckCodes(TheCodes, "_RT_**_**_**_**")) {
 			//Drive right-right path to auto-line
+			new AutoLineOnly();
 		}
-		else if(CheckCodes(TheCodes, "_MD_**_**_**_**")) {
-			//Drive middle path to auto-line
+		else if(CheckCodes(TheCodes, "_MD_**_**_**_R*")) {
+			//Drive middle path to left auto-line
+			new MidALL();
+		}
+		else if(CheckCodes(TheCodes, "_MD_**_**_**_L*")) {
+			// Drive middle path to right auto-line
+			new MidALR();
 		}
 	}
 
