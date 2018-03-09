@@ -7,19 +7,19 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 
 public class PIDDriveCommand extends PIDCommand{
 
-	double m_encoderDistance;
-	double m_speed;
-	int m_direction;
-	double m_ratio = 3.35; //how many inches per encoder rotation
-	double m_inchDistance;
+	double _encoderDistance;
+	double _speed;
+	int _direction;
+	double _ratio = 0.796; //how many inches per encoder rotation
+	double _rollout = 3.57;
+	//.796x-3.57
 	
 	public PIDDriveCommand(
-			double distance, double speed, int direction) {
-		super("Straight DrivingPID", .1, .001, 0);
-		m_inchDistance = distance;
-		m_speed = speed;
-		m_direction = direction; // positive or negative 1
-		m_encoderDistance = m_ratio * distance;
+			double distanceInInches, double speed, int direction) {
+		super("Straight DrivingPID", 0.1, 0.001, 0);
+		_speed = speed;
+		_direction = direction; // positive or negative 1
+		_encoderDistance = distanceInInches * _ratio -  _rollout;
 		
 		
 		
@@ -33,7 +33,7 @@ public class PIDDriveCommand extends PIDCommand{
 	
 	@Override
 	protected boolean isFinished() {
-		return (Math.abs(RobotMap.encoderRight.getDistance()) > m_encoderDistance);
+		return (Math.abs(RobotMap.encoderRight.getDistance()) > _encoderDistance);
 	}
 
 	protected void end() {
@@ -49,6 +49,6 @@ public class PIDDriveCommand extends PIDCommand{
 	@Override
 	protected void usePIDOutput(double output) {
 		//RobotMap.driveTrain.curvatureDrive(.35, output, false);
-		RobotMap.driveTrain.curvatureDrive(m_speed, 0, false);
+		RobotMap.driveTrain.curvatureDrive(_speed, 0, false);
 	}
 }

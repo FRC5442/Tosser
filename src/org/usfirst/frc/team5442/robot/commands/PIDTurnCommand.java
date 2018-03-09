@@ -2,6 +2,7 @@ package org.usfirst.frc.team5442.robot.commands;
 
 import org.usfirst.frc.team5442.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -9,9 +10,10 @@ public class PIDTurnCommand extends PIDCommand{
 
 	double angle;
 	double start;
+	Timer tim = new Timer();
 	
 	public PIDTurnCommand(double angle) {
-		super(.02, 0.00001, 0.000001);
+		super(.02, 0.0001, 0.000003);
 		this.angle = angle;
 	}
 
@@ -19,13 +21,15 @@ public class PIDTurnCommand extends PIDCommand{
 		RobotMap.navx.reset();
 		setSetpoint(angle);
 		start = RobotMap.navx.getAngle();
+		tim.start();
 	}
 	
 	@Override
 	protected boolean isFinished() {
 		//return getSetpoint() < RobotMap.navx.getAngle();
 		//return angle - RobotMap.navx.getAngle() < 15;
-		return false;
+		//return tim.get() >= 2.5;
+		return tim.get() >= .25 && Math.abs(RobotMap.encoderLeft.getRate()) < 1;
 	}
 
 	@Override
