@@ -22,15 +22,19 @@ public class FlipExecutable extends Command{
 		if(OI.Controller2.getRawAxis(1) > 0) {
 			if(down.isRunning())
 				down.cancel();
-			up.start();
-			
+			else if (!up.isRunning()) {
+				up.start();
+			}
 		}
 		else {
 			if(up.isRunning()) 
 				up.cancel();
-			down.start();
+			else if (!down.isRunning()) {
+				down.start();				
+			}
 		}
 	}
+	
 	@Override
 	protected boolean isFinished() {
 		return false;

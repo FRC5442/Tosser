@@ -14,23 +14,22 @@ public class ArmingCatapult extends Command{
 	@Override
 	protected void execute() {
 		
-		RobotMap.spinRodMotor.set(speed);
+		RobotMap.catapultMotor.set(speed);
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		//return RobotMap.latchSwitch2.get();
-		return false;
+		return RobotMap.catapultSwitch.get();
 	}
 	
 	@Override
 	protected void end() {
-		RobotMap.spinRodMotor.set(0);
+		RobotMap.catapultMotor.set(0);
 	}
 	
 	@Override
 	protected void interrupted() {
-		RobotMap.spinRodMotor.set(0);
+		RobotMap.catapultMotor.set(0);
 	}
 	
 }

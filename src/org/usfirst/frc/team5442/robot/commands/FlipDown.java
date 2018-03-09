@@ -8,8 +8,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class FlipDown extends Command {
 
-	//private double speed;
-
 	public FlipDown() {
 	}
 	
@@ -20,7 +18,7 @@ public class FlipDown extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return !RobotMap.frontFlipStop.get();
 	}
 	
 	@Override

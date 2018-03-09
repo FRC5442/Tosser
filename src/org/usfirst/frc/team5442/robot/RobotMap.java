@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
@@ -65,7 +64,7 @@ public class RobotMap {
 	public static Spark rightController1;
 	public static Spark rightController2;
 	public static Spark rightController3;
-	public static Spark spinRodMotor;
+	public static Spark catapultMotor;
 	public static Spark winchMotor;
 	public static Spark telescopeMotor;
 	public static Spark hookMotor;
@@ -76,36 +75,26 @@ public class RobotMap {
 	
 	public static Compressor compressor;
 	public static DoubleSolenoid gearShift;
+    public static Solenoid winchCylinder;
+    public static DoubleSolenoid latchCylinder;
+    public static DoubleSolenoid pincer;
+	public static DoubleSolenoid shooterLatch;
 
-    public static PowerDistributionPanel pdp1;
+    public static PowerDistributionPanel pdp;
     
     public static DigitalInput limitSwitch;
     public static DigitalInput limitSwitch2;
     public static DigitalInput windSwitch;
     public static DigitalInput latchSwitch1;
-    public static DigitalInput latchSwitch2;
-    
-    
-    public static Solenoid winchCylinder;
-    public static DoubleSolenoid latchCylinder;
-   
+    public static DigitalInput catapultSwitch;
+	public static DigitalInput backFlipStop;
+	public static DigitalInput frontFlipStop;
     
 	// Setting SpeedControllerGroups per side
 	static SpeedControllerGroup leftControllers;
 	static SpeedControllerGroup rightControllers;
 	
-	public static DoubleSolenoid pincer;
-	public static DoubleSolenoid shooterLatch;
-	
 	public static Encoder flipEncoder;
-	public static Encoder leftEncoder;
-	public static Encoder rightEncoder;
-	
-	public static DigitalInput backFlipStop;
-	public static DigitalInput frontFlipStop;
-	
-	public static PowerDistributionPanel pdp;
-
 	public static Encoder encoderLeft;
 	public static Encoder encoderRight;
 	
@@ -138,7 +127,7 @@ public class RobotMap {
 		leftController2 = new Spark(4);
 		leftController3 = new Spark(5);
 		
-		spinRodMotor = new Spark(6);
+		catapultMotor = new Spark(6);
 		telescopeMotor = new Spark(2);
 		hookMotor = new Spark(1);
 		//Intake
@@ -162,10 +151,10 @@ public class RobotMap {
 		//Turn on if debugging
 		//pdp = new PowerDistributionPanel(1);
 		
-		backFlipStop = new DigitalInput(1);
-		frontFlipStop = new DigitalInput(0);
+		backFlipStop = new DigitalInput(2);
+		frontFlipStop = new DigitalInput(3);
 		latchSwitch1 = new DigitalInput(2);
-		latchSwitch2 = new DigitalInput(3);
+		catapultSwitch = new DigitalInput(5);
 		
 		//FlipEncoder = new Encoder(-1, -1, false, EncodingType.k4X);
         //FlipEncoder.setSamplesToAverage(5);
