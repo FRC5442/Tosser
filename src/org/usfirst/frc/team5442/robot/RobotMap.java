@@ -153,7 +153,7 @@ public class RobotMap {
 		
 		backFlipStop = new DigitalInput(2);
 		frontFlipStop = new DigitalInput(3);
-		latchSwitch1 = new DigitalInput(2);
+		//latchSwitch1 = new DigitalInput(2);
 		catapultSwitch = new DigitalInput(5);
 		
 		//FlipEncoder = new Encoder(-1, -1, false, EncodingType.k4X);

@@ -19,7 +19,7 @@ public class ArmingCatapult extends Command{
 	
 	@Override
 	protected boolean isFinished() {
-		return RobotMap.catapultSwitch.get();
+		return !RobotMap.catapultSwitch.get();
 	}
 	
 	@Override

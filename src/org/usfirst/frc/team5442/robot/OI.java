@@ -119,7 +119,7 @@ public class OI {
 		Button1.whileHeld(new FlipExecutable());
 		Button7.whenPressed(new PincerToggle());
 		Button5.whileHeld(new IntakeIn(.85));
-		Button3.whileHeld(new IntakeOut(.85));
+		Button3.whileHeld(new IntakeOut(.65));
 		Button4.whileHeld(new ArmingCatapult(1));
 		Button9.whileHeld(new Telescope(1));
 		Button10.whileHeld(new Telescope(-1));
