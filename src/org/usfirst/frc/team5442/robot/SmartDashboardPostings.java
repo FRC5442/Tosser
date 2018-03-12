@@ -8,8 +8,9 @@ public class SmartDashboardPostings {
 		
 	}
 	public static void updateAutoValues() {
-		SmartDashboard.putNumber("Flip Encoder", RobotMap.flipEncoder.getDistance());
+		//SmartDashboard.putNumber("Flip Encoder", RobotMap.flipEncoder.getDistance());
 		SmartDashboard.putNumber("NavX Angle", RobotMap.navx.getAngle());
+		SmartDashboard.putBoolean("Catapult Limit Switch", RobotMap.catapultSwitch.get());
 	}
 
 	public static void updateTeleopValues() {

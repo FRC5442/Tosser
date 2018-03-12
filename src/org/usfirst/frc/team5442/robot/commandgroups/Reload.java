@@ -1,7 +1,8 @@
 package org.usfirst.frc.team5442.robot.commandgroups;
 
 import org.usfirst.frc.team5442.robot.commands.ArmingCatapult;
-import org.usfirst.frc.team5442.robot.commands.CatapultLatch;
+import org.usfirst.frc.team5442.robot.commands.CatapultLatchInB;
+import org.usfirst.frc.team5442.robot.commands.CatapultLatchOutB;
 import org.usfirst.frc.team5442.robot.commands.CompressorStart;
 import org.usfirst.frc.team5442.robot.commands.CompressorStop;
 
@@ -21,9 +22,9 @@ public class Reload extends CommandGroup{
 
 	public Reload() {
 		addSequential(new CompressorStop());
-		addSequential(new CatapultLatch());
+		addSequential(new CatapultLatchInB());
 		addSequential(new ArmingCatapult(1));
-		addSequential(new CatapultLatch());
+		addSequential(new CatapultLatchOutB());
 		addSequential(new CompressorStart());
 		
 	}

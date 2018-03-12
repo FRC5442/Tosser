@@ -16,7 +16,7 @@ public class PIDDriveCommand extends PIDCommand{
 	
 	public PIDDriveCommand(
 			double distanceInInches, double speed, int direction) {
-		super("Straight DrivingPID", 0.4, 0.001, 0);
+		super("Straight DrivingPID", 0.1, 0.00, 0);
 		//.1 not in mpr?
 		_speed = speed;
 		_direction = direction; // positive or negative 1
@@ -29,7 +29,7 @@ public class PIDDriveCommand extends PIDCommand{
 	protected void initialize() {
 		RobotMap.encoderLeft.reset();
 		RobotMap.encoderRight.reset();
-		//setSetpointRelative(0);
+		setSetpointRelative(0);
 	}
 	
 	@Override
@@ -49,7 +49,7 @@ public class PIDDriveCommand extends PIDCommand{
 
 	@Override
 	protected void usePIDOutput(double output) {
-		//RobotMap.driveTrain.curvatureDrive(.35, output, false);
-		RobotMap.driveTrain.curvatureDrive(_speed, 0, false);
+		RobotMap.driveTrain.curvatureDrive(_speed, output, false);
+		//RobotMap.driveTrain.curvatureDrive(_speed, 0, false);
 	}
 }

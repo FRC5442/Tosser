@@ -1,8 +1,7 @@
 
 package org.usfirst.frc.team5442.robot;
 
-import org.usfirst.frc.team5442.robot.commandgroups.DriveAndStop;
-import org.usfirst.frc.team5442.robot.commandgroups.MidALL;
+import org.usfirst.frc.team5442.robot.commandgroups.RightSCR;
 import org.usfirst.frc.team5442.robot.commands.CompressorToggle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddleChoice;
@@ -144,7 +143,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		MidALL testForward = new MidALL();
+		RobotMap.navx.reset();
+		RightSCR testForward = new RightSCR();
 		testForward.start();
 		
 		rememberCompressor = false;
@@ -156,6 +156,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboardPostings.updateAutoValues();
 	}
 
 	@Override
