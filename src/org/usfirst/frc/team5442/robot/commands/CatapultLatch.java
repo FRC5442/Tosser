@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.command.Command;
 	public class CatapultLatch extends Command{
 		@Override
 		protected void initialize() {
-			RobotMap.compressor.stop();
 			if (RobotMap.shooterLatch.get() == DoubleSolenoid.Value.kReverse) {
 				Robot.pneumatics.shooterLatching(DoubleSolenoid.Value.kForward);
 			}
@@ -23,7 +22,6 @@ import edu.wpi.first.wpilibj.command.Command;
 			return true;
 		}
 		protected void end() {
-			RobotMap.compressor.start();
 		}
 
 	}

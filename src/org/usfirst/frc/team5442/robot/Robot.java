@@ -2,6 +2,7 @@
 package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commandgroups.DriveAndStop;
+import org.usfirst.frc.team5442.robot.commandgroups.MidALL;
 import org.usfirst.frc.team5442.robot.commands.CompressorToggle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddleChoice;
@@ -59,6 +60,8 @@ public class Robot extends IterativeRobot {
 	SendableChooser<Command> primaryObjective;
 	SendableChooser<Command> enableSecondary;
 	SendableChooser<Command> crossMiddle;
+	
+	public boolean rememberCompressor;
  	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -141,10 +144,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		DriveAndStop testForward = new DriveAndStop();
+		MidALL testForward = new MidALL();
 		testForward.start();
 		
-		 
+		rememberCompressor = false;
 	}
 
 	/**
@@ -164,6 +167,8 @@ public class Robot extends IterativeRobot {
 		if (autonomousFlowchart != null)
 			autonomousFlowchart.cancel();
 		driveTrain = new DriveTrain();
+		
+		rememberCompressor = false;
 	}
 
 	
@@ -172,7 +177,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		// Putting PDP output onto smartdashboard/shuffleboard
 		Scheduler.getInstance().run();
 
 		SmartDashboardPostings.updateTeleopValues();
