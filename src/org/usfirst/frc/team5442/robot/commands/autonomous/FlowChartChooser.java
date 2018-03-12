@@ -4,8 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.usfirst.frc.team5442.robot.commandgroups.AutoLineOnly;
+import org.usfirst.frc.team5442.robot.commandgroups.LeftSCL;
+import org.usfirst.frc.team5442.robot.commandgroups.LeftSWL;
 import org.usfirst.frc.team5442.robot.commandgroups.MidALL;
 import org.usfirst.frc.team5442.robot.commandgroups.MidALR;
+import org.usfirst.frc.team5442.robot.commandgroups.MidSWL;
+import org.usfirst.frc.team5442.robot.commandgroups.MidSWR;
+import org.usfirst.frc.team5442.robot.commandgroups.RightSCR;
+import org.usfirst.frc.team5442.robot.commandgroups.RightSWR;
 import org.usfirst.frc.team5442.robot.commands.PIDDriveCommand;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -115,21 +121,27 @@ public class FlowChartChooser { //extends Command {
 	private void RunAutonomous() {
 		if(CheckCodes(TheCodes, "_LF_SC_**_**_*L")) {
 			//Drive left-left path to scale
+			new LeftSCL();
 		}
 		else if(CheckCodes(TheCodes, "_LF_Sw_**_**_L*")) {
 			//Drive left-left path to switch
+			new LeftSWL();
 		}
 		else if(CheckCodes(TheCodes, "_RT_SC_**_**_*R")) {
 			//Drive right-right path to scale
+			new RightSCR();
 		}
 		else if(CheckCodes(TheCodes, "_RT_Sw_**_**_R*")) {
 			//Drive right-right path to switch
+			new RightSWR();
 		}
 		else if(CheckCodes(TheCodes, "_MD_Sw_**_**_L*")) {
 			//Drive middle-left path to switch
+			new MidSWL();
 		}
 		else if(CheckCodes(TheCodes, "_MD_Sw_**_**_R*")) {
 			//Drive middle-right path to switch
+			new MidSWR();
 		}
 
 		//DEFAULTS
@@ -148,6 +160,11 @@ public class FlowChartChooser { //extends Command {
 		else if(CheckCodes(TheCodes, "_MD_**_**_**_L*")) {
 			// Drive middle path to right auto-line
 			new MidALR();
+		}
+		
+		//CROSSING
+		else if(CheckCodes(TheCodes, "_LF_SC_YS_**_**_")) {
+			// Drive left cross middle shoot scale
 		}
 	}
 
