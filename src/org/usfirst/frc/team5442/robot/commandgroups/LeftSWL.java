@@ -10,11 +10,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftSWL extends CommandGroup {
 
 	public LeftSWL() {
-		addSequential(new PIDDriveCommand(10, 0.5, 1));
+		//Not tested yet
+		addSequential(new PIDDriveCommand(10, 0.5));
 		addSequential(new PIDTurnCommand(15));
-		addSequential(new PIDDriveCommand(115, 0.7, 1));
+		addSequential(new PIDDriveCommand(115, 0.7));
 		addSequential(new PIDTurnCommand(-15));
-		addSequential(new PIDDriveCommand(20, .07, 1));
+		addSequential(new PIDDriveCommand(20, .07));
 		addSequential(new FlipAuto(1, .75));
 		addSequential(new IntakeOutAuto(.70, 2));
 	}

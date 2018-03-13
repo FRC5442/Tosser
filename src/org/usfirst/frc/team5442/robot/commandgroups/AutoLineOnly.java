@@ -8,9 +8,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoLineOnly extends CommandGroup{
 
 	public AutoLineOnly() {
-		//untested
-		//addSequential(new StraightDrive(10, .35, 1));
-		addSequential(new PIDDriveCommand(108, .55, 1));
+		//Tested, should be good. Right or left side only
+		addSequential(new PIDDriveCommand(108, .6));
 		addSequential(new Stop(-.25));
 		
 	}

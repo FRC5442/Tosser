@@ -1,6 +1,5 @@
 package org.usfirst.frc.team5442.robot.commands;
 
-import org.usfirst.frc.team5442.robot.Robot;
 import org.usfirst.frc.team5442.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.PIDCommand;
@@ -9,17 +8,15 @@ public class PIDDriveCommand extends PIDCommand{
 
 	double _encoderDistance;
 	double _speed;
-	int _direction;
 	double _ratio = 0.796; //how many inches per encoder rotation
 	double _rollout = 3.57;
 	//.796x-3.57
 	
 	public PIDDriveCommand(
-			double distanceInInches, double speed, int direction) {
+			double distanceInInches, double speed) {
 		super("Straight DrivingPID", 0.1, 0.00, 0);
 		//.1 not in mpr?
 		_speed = speed;
-		_direction = direction; // positive or negative 1
 		_encoderDistance = distanceInInches * _ratio -  _rollout;
 		
 		
@@ -49,7 +46,7 @@ public class PIDDriveCommand extends PIDCommand{
 
 	@Override
 	protected void usePIDOutput(double output) {
-		RobotMap.driveTrain.curvatureDrive(_speed, output, false);
+		RobotMap.driveTrain.curvatureDrive(_speed, output*Math.signum(_encoderDistance), false);
 		//RobotMap.driveTrain.curvatureDrive(_speed, 0, false);
 	}
 }
