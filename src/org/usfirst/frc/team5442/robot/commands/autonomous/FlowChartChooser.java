@@ -16,6 +16,8 @@ import org.usfirst.frc.team5442.robot.commands.PIDDriveCommand;
 
 import edu.wpi.first.wpilibj.DriverStation;
 //import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 public class FlowChartChooser { //extends Command {
 	private OurSideChoice _ourSide;
@@ -25,17 +27,17 @@ public class FlowChartChooser { //extends Command {
 	private AutoCodes _THEautoCode;
 	private String gameData;
 	
-	public FlowChartChooser(OurSide os, PrimaryObjective po, CrossMiddle cm, EnableSecondary es) {
-		_ourSide = os.get_choice();
-		_primaryObjective = po.get_choice();
-		_crossMiddle = cm.get_choice();
-		_enableSecondary = es.get_choice();
+	public FlowChartChooser(SendableChooser<Command> ourSide, SendableChooser<Command> primaryObjective, SendableChooser<Command> crossMiddle, SendableChooser<Command> enableSecondary) {
+		_ourSide = ((OurSide) ourSide.getSelected()).get_choice();
+		_primaryObjective = ((PrimaryObjective) primaryObjective.getSelected()).get_choice();
+		_crossMiddle = ((CrossMiddle) crossMiddle.getSelected()).get_choice();
+		_enableSecondary = ((EnableSecondary) enableSecondary.getSelected()).get_choice();
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		_THEautoCode = AutoCodes.Undefined;
 	}
 
 	private String TheCodes = "_UD_UD_UD_UD_UD";
-	private void ProcessWithStingCode() {
+	public void ProcessWithStingCode() {
 		switch(_ourSide) {
 		case Left:
 			TheCodes = SetCode(TheCodes, 0, "_LF");
@@ -46,6 +48,8 @@ public class FlowChartChooser { //extends Command {
 		case Middle:
 			TheCodes = SetCode(TheCodes, 0, "_MD");
 			break;
+		case custom:
+			TheCodes = SetCode(TheCodes, 0, "_CU");
 		}
 		switch(_primaryObjective) {
 		case Scale:
@@ -118,7 +122,7 @@ public class FlowChartChooser { //extends Command {
 				&& (match.toCharArray()[index + 2] == wildcard || match.toCharArray()[index + 2] == codes.toCharArray()[index + 2]);
 	}
 	
-	private void RunAutonomous() {
+	public void RunAutonomous() {
 		if(CheckCodes(TheCodes, "_LF_SC_**_**_*L")) {
 			//Drive left-left path to scale
 			new LeftSCL();

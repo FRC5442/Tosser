@@ -91,6 +91,7 @@ public class Robot extends IterativeRobot {
 		ourSide.addDefault("Left", new OurSide(OurSideChoice.Left));
 		ourSide.addObject("Middle", new OurSide(OurSideChoice.Middle));
 		ourSide.addObject("Right", new OurSide(OurSideChoice.Right));
+		ourSide.addObject("Custom", new OurSide(OurSideChoice.custom));
 		SmartDashboard.putData("Our Side", ourSide);
 		
 		primaryObjective = new SendableChooser<>();
@@ -144,9 +145,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		RobotMap.navx.reset();
-		RightSCR testForward = new RightSCR();
-		testForward.start();
-		
+		autonomousFlowchart = new FlowChartChooser(ourSide, primaryObjective, crossMiddle, enableSecondary);
+		autonomousFlowchart.start();
+		autonomousFlowchart.ProcessWithStingCode();
+		autonomousFlowchart.RunAutonomous();
 		rememberCompressor = false;
 	}
 
