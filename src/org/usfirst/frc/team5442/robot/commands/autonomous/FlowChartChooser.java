@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5442.robot.commands.autonomous;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.usfirst.frc.team5442.robot.commandgroups.AutoLineOnly;
 import org.usfirst.frc.team5442.robot.commandgroups.LeftSCL;
@@ -12,7 +11,6 @@ import org.usfirst.frc.team5442.robot.commandgroups.MidSWL;
 import org.usfirst.frc.team5442.robot.commandgroups.MidSWR;
 import org.usfirst.frc.team5442.robot.commandgroups.RightSCR;
 import org.usfirst.frc.team5442.robot.commandgroups.RightSWR;
-import org.usfirst.frc.team5442.robot.commands.PIDDriveCommand;
 
 import edu.wpi.first.wpilibj.DriverStation;
 //import edu.wpi.first.wpilibj.command.Command;
@@ -123,11 +121,15 @@ public class FlowChartChooser { //extends Command {
 	}
 	
 	public void RunAutonomous() {
-		if(CheckCodes(TheCodes, "_LF_SC_**_**_*L")) {
+		if(CheckCodes(TheCodes, "_CU_**_**_**_**")) {
+			// RUN CUSTOM AUTO CODE 
+		}
+		
+		else if(CheckCodes(TheCodes, "_LF_SC_**_**_*L")) {
 			//Drive left-left path to scale
 			new LeftSCL();
 		}
-		else if(CheckCodes(TheCodes, "_LF_Sw_**_**_L*")) {
+		else if(CheckCodes(TheCodes, "_LF_SW_**_**_L*")) {
 			//Drive left-left path to switch
 			new LeftSWL();
 		}
@@ -135,15 +137,15 @@ public class FlowChartChooser { //extends Command {
 			//Drive right-right path to scale
 			new RightSCR();
 		}
-		else if(CheckCodes(TheCodes, "_RT_Sw_**_**_R*")) {
+		else if(CheckCodes(TheCodes, "_RT_SW_**_**_R*")) {
 			//Drive right-right path to switch
 			new RightSWR();
 		}
-		else if(CheckCodes(TheCodes, "_MD_Sw_**_**_L*")) {
+		else if(CheckCodes(TheCodes, "_MD_SW_**_**_L*")) {
 			//Drive middle-left path to switch
 			new MidSWL();
 		}
-		else if(CheckCodes(TheCodes, "_MD_Sw_**_**_R*")) {
+		else if(CheckCodes(TheCodes, "_MD_SW_**_**_R*")) {
 			//Drive middle-right path to switch
 			new MidSWR();
 		}
@@ -164,11 +166,6 @@ public class FlowChartChooser { //extends Command {
 		else if(CheckCodes(TheCodes, "_MD_**_**_**_L*")) {
 			// Drive middle path to right auto-line
 			new MidALR();
-		}
-		
-		//CROSSING
-		else if(CheckCodes(TheCodes, "_LF_SC_YS_**_**_")) {
-			// Drive left cross middle shoot scale
 		}
 	}
 

@@ -1,7 +1,6 @@
 
 package org.usfirst.frc.team5442.robot;
 
-import org.usfirst.frc.team5442.robot.commandgroups.RightSCR;
 import org.usfirst.frc.team5442.robot.commands.CompressorToggle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddleChoice;
