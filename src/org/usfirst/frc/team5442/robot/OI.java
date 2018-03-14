@@ -1,13 +1,14 @@
 package org.usfirst.frc.team5442.robot;
 
-import org.usfirst.frc.team5442.robot.commandgroups.LoadPlusArm;
+import org.usfirst.frc.team5442.robot.commandgroups.Reload;
+import org.usfirst.frc.team5442.robot.commands.ArmingCatapult;
+import org.usfirst.frc.team5442.robot.commands.CatapultLatch;
 import org.usfirst.frc.team5442.robot.commands.Climber_Hook;
 import org.usfirst.frc.team5442.robot.commands.CompressorToggle;
 import org.usfirst.frc.team5442.robot.commands.FlipUp;
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
 import org.usfirst.frc.team5442.robot.commands.IntakeOut;
-import org.usfirst.frc.team5442.robot.commands.LoadingCatapult;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
 import org.usfirst.frc.team5442.robot.commands.PincerToggle;
 import org.usfirst.frc.team5442.robot.commands.Shoot;
@@ -108,7 +109,7 @@ public class OI {
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
 		xboxAButton.whileHeld(new Shoot());
-		xboxBButton.whileHeld(new LoadPlusArm());
+		xboxBButton.whenPressed(new Reload());
 		xboxXButton.whenPressed(new CompressorToggle());
 		xboxLeftJoybutton.whenPressed(new SwitchHeading());
 		
@@ -116,10 +117,11 @@ public class OI {
 		//Button1.whileHeld(new FlipExecutable());
 		Button1.whileHeld(new FlipUp());
 		Button7.whenPressed(new PincerToggle());
-		Button5.whileHeld(new IntakeIn(.35));
-		Button3.whileHeld(new IntakeOut(.85));
-		Button4.whileHeld(new LoadingCatapult(-1));
-		Button6.whileHeld(new LoadingCatapult(1));
+		Button5.whileHeld(new IntakeIn(.85));
+		Button3.whileHeld(new IntakeOut(.65));
+		Button2.whileHeld(new IntakeOut(.95));
+		Button4.whileHeld(new ArmingCatapult(1));
+		Button6.whenPressed(new CatapultLatch());
 		Button9.whileHeld(new Telescope(1));
 		Button10.whileHeld(new Telescope(-1));
 		Button11.whileHeld(new Climber_Hook(1));
@@ -138,5 +140,6 @@ public class OI {
 	public Joystick getXboxController2() {
         return Controller2;
     }
+
 }
 

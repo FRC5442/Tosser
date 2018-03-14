@@ -18,8 +18,12 @@ public class FlipUp extends Command {
 	
 	@Override
 	protected boolean isFinished() {
+<<<<<<< .merge_file_a01628
 		//return RobotMap.backFlipStop.get();
 		return false;
+=======
+		return !RobotMap.backFlipStop.get();
+>>>>>>> .merge_file_a06704
 	}
 	
 	@Override

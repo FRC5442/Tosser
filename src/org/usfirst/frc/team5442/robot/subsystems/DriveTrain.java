@@ -2,7 +2,6 @@ package org.usfirst.frc.team5442.robot.subsystems;
 
 import org.usfirst.frc.team5442.robot.RobotMap;
 import org.usfirst.frc.team5442.robot.commands.TankDrive;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -26,6 +25,11 @@ public class DriveTrain extends Subsystem{
 			DriveTrain.tankDrive(leftJoystick, rightJoystick);
 		else
 			DriveTrain.tankDrive(-1*rightJoystick, -1*leftJoystick);
+<<<<<<< .merge_file_a07820
+=======
+			
+		//RobotMap.driveTrain.tankDrive(leftJoystick, rightJoystick);
+>>>>>>> .merge_file_a07228
 	}
 	/// Arcade Drive vs. Tank Drive
 	/*/public static void Driving2(GenericHID leftJoystick) {

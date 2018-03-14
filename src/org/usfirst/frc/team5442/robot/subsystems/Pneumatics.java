@@ -27,5 +27,8 @@ public class Pneumatics extends Subsystem{
 		RobotMap.pincer.set(pince);
 		
 	}
+	public void shooterLatching(Value position) {
+		RobotMap.shooterLatch.set(position);
 
-}
+	}
+}	
