@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -59,19 +59,19 @@ public class RobotMap {
 	public static VictorSP flipper;
 	 */
 	
-	public static Spark leftController1;
-	public static Spark leftController2;
-	public static Spark leftController3;
-	public static Spark rightController1;
-	public static Spark rightController2;
-	public static Spark rightController3;
-	public static Spark catapultMotor;
-	public static Spark winchMotor;
-	public static Spark telescopeMotor;
-	public static Spark hookMotor;
-	public static Spark leftIntake;
-	public static Spark rightIntake;
-	public static Spark flipper;
+	public static VictorSP leftController1;
+	public static VictorSP leftController2;
+	public static VictorSP leftController3;
+	public static VictorSP rightController1;
+	public static VictorSP rightController2;
+	public static VictorSP rightController3;
+	public static VictorSP catapultMotor;
+	public static VictorSP winchMotor;
+	public static VictorSP telescopeMotor;
+	public static VictorSP hookMotor;
+	public static VictorSP leftIntake;
+	public static VictorSP rightIntake;
+	public static VictorSP flipper;
 	
 	
 	public static Compressor compressor;
@@ -121,20 +121,20 @@ public class RobotMap {
 		*/
 		
 		
-		rightController1 = new Spark(0);
-		rightController2 = new Spark(10); // This is above 9 b/c the navx code will just check to make sure that it is 
-		rightController3 = new Spark(11); // ^ That applies here too
-		leftController1 = new Spark(3);
-		leftController2 = new Spark(4);
-		leftController3 = new Spark(5);
+		rightController1 = new VictorSP(0);
+		rightController2 = new VictorSP(10); // This is above 9 b/c the navx code will just check to make sure that it is 
+		rightController3 = new VictorSP(11); // ^ That applies here too
+		leftController1 = new VictorSP(3);
+		leftController2 = new VictorSP(4);
+		leftController3 = new VictorSP(5);
 		
-		catapultMotor = new Spark(6);
-		telescopeMotor = new Spark(2);
-		hookMotor = new Spark(1);
+		catapultMotor = new VictorSP(6);
+		telescopeMotor = new VictorSP(2);
+		hookMotor = new VictorSP(1);
 		//Intake
-		leftIntake = new Spark(9);
-		rightIntake = new Spark(8);
-		flipper = new Spark(7);	
+		leftIntake = new VictorSP(9);
+		rightIntake = new VictorSP(8);
+		flipper = new VictorSP(7);	
 		 
 		
 		gearShift = new DoubleSolenoid(0, 1);

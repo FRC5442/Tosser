@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem {
 	
-	//VictorSP hookMotor;
-	//VictorSP telescopeMotor;
-	Spark hookMotor;
-	Spark telescopeMotor;
+	VictorSP hookMotor;
+	VictorSP telescopeMotor;
+	//Spark hookMotor;
+	//Spark telescopeMotor;
 	
 	public Climber() {
 		hookMotor = RobotMap.hookMotor;

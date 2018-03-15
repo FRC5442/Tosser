@@ -2,6 +2,7 @@
 package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.CompressorToggle;
+import org.usfirst.frc.team5442.robot.commands.LowShift;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddleChoice;
 import org.usfirst.frc.team5442.robot.commands.autonomous.EnableSecondary;
@@ -149,6 +150,7 @@ public class Robot extends IterativeRobot {
 		autonomousFlowchart.ProcessWithStingCode();
 		autonomousFlowchart.RunAutonomous();
 		rememberCompressor = false;
+		new LowShift().start();
 	}
 
 	/**

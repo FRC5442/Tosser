@@ -13,7 +13,7 @@ public class LeftSCL extends CommandGroup{
 
 	public LeftSCL() {
 		//mostly done, check distances, 
-		addSequential(new PIDDriveCommand(230, 0.7));
+		addSequential(new PIDDriveCommand(25, 0.7));
 		addSequential(new Stop(-.30));
 		addSequential(new PIDTurnCommand(90));
 		addSequential(new PIDDriveCommand(-5, .85));
