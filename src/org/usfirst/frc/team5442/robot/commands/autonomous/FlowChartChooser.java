@@ -86,7 +86,7 @@ public class FlowChartChooser { //extends Command {
 		codesAsChars[insertIndex] = newCodeAsChars[0];
 		codesAsChars[insertIndex + 1] = newCodeAsChars[1];
 		codesAsChars[insertIndex + 2] = newCodeAsChars[2];
-		return codesAsChars.toString();
+		return new String(codesAsChars);
 	}
 	
 	private boolean CheckCodes(String codes, ArrayList<String> matches) {
