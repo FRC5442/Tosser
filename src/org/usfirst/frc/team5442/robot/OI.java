@@ -120,10 +120,10 @@ public class OI {
 		Button5.whileHeld(new IntakeIn(.85));
 		Button3.whileHeld(new IntakeOut(.65));
 		Button2.whileHeld(new IntakeOut(.95));
-		Button4.whileHeld(new ArmingCatapult(1));
-		Button6.whenPressed(new CatapultLatch());
-		Button9.whileHeld(new Telescope(1));
-		Button10.whileHeld(new Telescope(-1));
+		Button4.whileHeld(new CatapultLatch());
+		Button6.whenPressed(new Reload());
+		Button9.whileHeld(new Telescope(-1));
+		Button10.whileHeld(new Telescope(1));
 		Button11.whileHeld(new Climber_Hook(1));
 		Button12.whileHeld(new Climber_Hook(-1));
 		
