@@ -25,11 +25,8 @@ public class DriveTrain extends Subsystem{
 			DriveTrain.tankDrive(leftJoystick, rightJoystick);
 		else
 			DriveTrain.tankDrive(-1*rightJoystick, -1*leftJoystick);
-<<<<<<< .merge_file_a07820
-=======
 			
 		//RobotMap.driveTrain.tankDrive(leftJoystick, rightJoystick);
->>>>>>> .merge_file_a07228
 	}
 	/// Arcade Drive vs. Tank Drive
 	/*/public static void Driving2(GenericHID leftJoystick) {

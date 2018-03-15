@@ -15,14 +15,9 @@ public class SmartDashboardPostings {
 
 	public static void updateTeleopValues() {
 		SmartDashboard.putBoolean("Compressor Running", RobotMap.compressor.enabled());
-<<<<<<< .merge_file_a02108
-		SmartDashboard.putBoolean("Shooter Latched", RobotMap.latchSwitch1.get());
-		SmartDashboard.putBoolean("Shooter Armed", RobotMap.latchSwitch2.get());
-		SmartDashboard.putNumber("Left ENcoder", RobotMap.leftEncoder.get());
-=======
+
 		SmartDashboard.putBoolean("Shooter Armed", RobotMap.catapultSwitch.get());
 		SmartDashboard.putNumber("Left Encoder", RobotMap.encoderLeft.getDistance());
->>>>>>> .merge_file_a07376
 		//SmartDashboard.putBoolean("PDP Voltage Less Than 12", RobotMap.pdp.getVoltage() <= 12);
 	}
 	

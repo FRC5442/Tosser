@@ -18,12 +18,8 @@ public class Stop extends Command{
 	
 	@Override
 	protected boolean isFinished() {
-<<<<<<< .merge_file_a07208
-		return !RobotMap.latchSwitch1.get();
-		
-=======
 		return Math.abs(RobotMap.encoderLeft.getRate()) < 1;
->>>>>>> .merge_file_a03120
+
 	}
 
 	@Override

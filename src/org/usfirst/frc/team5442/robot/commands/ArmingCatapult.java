@@ -19,11 +19,7 @@ public class ArmingCatapult extends Command{
 	
 	@Override
 	protected boolean isFinished() {
-<<<<<<< .merge_file_a08124
-		return !RobotMap.latchSwitch2.get();
-=======
 		return !RobotMap.catapultSwitch.get();
->>>>>>> .merge_file_a05124
 	}
 	
 	@Override

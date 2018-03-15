@@ -161,22 +161,13 @@ public class RobotMap {
         //FlipEncoder.setSamplesToAverage(5);
         //FlipEncoder.setDistancePerPulse(1.0/360);
 		
-<<<<<<< .merge_file_a08092
-		leftEncoder = new Encoder(8, 9, false, EncodingType.k4X);
-        leftEncoder.setSamplesToAverage(5);
-        leftEncoder.setDistancePerPulse(1.0/360);
-		
-        rightEncoder = new Encoder(6, 7, false, EncodingType.k4X);
-        rightEncoder.setSamplesToAverage(5);
-        rightEncoder.setDistancePerPulse(1.0/360);
-=======
+
 		navx = new AHRS(SerialPort.Port.kMXP);
 		
 		//encoders
 		encoderLeft = new Encoder(8, 9, false, EncodingType.k4X);
 		encoderLeft.setSamplesToAverage(5);
 		encoderLeft.setDistancePerPulse(1.0/360);
->>>>>>> .merge_file_a05076
 		
 		encoderRight = new Encoder(6, 7, false, EncodingType.k4X);
 		encoderRight.setSamplesToAverage(5);
