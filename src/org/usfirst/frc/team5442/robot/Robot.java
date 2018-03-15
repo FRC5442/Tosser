@@ -1,16 +1,28 @@
 
 package org.usfirst.frc.team5442.robot;
 
-import org.usfirst.frc.team5442.robot.commands.ArcadeDrive;
-import org.usfirst.frc.team5442.robot.commands.HighShift;
+import org.usfirst.frc.team5442.robot.commands.CompressorToggle;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
-import org.usfirst.frc.team5442.robot.commands.TankDrive;
+import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddle;
+import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddleChoice;
+import org.usfirst.frc.team5442.robot.commands.autonomous.EnableSecondary;
+import org.usfirst.frc.team5442.robot.commands.autonomous.EnableSecondaryChoice;
+import org.usfirst.frc.team5442.robot.commands.autonomous.FlowChartChooser;
+import org.usfirst.frc.team5442.robot.commands.autonomous.OurSide;
+import org.usfirst.frc.team5442.robot.commands.autonomous.OurSideChoice;
+import org.usfirst.frc.team5442.robot.commands.autonomous.PrimaryObjective;
+import org.usfirst.frc.team5442.robot.commands.autonomous.PrimaryObjectiveChoice;
+import org.usfirst.frc.team5442.robot.subsystems.Climber;
+import org.usfirst.frc.team5442.robot.subsystems.Cylinders;
 import org.usfirst.frc.team5442.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5442.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5442.robot.subsystems.Intake;
+//import org.usfirst.frc.team5442.robot.subsystems.PIDDrive;
+//import org.usfirst.frc.team5442.robot.subsystems.PIDTurn;
 import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
-import org.usfirst.frc.team5442.robot.triggers.A_Button;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -23,37 +35,85 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
+
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	
 	public static OI oi;
 	public static RobotMap robotMap;
 	public static DriveTrain driveTrain;
 	public static Pneumatics pneumatics;
 
-	Command autonomousCommand;
+	//public static PIDDrive pidDrive;
+	//public static PIDTurn pidTurn;
+	public static Cylinders cylinders;
+	public static Climber climber;
+	public static Intake intake;
+	
+	public static FlowChartChooser autonomousFlowchart;
+
+	//Command autonomousCommand;
 	SendableChooser<Command> driveChooser;
-	/**
+	SendableChooser<Command> ourSide;
+	SendableChooser<Command> primaryObjective;
+	SendableChooser<Command> enableSecondary;
+	SendableChooser<Command> crossMiddle;
+	
+	public boolean rememberCompressor;
+ 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
-	@Override
+
 	public void robotInit() {
+		// Initialize variables 
+		//RobotMap.init();
 		oi = new OI();
 		robotMap = new RobotMap();
-		driveTrain = new DriveTrain();
-		driveChooser = new SendableChooser<>();
-		driveChooser.addDefault("Tank Drive", new TankDrive());
-		driveChooser.addObject("Arcade Drive", new ArcadeDrive());
-		//driveChooser.addObject("My Auto", new MyAutoCommand());
-		//driveChooser.addObject("My Auto", new MyAutoCommand());
-		//driveChooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Drive mode", driveChooser);
-		
+		//driveTrain = new DriveTrain();
 		pneumatics = new Pneumatics();
 		
+		//pidDrive = new PIDDrive(); 
+		//pidTurn = new PIDTurn(); 
 		
-		SmartDashboard.putNumber("Counter", 0);
+		
+		//driveChooser = new SendableChooser<>();
+		// Add objects to "driveChooser" sendablechooser on shuffleboard/smartdashboard
+		//driveChooser.addDefault("Tank Drive", new TankDrive());
+		//driveChooser.addObject("Arcade Drive", new ArcadeDrive());
+		//driveChooser.addObject("My Auto", new MyAutoCommand());
+		//driveChooser.addObject("My Auto", new MyAutoCommand());
+		//driveChooser.addObject("My Auto", new MyAutoCommand());
+		//SmartDashboard.putData("Drive mode", driveChooser);
+		
+		ourSide = new SendableChooser<>();
+		ourSide.addDefault("Left", new OurSide(OurSideChoice.Left));
+		ourSide.addObject("Middle", new OurSide(OurSideChoice.Middle));
+		ourSide.addObject("Right", new OurSide(OurSideChoice.Right));
+		ourSide.addObject("Custom", new OurSide(OurSideChoice.custom));
+		SmartDashboard.putData("Our Side", ourSide);
+		
+		primaryObjective = new SendableChooser<>();
+		primaryObjective.addDefault("AutoLine", new PrimaryObjective(PrimaryObjectiveChoice.Autoline));
+		primaryObjective.addObject("Scale", new PrimaryObjective(PrimaryObjectiveChoice.Scale));
+		primaryObjective.addObject("Switch", new PrimaryObjective(PrimaryObjectiveChoice.Switch));
+		SmartDashboard.putData("Primary Objective", primaryObjective);
+		
+		enableSecondary = new SendableChooser<>();
+		enableSecondary.addDefault("No", new EnableSecondary(EnableSecondaryChoice.No));
+		enableSecondary.addObject("Yes", new EnableSecondary(EnableSecondaryChoice.Yes));
+		SmartDashboard.putData("Enable Secondary Objective?", enableSecondary);
+		
+		crossMiddle = new SendableChooser<>();
+		crossMiddle.addDefault("Yes", new CrossMiddle(CrossMiddleChoice.Yes));
+		crossMiddle.addObject("No", new CrossMiddle(CrossMiddleChoice.No));
+		SmartDashboard.putData("Cross Middle?", crossMiddle);
+		
+
+		pneumatics = new Pneumatics();
+		climber = new Climber();
+		intake = new Intake();
 	}
 
 	/**
@@ -84,18 +144,13 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		//autonomousCommand = chooser.getSelected(); Change this when we get auto code
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-			autonomousCommand.start();
+		RobotMap.navx.reset();
+		autonomousFlowchart = new FlowChartChooser(ourSide, primaryObjective, crossMiddle, enableSecondary);
+		autonomousFlowchart.start();
+		autonomousFlowchart.ProcessWithStingCode();
+		autonomousFlowchart.RunAutonomous();
+		rememberCompressor = false;
+		new LowShift().start();
 	}
 
 	/**
@@ -104,31 +159,34 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboardPostings.updateAutoValues();
 	}
 
 	@Override
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
-		if (autonomousCommand != null)
-			autonomousCommand.cancel();
+		/** This makes sure that the autonomous stops running when teleop starts running. 
+		 * If you want the autonomous to continue until interrupted by another command, remove this line or comment it out.
+		 */
+		if (autonomousFlowchart != null)
+			autonomousFlowchart.cancel();
+		driveTrain = new DriveTrain();
+		
+		rememberCompressor = false;
 	}
 
+	
 	/**
 	 * This function is called periodically during operator control
 	 */
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("PDP0", RobotMap.pdp.getCurrent(0));
-		SmartDashboard.putNumber("PDP1", RobotMap.pdp.getCurrent(1));
-		SmartDashboard.putNumber("PDP2", RobotMap.pdp.getCurrent(2));
-		SmartDashboard.putNumber("PDP5", RobotMap.pdp.getCurrent(5));
-		SmartDashboard.putNumber("PDP6", RobotMap.pdp.getCurrent(6));
-		SmartDashboard.putNumber("PDP7", RobotMap.pdp.getCurrent(7));
-		
+
+		SmartDashboardPostings.updateTeleopValues();
+
+		if(Timer.getMatchTime() >= 120 && RobotMap.compressor.enabled()) {
+			new CompressorToggle().start();
+		}
 	}
 
 	/**
@@ -136,5 +194,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		Scheduler.getInstance().run();
+		
+	}
+	
+	public static void SwitchHeading() {
+		driveTrain.SwitchHeading();
 	}
 }

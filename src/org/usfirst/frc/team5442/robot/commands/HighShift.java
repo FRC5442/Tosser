@@ -16,5 +16,4 @@ public class HighShift extends Command {
 	protected boolean isFinished() {
 		return false;
 	}
-
 }
