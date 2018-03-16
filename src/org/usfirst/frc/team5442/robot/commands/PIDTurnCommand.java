@@ -28,7 +28,7 @@ public class PIDTurnCommand extends PIDCommand{
 	protected boolean isFinished() {
 		//return getSetpoint() < RobotMap.navx.getAngle();
 		//return angle - RobotMap.navx.getAngle() < 15;
-		return tim.get() >= 2.5;
+		return tim.get() >= 1.75;
 		//return tim.get() >= .25 && Math.abs(RobotMap.encoderLeft.getRate()) < 1;
 	}
 

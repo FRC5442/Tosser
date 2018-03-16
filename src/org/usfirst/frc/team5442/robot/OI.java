@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commandgroups.Reload;
-import org.usfirst.frc.team5442.robot.commands.ArmingCatapult;
 import org.usfirst.frc.team5442.robot.commands.CatapultLatch;
 import org.usfirst.frc.team5442.robot.commands.Climber_Hook;
 import org.usfirst.frc.team5442.robot.commands.CompressorToggle;

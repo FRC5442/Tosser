@@ -2,10 +2,13 @@ package org.usfirst.frc.team5442.robot.commands;
 
 import org.usfirst.frc.team5442.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 
-public class PIDDriveCommand extends PIDCommand{
+public class PIDDriveTimeout extends PIDCommand{
 
+	
+	Timer tim = new Timer();
 	double _encoderDistance;
 	double _speed;
 	/**double _ratio = 0.796; //how many inches per encoder rotation
@@ -19,9 +22,9 @@ public class PIDDriveCommand extends PIDCommand{
 	//100, 93.1
 	//130, 119.3
 	
-	public PIDDriveCommand(
+	public PIDDriveTimeout(
 			double distanceInInches, double speed) {
-		super("Straight DrivingPID", 0.01, 0.00, 0);
+		super("Straight DrivingPID", 0.1, 0.00, 0);
 		//.1 not in mpr?
 		_speed = speed;
 		_encoderDistance = distanceInInches * _ratio -  _rollout;
@@ -34,11 +37,14 @@ public class PIDDriveCommand extends PIDCommand{
 		RobotMap.encoderLeft.reset();
 		RobotMap.encoderRight.reset();
 		setSetpointRelative(0);
+		tim.start();
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		return (Math.abs(RobotMap.encoderRight.getDistance()) > _encoderDistance);
+		return (Math.abs(RobotMap.encoderRight.getDistance()) > _encoderDistance) || 
+				(Math.abs(RobotMap.encoderRight.getRate()) < 1 && tim.get() > .25);
+		
 	}
 
 	protected void end() {
@@ -53,7 +59,7 @@ public class PIDDriveCommand extends PIDCommand{
 
 	@Override
 	protected void usePIDOutput(double output) {
-		RobotMap.driveTrain.curvatureDrive(_speed, output, false);
+		RobotMap.driveTrain.curvatureDrive(_speed, output*Math.signum(_encoderDistance), false);
 		//RobotMap.driveTrain.curvatureDrive(_speed, 0, false);
 	}
 }

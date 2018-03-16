@@ -9,9 +9,9 @@ public class AutoLineOnly extends CommandGroup{
 
 	public AutoLineOnly() {
 		//Tested, should be good. Right or left side only
-		addSequential(new PIDDriveCommand(120, .5));
-		addSequential(new Stop(-.25));
-		//addSequential(new PIDTurnCommand(-90));
+		addSequential(new PIDDriveCommand(140, -.5));
+		addSequential(new Stop(.25));
+		
 		
 	}
 

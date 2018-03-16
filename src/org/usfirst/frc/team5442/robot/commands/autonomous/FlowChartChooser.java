@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class FlowChartChooser { // extends Command {
 	private OurSideChoice _ourSide;
@@ -169,6 +170,7 @@ public class FlowChartChooser { // extends Command {
 		
 		if(autoRun != null)
 			autoRun.start();
+			SmartDashboard.putString("Auto Code", autoRun.getName());
 	}
 
 	public void cancel() {
