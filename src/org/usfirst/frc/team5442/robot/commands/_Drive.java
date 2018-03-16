@@ -27,11 +27,8 @@ public class _Drive extends Command{
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		if (Math.abs(RobotMap.encoderLeft.getDistance()) < enc_distance) {
-			return false;
-		} else {
-			return true;
-		}
+		return (Math.abs(RobotMap.encoderRight.getDistance()) > enc_distance); 
+
 		
 	}
 	@Override

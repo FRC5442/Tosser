@@ -1,7 +1,6 @@
 
 package org.usfirst.frc.team5442.robot;
 
-import org.usfirst.frc.team5442.robot.commandgroups.AutoLineOnly;
 import org.usfirst.frc.team5442.robot.commands.CompressorToggle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddleChoice;
@@ -140,11 +139,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		RobotMap.navx.reset();
-		//autonomousFlowchart = new FlowChartChooser(ourSide, primaryObjective, crossMiddle, enableSecondary);
-		//autonomousFlowchart.start();
-		//autonomousFlowchart.ProcessWithStingCode();
-		//autonomousFlowchart.RunAutonomous();
-		new AutoLineOnly().start(); //Disable this when we put the flowchart back
+		autonomousFlowchart = new FlowChartChooser(ourSide, primaryObjective, crossMiddle, enableSecondary);
+		autonomousFlowchart.ProcessWithStingCode();		
+		autonomousFlowchart.RunAutonomous();
+		//new AutoLineOnly().start(); //Disable this when we put the flowchart back
 		rememberCompressor = false;
 		Robot.pneumatics.gearShift(DoubleSolenoid.Value.kForward); //low shift
 		RobotMap.latchCylinder.set(DoubleSolenoid.Value.kForward); //Reset Shooter Solenoid
@@ -165,7 +163,6 @@ public class Robot extends IterativeRobot {
 		/** This makes sure that the autonomous stops running when teleop starts running. 
 		 * If you want the autonomous to continue until interrupted by another command, remove this line or comment it out.
 		 */
-		
 		if (autonomousFlowchart != null)
 			autonomousFlowchart.cancel();
 		driveTrain = new DriveTrain();
