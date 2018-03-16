@@ -22,9 +22,6 @@ public class SmartDashboardPostings {
 		SmartDashboard.putNumber("Left Encoder", RobotMap.encoderLeft.getDistance());
 		SmartDashboard.putNumber("Right Encoder", RobotMap.encoderRight.getDistance());
 		SmartDashboard.putNumber("NavX Angle", RobotMap.navx.getAngle());
-		SmartDashboard.putNumber("NavX Yaw", RobotMap.navx.getYaw());
-		SmartDashboard.putNumber("NavX Pitch", RobotMap.navx.getPitch());
-		SmartDashboard.putNumber("NavX Roll", RobotMap.navx.getRoll());
 		
 		//SmartDashboard.putBoolean("PDP Voltage Less Than 12", RobotMap.pdp.getVoltage() <= 12);
 	}

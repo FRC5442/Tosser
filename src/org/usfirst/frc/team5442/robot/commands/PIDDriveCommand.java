@@ -8,9 +8,16 @@ public class PIDDriveCommand extends PIDCommand{
 
 	double _encoderDistance;
 	double _speed;
-	double _ratio = 0.796; //how many inches per encoder rotation
-	double _rollout = 3.57;
+	/**double _ratio = 0.796; //how many inches per encoder rotation
+	double _rollout = 3.57;**/
+	double _ratio = 1.1438;
+	double _rollout = 6.4748;
 	//.796x-3.57
+	//.8742x+5.6578
+	//20, 23.14
+	//70, 66.86
+	//100, 93.1
+	//130, 119.3
 	
 	public PIDDriveCommand(
 			double distanceInInches, double speed) {
