@@ -116,6 +116,7 @@ public class OI {
 		//Button1.whileHeld(new FlipExecutable());
 		Button1.whileHeld(new FlipUp());
 		Button7.whenPressed(new PincerToggle());
+		//Button8.whenPressed(new PincerIn());
 		Button5.whileHeld(new IntakeIn(.85));
 		Button3.whileHeld(new IntakeOut(.65));
 		Button2.whileHeld(new IntakeOut(.95));
