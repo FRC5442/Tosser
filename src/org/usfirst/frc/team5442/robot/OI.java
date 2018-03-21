@@ -9,7 +9,8 @@ import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
 import org.usfirst.frc.team5442.robot.commands.IntakeOut;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
-import org.usfirst.frc.team5442.robot.commands.PincerToggle;
+import org.usfirst.frc.team5442.robot.commands.PincerIn;
+import org.usfirst.frc.team5442.robot.commands.PincerOut;
 import org.usfirst.frc.team5442.robot.commands.Shoot;
 import org.usfirst.frc.team5442.robot.commands.SwitchHeading;
 import org.usfirst.frc.team5442.robot.commands.Telescope;
@@ -115,8 +116,9 @@ public class OI {
 		//Control Joystick 2
 		//Button1.whileHeld(new FlipExecutable());
 		Button1.whileHeld(new FlipUp());
-		Button7.whenPressed(new PincerToggle());
-		//Button8.whenPressed(new PincerIn());
+		//Button7.whenPressed(new PincerToggle());
+		Button8.whenPressed(new PincerIn());
+		Button7.whenPressed(new PincerOut());
 		Button5.whileHeld(new IntakeIn(.85));
 		Button3.whileHeld(new IntakeOut(.65));
 		Button2.whileHeld(new IntakeOut(.95));

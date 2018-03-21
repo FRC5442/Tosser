@@ -13,12 +13,17 @@ public class PincerIn extends Command{
 
 	@Override
 	protected void initialize() {
-		Robot.pneumatics.pincing(DoubleSolenoid.Value.kForward);
-	}
-	@SuppressWarnings("unlikely-arg-type")
+		if (RobotMap.pincer.get() == DoubleSolenoid.Value.kReverse) {
+			Robot.pneumatics.pincing(DoubleSolenoid.Value.kForward);
+		}
+		
+		}
+		
+		
+	
 	@Override
 	protected boolean isFinished() {
-		return RobotMap.pincer.equals(DoubleSolenoid.Value.kForward);
+		return RobotMap.pincer.get() == (DoubleSolenoid.Value.kForward);
 	}
 
 }
