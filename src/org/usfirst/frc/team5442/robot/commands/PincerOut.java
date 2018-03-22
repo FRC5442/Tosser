@@ -13,11 +13,9 @@ public class PincerOut extends Command{
 
 	@Override
 	protected void initialize() {
-		if (RobotMap.pincer.get() == DoubleSolenoid.Value.kForward) {
-			Robot.pneumatics.pincing(DoubleSolenoid.Value.kReverse);
-		}
+		Robot.pneumatics.pincing(DoubleSolenoid.Value.kReverse);
 		
-		}
+	}
 		
 	@SuppressWarnings("unlikely-arg-type")
 	@Override
