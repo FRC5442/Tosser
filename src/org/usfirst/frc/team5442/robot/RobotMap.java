@@ -137,8 +137,8 @@ public class RobotMap {
 		 
 		
 		gearShift = new DoubleSolenoid(0, 1);
-		pincer = new DoubleSolenoid(2, 3);
-		shooterLatch = new DoubleSolenoid(6, 7);
+		pincer = new DoubleSolenoid(6, 7);
+		//shooterLatch = new DoubleSolenoid(6, 7);
 		latchCylinder = new DoubleSolenoid(4, 5);
 		
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
