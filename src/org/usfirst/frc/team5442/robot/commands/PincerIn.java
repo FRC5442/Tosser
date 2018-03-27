@@ -6,15 +6,15 @@ import org.usfirst.frc.team5442.robot.RobotMap;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class PincerOff extends Command {
+public class PincerIn extends Command {
 	
-	public PincerOff() {
+	public PincerIn() {
 		
 	}
 	
 	@Override
 	protected void initialize(){
-		Robot.pneumatics.pincing(DoubleSolenoid.Value.kOff);
+		Robot.pneumatics.pincing(DoubleSolenoid.Value.kForward);
 	}
 
 	@Override

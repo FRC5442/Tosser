@@ -10,9 +10,11 @@ import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
 import org.usfirst.frc.team5442.robot.commands.IntakeOut;
 import org.usfirst.frc.team5442.robot.commands.LowShift;
+import org.usfirst.frc.team5442.robot.commands.PincerIn;
 import org.usfirst.frc.team5442.robot.commands.PincerOff;
-import org.usfirst.frc.team5442.robot.commands.PincerToggle;
+import org.usfirst.frc.team5442.robot.commands.PincerOut;
 import org.usfirst.frc.team5442.robot.commands.Shoot;
+import org.usfirst.frc.team5442.robot.commands.SpinAndPause;
 import org.usfirst.frc.team5442.robot.commands.SwitchHeading;
 import org.usfirst.frc.team5442.robot.commands.Telescope;
 
@@ -81,7 +83,7 @@ public class OI {
 	public JoystickButton Button10;
 	public JoystickButton Button11;
 	public JoystickButton Button12;
-
+	
 	
 	public OI(){		
 		// Assign Joysticks and their ports
@@ -112,6 +114,7 @@ public class OI {
 		Button11 = new JoystickButton(Controller2, 11);
 		Button12 = new JoystickButton(Controller2, 12);
 		
+		
 		//Driver Joystick 1
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
@@ -119,15 +122,17 @@ public class OI {
 		xboxBButton.whenPressed(new Reload());
 		xboxXButton.whenPressed(new CompressorToggle());
 		xboxLeftJoybutton.whenPressed(new SwitchHeading());
-		xboxYButton.whenPressed(new PincerOff());;
+		xboxYButton.whenPressed(new PincerOff());
 
 		
 		//Control Joystick 2
 		Button1.whileHeld(new FlipExecutable());
-		Button7.whenPressed(new PincerToggle());
-		Button5.whileHeld(new IntakeIn(.85));
-		Button3.whileHeld(new IntakeOut(.65));
-		Button2.whileHeld(new IntakeOut(.95));
+		Button7.whenPressed(new PincerIn());
+		Button8.whenPressed(new PincerOut());
+		Button5.whileHeld(new IntakeIn(.5));
+		Button3.whileHeld(new IntakeOut(.75));
+		Button2.whenPressed(new SpinAndPause(
+				));
 		Button4.whileHeld(new ArmingCatapult(1));
 		Button6.whenPressed(new CatapultLatch());
 		Button9.whileHeld(new Telescope(1));

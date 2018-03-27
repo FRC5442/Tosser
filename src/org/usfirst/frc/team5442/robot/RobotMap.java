@@ -84,6 +84,7 @@ public class RobotMap {
     
     public static DigitalInput limitSwitch;
     public static DigitalInput limitSwitch2;
+    public static DigitalInput intakeLimitSwitch;
     public static DigitalInput windSwitch;
     public static DigitalInput latchSwitch1;
     public static DigitalInput catapultSwitch;
@@ -134,7 +135,7 @@ public class RobotMap {
 		leftIntake = new Spark(9);
 		rightIntake = new Spark(8);
 		flipper = new Spark(7);	
-		 
+		
 		
 		gearShift = new DoubleSolenoid(0, 1);
 		pincer = new DoubleSolenoid(6, 7);
@@ -153,6 +154,7 @@ public class RobotMap {
 		
 		backFlipStop = new DigitalInput(2);
 		frontFlipStop = new DigitalInput(3);
+		intakeLimitSwitch = new DigitalInput(4);
 		//latchSwitch1 = new DigitalInput(2);
 		catapultSwitch = new DigitalInput(5);
 		
