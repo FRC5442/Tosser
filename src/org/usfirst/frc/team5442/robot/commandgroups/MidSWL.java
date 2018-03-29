@@ -13,13 +13,13 @@ public class MidSWL extends CommandGroup{
 	public MidSWL() {
 		//Good Stuff. Works on practice bot, check on comp bot
 		addSequential(new PIDDriveCommand(10, 0.50));
-		addSequential(new Stop(-.20));
+		addSequential(new Stop(-.15));
 		addSequential(new PIDTurnCommand(-38));
-		addSequential(new PIDDriveCommand(87, 0.50));
-		addSequential(new Stop(-.20));
+		addSequential(new PIDDriveCommand(94, 0.50));//87
+		addSequential(new Stop(-.15));
 		addSequential(new PIDTurnCommand(38));
-		addSequential(new PIDDriveCommand(26, 0.50)); 
-		addSequential(new Stop(-.20));
+		addSequential(new PIDDriveCommand(20, 0.50)); //26
+		addSequential(new Stop(-.15));
 		addSequential(new FlipAuto(1, .75));
 		addSequential(new IntakeOutAuto(.70, 2));
 	}

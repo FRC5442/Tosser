@@ -13,13 +13,13 @@ public class MidSWR extends CommandGroup {
 	public MidSWR() {
 		//Good stuff. Double check on comp bot, but should be good to go.
 		addSequential(new PIDDriveCommand(10, 0.50));
-		addSequential(new Stop(-.20));
+		addSequential(new Stop(-.15));
 		addSequential(new PIDTurnCommand(38));
-		addSequential(new PIDDriveCommand(88.5, 0.50));
-		addSequential(new Stop(-.20));
+		addSequential(new PIDDriveCommand(84, 0.50));//88.5
+		addSequential(new Stop(-.15));
 		addSequential(new PIDTurnCommand(-38));
-		addSequential(new PIDDriveCommand(26, 0.50)); //check this distance
-		addSequential(new Stop(-.20));
+		addSequential(new PIDDriveCommand(29, 0.50)); //26
+		addSequential(new Stop(-.15));
 		addSequential(new FlipAuto(1, .75));
 		addSequential(new IntakeOutAuto(.70, 2));
 	}

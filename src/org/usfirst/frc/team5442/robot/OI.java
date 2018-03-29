@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commandgroups.Reload;
-import org.usfirst.frc.team5442.robot.commands.ArmingCatapult;
 import org.usfirst.frc.team5442.robot.commands.CatapultLatch;
 import org.usfirst.frc.team5442.robot.commands.Climber_Hook;
 import org.usfirst.frc.team5442.robot.commands.CompressorToggle;
@@ -119,26 +118,25 @@ public class OI {
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
 		xboxAButton.whileHeld(new Shoot());
-		xboxBButton.whenPressed(new Reload());
+		xboxBButton.whileHeld(new Climber_Hook(1));
+		xboxYButton.whileHeld(new Climber_Hook(-1));
 		xboxXButton.whenPressed(new CompressorToggle());
 		xboxLeftJoybutton.whenPressed(new SwitchHeading());
-		xboxYButton.whenPressed(new PincerOff());
 
 		
 		//Control Joystick 2
 		Button1.whileHeld(new FlipExecutable());
 		Button7.whenPressed(new PincerIn());
 		Button8.whenPressed(new PincerOut());
+		Button9.whileHeld(new PincerOff());
 		Button5.whileHeld(new IntakeIn(.5));
-		Button3.whileHeld(new IntakeOut(.75));
-		Button2.whenPressed(new SpinAndPause(
-				));
-		Button4.whileHeld(new ArmingCatapult(1));
-		Button6.whenPressed(new CatapultLatch());
-		Button9.whileHeld(new Telescope(1));
-		Button10.whileHeld(new Telescope(-1));
-		Button11.whileHeld(new Climber_Hook(1));
-		Button12.whileHeld(new Climber_Hook(-1));
+		Button3.whileHeld(new IntakeOut(.65));
+		Button2.whenPressed(new SpinAndPause());
+		Button4.whileHeld(new CatapultLatch());
+		Button6.whenPressed(new Reload());
+		Button11.whileHeld(new Telescope(1));
+		Button12.whileHeld(new Telescope(-1));
+		//Button10.whileHeld(new Climber_Hook(-1));
 		
 		//xboxYButton2.whileHeld(new FlipForward(1));
 		
