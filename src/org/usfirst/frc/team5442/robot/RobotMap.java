@@ -90,6 +90,8 @@ public class RobotMap {
     public static DigitalInput catapultSwitch;
 	public static DigitalInput backFlipStop;
 	public static DigitalInput frontFlipStop;
+	public static DigitalInput intakeLimitSwitch;
+
     
 	// Setting SpeedControllerGroups per side
 	static SpeedControllerGroup leftControllers;
@@ -100,6 +102,7 @@ public class RobotMap {
 	public static Encoder encoderRight;
 	
 	public static AHRS navx;
+
 	
 	public RobotMap() {
 		// Setting port numbers for speed controllers

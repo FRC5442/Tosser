@@ -4,7 +4,7 @@ import org.usfirst.frc.team5442.robot.commandgroups.Reload;
 import org.usfirst.frc.team5442.robot.commands.CatapultLatch;
 import org.usfirst.frc.team5442.robot.commands.Climber_Hook;
 import org.usfirst.frc.team5442.robot.commands.CompressorToggle;
-import org.usfirst.frc.team5442.robot.commands.FlipUp;
+import org.usfirst.frc.team5442.robot.commands.FlipExecutable;
 import org.usfirst.frc.team5442.robot.commands.HighShift;
 import org.usfirst.frc.team5442.robot.commands.IntakeIn;
 import org.usfirst.frc.team5442.robot.commands.IntakeOut;
@@ -13,6 +13,7 @@ import org.usfirst.frc.team5442.robot.commands.PincerIn;
 import org.usfirst.frc.team5442.robot.commands.PincerOff;
 import org.usfirst.frc.team5442.robot.commands.PincerOut;
 import org.usfirst.frc.team5442.robot.commands.Shoot;
+import org.usfirst.frc.team5442.robot.commandgroups.SpinAndPause;
 import org.usfirst.frc.team5442.robot.commands.SwitchHeading;
 import org.usfirst.frc.team5442.robot.commands.Telescope;
 
@@ -63,8 +64,10 @@ public class OI {
 	public JoystickButton xboxBButton;
 	public JoystickButton xboxAButton;
 	public JoystickButton xboxXButton;
-	public JoystickButton xboxYButton;
 	public JoystickButton xboxLeftJoybutton;
+	public JoystickButton xboxYButton;
+
+	
 	
 	//Controller 2 buttons
 	public JoystickButton Button1;
@@ -80,6 +83,7 @@ public class OI {
 	public JoystickButton Button11;
 	public JoystickButton Button12;
 	
+	
 	public OI(){		
 		// Assign Joysticks and their ports
 		xboxController1 = new XboxController(0);
@@ -93,6 +97,7 @@ public class OI {
 		xboxXButton = new JoystickButton(xboxController1, 3);
 		xboxYButton = new JoystickButton(xboxController1, 4);
 		xboxLeftJoybutton = new JoystickButton(xboxController1, 10);
+		
 
 		//Controller 2
 		Button1 = new JoystickButton(Controller2, 1);
@@ -108,35 +113,34 @@ public class OI {
 		Button11 = new JoystickButton(Controller2, 11);
 		Button12 = new JoystickButton(Controller2, 12);
 		
+		
 		//Driver Joystick 1
 		xboxLBumper.whileHeld(new HighShift());
 		xboxRBumper.whileHeld(new LowShift());
 		xboxAButton.whileHeld(new Shoot());
-		xboxBButton.whenPressed(new Reload());
+		xboxBButton.whileHeld(new Climber_Hook(1));
+		xboxYButton.whileHeld(new Climber_Hook(-1));
 		xboxXButton.whenPressed(new CompressorToggle());
-		xboxYButton.whenPressed(new PincerOff());
 		xboxLeftJoybutton.whenPressed(new SwitchHeading());
+
 		
 		//Control Joystick 2
-		//Button1.whileHeld(new FlipExecutable());
-		Button1.whileHeld(new FlipUp());
-		//Button7.whenPressed(new PincerToggle());
-		Button8.whenPressed(new PincerIn());
-		Button7.whenPressed(new PincerOut());
-		Button5.whileHeld(new IntakeIn(.85));
+		Button1.whileHeld(new FlipExecutable());
+		Button7.whenPressed(new PincerIn());
+		Button8.whenPressed(new PincerOut());
+		Button9.whileHeld(new PincerOff());
+		Button5.whileHeld(new IntakeIn(.5));
 		Button3.whileHeld(new IntakeOut(.65));
-		Button2.whileHeld(new IntakeOut(.95));
+		Button2.whenPressed(new SpinAndPause());
 		Button4.whileHeld(new CatapultLatch());
 		Button6.whenPressed(new Reload());
-		Button9.whileHeld(new Telescope(-1));
-		Button10.whileHeld(new Telescope(1));
-		Button11.whileHeld(new Climber_Hook(1));
-		Button12.whileHeld(new Climber_Hook(-1));
+		Button11.whileHeld(new Telescope(1));
+		Button12.whileHeld(new Telescope(-1));
+		//Button10.whileHeld(new Climber_Hook(-1));
 		
 		//xboxYButton2.whileHeld(new FlipForward(1));
 		
 		//12 loosen
-		
 		//11 tighten
 	}
 	
