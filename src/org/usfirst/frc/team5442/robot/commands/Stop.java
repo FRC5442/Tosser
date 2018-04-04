@@ -2,13 +2,21 @@ package org.usfirst.frc.team5442.robot.commands;
 
 import org.usfirst.frc.team5442.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class Stop extends Command{
 
+	
+	Timer tim = new Timer();
 	private double speed;
 	public Stop(double speed) {
 		this.speed = speed;
+	}
+	
+	@Override
+	protected void initialize() {
+		tim.start();
 	}
 	
 	@Override
@@ -18,7 +26,7 @@ public class Stop extends Command{
 	
 	@Override
 	protected boolean isFinished() {
-		return Math.abs(RobotMap.encoderLeft.getRate()) < 1;
+		return Math.abs(RobotMap.encoderLeft.getRate()) < 1.5 || tim.get() >= 1;
 
 	}
 

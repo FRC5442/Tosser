@@ -18,7 +18,8 @@ public class FlipDown extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return !RobotMap.frontFlipStop.get();
+		//return !RobotMap.frontFlipStop.get();
+		return false;
 	}
 	
 	@Override
