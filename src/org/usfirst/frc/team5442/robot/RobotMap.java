@@ -90,6 +90,8 @@ public class RobotMap {
     public static DigitalInput catapultSwitch;
 	public static DigitalInput backFlipStop;
 	public static DigitalInput frontFlipStop;
+	public static DigitalInput intakeLimitSwitch;
+
     
 	// Setting SpeedControllerGroups per side
 	static SpeedControllerGroup leftControllers;
@@ -100,6 +102,7 @@ public class RobotMap {
 	public static Encoder encoderRight;
 	
 	public static AHRS navx;
+
 	
 	public RobotMap() {
 		// Setting port numbers for speed controllers
@@ -122,19 +125,19 @@ public class RobotMap {
 		
 		
 		rightController1 = new VictorSP(0);
-		rightController2 = new VictorSP(10); // This is above 9 b/c the navx code will just check to make sure that it is 
-		rightController3 = new VictorSP(11); // ^ That applies here too
-		leftController1 = new VictorSP(3);
-		leftController2 = new VictorSP(4);
-		leftController3 = new VictorSP(5);
+		rightController2 = new VictorSP(1); // This is above 9 b/c the navx code will just check to make sure that it is 
+		rightController3 = new VictorSP(2); // ^ That applies here too
+		leftController1 = new VictorSP(6);
+		leftController2 = new VictorSP(7);
+		leftController3 = new VictorSP(8);
 		
-		catapultMotor = new VictorSP(6);
-		telescopeMotor = new VictorSP(2);
-		hookMotor = new VictorSP(1);
+		catapultMotor = new VictorSP(3);
+		telescopeMotor = new VictorSP(11);
+		hookMotor = new VictorSP(9);
 		//Intake
-		leftIntake = new VictorSP(9);
-		rightIntake = new VictorSP(8);
-		flipper = new VictorSP(7);	
+		leftIntake = new VictorSP(4);
+		rightIntake = new VictorSP(5);
+		flipper = new VictorSP(10);	
 		 
 		
 		gearShift = new DoubleSolenoid(0, 1);
@@ -152,24 +155,24 @@ public class RobotMap {
 		//Turn on if debugging
 		//pdp = new PowerDistributionPanel(1);
 		
-		backFlipStop = new DigitalInput(2);
-		frontFlipStop = new DigitalInput(3);
+		//backFlipStop = new DigitalInput(1);
+		//frontFlipStop = new DigitalInput(4);
 		//latchSwitch1 = new DigitalInput(2);
-		catapultSwitch = new DigitalInput(5);
+		catapultSwitch = new DigitalInput(2);
 		
-		//FlipEncoder = new Encoder(-1, -1, false, EncodingType.k4X);
-        //FlipEncoder.setSamplesToAverage(5);
-        //FlipEncoder.setDistancePerPulse(1.0/360);
+		flipEncoder = new Encoder(8, 9, false, EncodingType.k4X);
+        flipEncoder.setSamplesToAverage(5);
+        flipEncoder.setDistancePerPulse(1.0/360);
 		
 
 		navx = new AHRS(SerialPort.Port.kMXP);
 		
 		//encoders
-		encoderLeft = new Encoder(8, 9, false, EncodingType.k4X);
+		encoderLeft = new Encoder(6, 7, false, EncodingType.k4X);
 		encoderLeft.setSamplesToAverage(5);
 		encoderLeft.setDistancePerPulse(1.0/360);
 		
-		encoderRight = new Encoder(6, 7, false, EncodingType.k4X);
+		encoderRight = new Encoder(4, 5, false, EncodingType.k4X);
 		encoderRight.setSamplesToAverage(5);
 		encoderRight.setDistancePerPulse(1.0/360);
 	}

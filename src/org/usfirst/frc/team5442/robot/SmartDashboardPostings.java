@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5442.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SmartDashboardPostings {
@@ -9,15 +10,23 @@ public class SmartDashboardPostings {
 	}
 	public static void updateAutoValues() {
 		//SmartDashboard.putNumber("Flip Encoder", RobotMap.flipEncoder.getDistance());
-		//SmartDashboard.putNumber("NavX Angle", RobotMap.navx.getAngle());
+		SmartDashboard.putNumber("NavX Angle", RobotMap.navx.getAngle());
 		SmartDashboard.putBoolean("Catapult Limit Switch", RobotMap.catapultSwitch.get());
+		SmartDashboard.putNumber("Left Encoder", RobotMap.encoderLeft.getDistance());
+		SmartDashboard.putNumber("Right Encoder", RobotMap.encoderRight.getDistance());
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	public static void updateTeleopValues() {
 		SmartDashboard.putBoolean("Compressor Running", RobotMap.compressor.enabled());
+		SmartDashboard.putBoolean("Shooter Armed", !RobotMap.catapultSwitch.get());
+//		SmartDashboard.putNumber("Flip Encoder", RobotMap.flipEncoder.getDistance());
+//		SmartDashboard.putNumber("Left Encoder", RobotMap.encoderLeft.getDistance());
+//		SmartDashboard.putNumber("Right Encoder", RobotMap.encoderRight.getDistance());
+//		SmartDashboard.putNumber("NavX Angle", RobotMap.navx.getAngle());
+		SmartDashboard.putBoolean("Pincer State", RobotMap.pincer.equals(DoubleSolenoid.Value.kForward));
 
-		SmartDashboard.putBoolean("Shooter Armed", RobotMap.catapultSwitch.get());
-		SmartDashboard.putNumber("Left Encoder", RobotMap.encoderLeft.getDistance());
+		
 		//SmartDashboard.putBoolean("PDP Voltage Less Than 12", RobotMap.pdp.getVoltage() <= 12);
 	}
 	

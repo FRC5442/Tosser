@@ -9,7 +9,7 @@ public class IntakeOut extends Command {
 	double speed;
 	
 	public IntakeOut(double speed) {
-		this.speed = Math.abs(speed);
+		this.speed = -Math.abs(speed);
 		
 	}
 	

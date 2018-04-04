@@ -11,7 +11,7 @@ public class IntakeOutAuto extends Command {
 	Timer tim = new Timer();
 	
 	public IntakeOutAuto(double speed, double time) {
-		this.speed = Math.abs(speed);
+		this.speed = -Math.abs(speed);
 		this.time = time;
 		
 	}

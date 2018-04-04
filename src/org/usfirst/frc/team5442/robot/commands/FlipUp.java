@@ -13,13 +13,13 @@ public class FlipUp extends Command {
 	
 	@Override
 	protected void execute() {
-		Robot.intake.doFlip(-OI.Controller2.getRawAxis(1));
+		Robot.intake.doFlip(-OI.Controller2.getRawAxis(1)) ;
 	}
 	
 	@Override
 	protected boolean isFinished() {
-
-		return !RobotMap.backFlipStop.get();
+		return false;
+		//return !RobotMap.backFlipStop.get();
 	}
 	
 	@Override

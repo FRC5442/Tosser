@@ -5,33 +5,36 @@ import org.usfirst.frc.team5442.robot.RobotMap;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Stop extends Command{
+public class SpinCube extends Command{
 
-	
 	Timer tim = new Timer();
-	private double speed;
-	public Stop(double speed) {
-		this.speed = speed;
+	double _time, _speed;
+	
+	public SpinCube(double time, double speed) {
+		_time = time;
+		_speed = speed;
 	}
 	
-	@Override
 	protected void initialize() {
+		tim.reset();
 		tim.start();
 	}
 	
-	@Override
 	protected void execute() {
-		RobotMap.driveTrain.curvatureDrive(speed, 0, false);
+		RobotMap.rightIntake.set(_speed);
+		RobotMap.leftIntake.set(.65);
+
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		return Math.abs(RobotMap.encoderLeft.getRate()) < 1.5 || tim.get() >= 1;
-
+		return tim.get() > _time || !RobotMap.intakeLimitSwitch.get();
+		
 	}
 
-	@Override
 	protected void end() {
-		RobotMap.driveTrain.arcadeDrive(0, 0);
+		RobotMap.rightIntake.set(0);
+		RobotMap.leftIntake.set(0);
+		tim.stop();
 	}
 }

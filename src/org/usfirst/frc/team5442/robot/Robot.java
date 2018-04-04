@@ -2,7 +2,6 @@
 package org.usfirst.frc.team5442.robot;
 
 import org.usfirst.frc.team5442.robot.commands.CompressorToggle;
-import org.usfirst.frc.team5442.robot.commands.LowShift;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddle;
 import org.usfirst.frc.team5442.robot.commands.autonomous.CrossMiddleChoice;
 import org.usfirst.frc.team5442.robot.commands.autonomous.EnableSecondary;
@@ -21,6 +20,7 @@ import org.usfirst.frc.team5442.robot.subsystems.Intake;
 //import org.usfirst.frc.team5442.robot.subsystems.PIDTurn;
 import org.usfirst.frc.team5442.robot.subsystems.Pneumatics;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -71,13 +71,9 @@ public class Robot extends IterativeRobot {
 		//RobotMap.init();
 		oi = new OI();
 		robotMap = new RobotMap();
-		//driveTrain = new DriveTrain();
+		//driveTrain = new DriveTrain(); //enabled in Tele-Op
 		pneumatics = new Pneumatics();
-		
-		//pidDrive = new PIDDrive(); 
-		//pidTurn = new PIDTurn(); 
-		
-		
+
 		//driveChooser = new SendableChooser<>();
 		// Add objects to "driveChooser" sendablechooser on shuffleboard/smartdashboard
 		//driveChooser.addDefault("Tank Drive", new TankDrive());
@@ -101,17 +97,15 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Primary Objective", primaryObjective);
 		
 		enableSecondary = new SendableChooser<>();
-		enableSecondary.addDefault("No", new EnableSecondary(EnableSecondaryChoice.No));
-		enableSecondary.addObject("Yes", new EnableSecondary(EnableSecondaryChoice.Yes));
+		enableSecondary.addDefault("No (Enable Secondary)", new EnableSecondary(EnableSecondaryChoice.No));
+		enableSecondary.addObject("Yes (Enable Secondary)", new EnableSecondary(EnableSecondaryChoice.Yes));
 		SmartDashboard.putData("Enable Secondary Objective?", enableSecondary);
 		
 		crossMiddle = new SendableChooser<>();
-		crossMiddle.addDefault("Yes", new CrossMiddle(CrossMiddleChoice.Yes));
-		crossMiddle.addObject("No", new CrossMiddle(CrossMiddleChoice.No));
+		crossMiddle.addObject("Yes (Cross Middle)", new CrossMiddle(CrossMiddleChoice.Yes));
+		crossMiddle.addDefault("No (Cross Middle)", new CrossMiddle(CrossMiddleChoice.No));
 		SmartDashboard.putData("Cross Middle?", crossMiddle);
 		
-
-		pneumatics = new Pneumatics();
 		climber = new Climber();
 		intake = new Intake();
 	}
@@ -146,11 +140,13 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		RobotMap.navx.reset();
 		autonomousFlowchart = new FlowChartChooser(ourSide, primaryObjective, crossMiddle, enableSecondary);
-		autonomousFlowchart.start();
-		autonomousFlowchart.ProcessWithStingCode();
+		autonomousFlowchart.ProcessWithStingCode();		
 		autonomousFlowchart.RunAutonomous();
+		//new AutoLineOnly().start(); //Disable this when we put the flowchart back
 		rememberCompressor = false;
-		new LowShift().start();
+		Robot.pneumatics.gearShift(DoubleSolenoid.Value.kForward); //low shift
+		RobotMap.latchCylinder.set(DoubleSolenoid.Value.kForward); //Reset Shooter Solenoid
+
 	}
 
 	/**
