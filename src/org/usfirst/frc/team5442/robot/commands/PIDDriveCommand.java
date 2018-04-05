@@ -19,8 +19,7 @@ public class PIDDriveCommand extends PIDCommand{
 	//100, 93.1
 	//130, 119.3
 	
-	public PIDDriveCommand(
-			double distanceInInches, double speed) {
+	public PIDDriveCommand(double distanceInInches, double speed) {
 		super("Straight DrivingPID", 0.01, 0.00, 0);
 		//.1 not in mpr?
 		_speed = speed;
