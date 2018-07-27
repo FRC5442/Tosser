@@ -20,7 +20,7 @@ public class PincerOff extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return RobotMap.pincer.equals(DoubleSolenoid.Value.kOff);
-	}
+		return true;	
+		}
 
 }

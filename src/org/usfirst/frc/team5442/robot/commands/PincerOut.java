@@ -17,10 +17,9 @@ public class PincerOut extends Command{
 		
 	}
 		
-	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	protected boolean isFinished() {
-		return RobotMap.pincer.equals(DoubleSolenoid.Value.kReverse);
+		return true;
 	}
 
 }

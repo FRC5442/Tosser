@@ -4,13 +4,11 @@ import java.util.ArrayList;
 
 import org.usfirst.frc.team5442.robot.commandgroups.AutoLineOnly;
 import org.usfirst.frc.team5442.robot.commandgroups.LeftSCL;
-import org.usfirst.frc.team5442.robot.commandgroups.LeftSCR;
 import org.usfirst.frc.team5442.robot.commandgroups.LeftSWL;
 import org.usfirst.frc.team5442.robot.commandgroups.MidALL;
 import org.usfirst.frc.team5442.robot.commandgroups.MidALR;
 import org.usfirst.frc.team5442.robot.commandgroups.MidSWL;
 import org.usfirst.frc.team5442.robot.commandgroups.MidSWR;
-import org.usfirst.frc.team5442.robot.commandgroups.RightSCL;
 import org.usfirst.frc.team5442.robot.commandgroups.RightSCR;
 import org.usfirst.frc.team5442.robot.commandgroups.RightSWR;
 
@@ -133,21 +131,27 @@ public class FlowChartChooser { // extends Command {
 		autoRun = null;
 		if (CheckCodes(TheCodes, "_CU_**_**_**_**")) {
 			// RUN CUSTOM AUTO CODE
-		} else if (CheckCodes(TheCodes, "_LF_SC_YS_**_*R")) {
+		} /*else if (CheckCodes(TheCodes, "_LF_SC_YS_**_*R")) {
 			// Drive Left Right Path to scale
 			autoRun = new LeftSCR();
-		} else if (CheckCodes(TheCodes, "_LF_SC_**_**_*L")) {
+		}*/ else if (CheckCodes(TheCodes, "_LF_SC_**_**_*L")) {
 			// Drive left-left path to scale
 			autoRun = new LeftSCL();
+		} else if (CheckCodes(TheCodes, "_LF_SC_**_ES_LR")) {
+			//Drive left-left path to switch
+			autoRun = new LeftSWL();
 		} else if (CheckCodes(TheCodes, "_LF_SW_**_**_L*")) {
 			// Drive left-left path to switch
 			autoRun = new LeftSWL();
-		} else if (CheckCodes(TheCodes, "_RT_SC_YS_**_*L")) {
+		} /*else if (CheckCodes(TheCodes, "_RT_SC_YS_**_*L")) {
 			// Drive Right-Left path to scale
 			autoRun = new RightSCL();
-		} else if (CheckCodes(TheCodes, "_RT_SC_**_**_*R")) {
+		} */else if (CheckCodes(TheCodes, "_RT_SC_**_**_*R")) {
 			// Drive right-right path to scale
 			autoRun = new RightSCR();
+		} else if (CheckCodes(TheCodes, "_RT_SC_**_ES_RL")) {
+			// Drive right-right path to scale
+			autoRun = new RightSWR();
 		} else if (CheckCodes(TheCodes, "_RT_SW_**_**_R*")) {
 			// Drive right-right path to switch
 			autoRun = new RightSWR();

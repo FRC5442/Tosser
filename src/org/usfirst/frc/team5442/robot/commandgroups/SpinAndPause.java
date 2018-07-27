@@ -7,15 +7,15 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class SpinAndPause extends CommandGroup{
 
 	public SpinAndPause() {
-		addSequential(new SpinCube(.4, -.70));
+		addSequential(new SpinCube(.4, -.6));
 		addSequential(new SpinCube(.3, 0));
-		addSequential(new SpinCube(.4, -.70));
+		addSequential(new SpinCube(.4, -.6));
 		addSequential(new SpinCube(.3, 0));
-		addSequential(new SpinCube(.4, -.70));
+		addSequential(new SpinCube(.4, -.6));
 		addSequential(new SpinCube(.3, 0));
-		addSequential(new SpinCube(.4, -.70));
+		addSequential(new SpinCube(.4, -.6));
 		addSequential(new SpinCube(.3, 0));
-		addSequential(new SpinCube(.4, -.70));
+		addSequential(new SpinCube(.4, -.6));
 		
 	}
 }

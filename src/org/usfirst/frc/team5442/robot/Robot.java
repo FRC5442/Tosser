@@ -146,7 +146,7 @@ public class Robot extends IterativeRobot {
 		rememberCompressor = false;
 		Robot.pneumatics.gearShift(DoubleSolenoid.Value.kForward); //low shift
 		RobotMap.latchCylinder.set(DoubleSolenoid.Value.kForward); //Reset Shooter Solenoid
-
+		RobotMap.pincer.set(DoubleSolenoid.Value.kForward);
 	}
 
 	/**

@@ -43,7 +43,7 @@ public class PIDDriveTimeout extends PIDCommand{
 	@Override
 	protected boolean isFinished() {
 		return (Math.abs(RobotMap.encoderRight.getDistance()) > _encoderDistance) || 
-				(Math.abs(RobotMap.encoderRight.getRate()) < 1 && tim.get() > .25);
+				(Math.abs(RobotMap.encoderRight.getRate()) < .5 && tim.get() > .25);
 		
 	}
 

@@ -132,7 +132,7 @@ public class OI {
 		Button5.whileHeld(new IntakeIn(.5));
 		Button3.whileHeld(new IntakeOut(.65));
 		Button2.whenPressed(new SpinAndPause());
-		Button4.whileHeld(new CatapultLatch());
+		//Button4.whileHeld(new CatapultLatch());
 		Button6.whenPressed(new Reload());
 		Button11.whileHeld(new Telescope(1));
 		Button12.whileHeld(new Telescope(-1));

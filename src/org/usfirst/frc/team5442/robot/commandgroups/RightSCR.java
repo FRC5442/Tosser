@@ -21,15 +21,15 @@ public class RightSCR extends CommandGroup{
 		//addSequential(new PIDDriveCommand(25, 0.7, 1));
 		//addSequential(new PIDTurnCommand(-15));
 	
-		addSequential(new PIDDriveCommand(324, 0.5));
-		addSequential(new Stop(-.20));
-		addSequential(new PIDTurnCommand(-90));
-		addSequential(new PIDDriveCommand(-25, .85));
+		addSequential(new PIDDriveCommand(307.5, -0.5));
+		addSequential(new Stop(-.15));
+		addSequential(new PIDTurnCommand(90));
+		addSequential(new PIDDriveCommand(3, -.75));
 		addSequential(new CompressorStop());
 		addSequential(new Reload());
 		addSequential(new PincerToggle());
 		addSequential(new _Timer(.25));
-		addSequential(new FlipAuto(.25, 1));
+		addSequential(new FlipAuto(-.35, .75));
 		addSequential(new Shoot());
 		
 	}

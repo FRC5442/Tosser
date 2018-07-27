@@ -13,10 +13,10 @@ public class RightSWR extends CommandGroup {
 	public RightSWR() {
 		//
 		addSequential(new PIDDriveCommand(145, -.5));
-		addSequential(new Stop(-.25));
+		addSequential(new Stop(-.2));
 		addSequential(new PIDTurnCommand(-90));
-		addSequential(new PIDDriveTimeout(18, -.5));
-		addSequential(new IntakeOutAuto(.7, 2));
+		addSequential(new PIDDriveTimeout(19, -.5));
+		addSequential(new IntakeOutAuto(.65, 2));
 	}
 
 }

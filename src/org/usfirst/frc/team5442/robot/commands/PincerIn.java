@@ -19,10 +19,10 @@ public class PincerIn extends Command{
 		
 		
 	
-	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	protected boolean isFinished() {
-		return RobotMap.pincer.equals(DoubleSolenoid.Value.kForward);
-	}
+
+		return true;
+		}
 
 }

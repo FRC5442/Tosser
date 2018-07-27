@@ -159,7 +159,7 @@ public class RobotMap {
 		//frontFlipStop = new DigitalInput(4);
 		//latchSwitch1 = new DigitalInput(2);
 		catapultSwitch = new DigitalInput(2);
-		intakeLimitSwitch = new DigitalInput(4);
+		intakeLimitSwitch = new DigitalInput(0);
 		
 		flipEncoder = new Encoder(8, 9, false, EncodingType.k4X);
         flipEncoder.setSamplesToAverage(5);

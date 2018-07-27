@@ -2,6 +2,7 @@ package org.usfirst.frc.team5442.robot.commands;
 
 import org.usfirst.frc.team5442.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,8 +22,8 @@ public class SpinCube extends Command{
 	}
 	
 	protected void execute() {
-		RobotMap.rightIntake.set(_speed);
-		RobotMap.leftIntake.set(.65);
+		RobotMap.rightIntake.set(-_speed);
+		RobotMap.leftIntake.set(-.55);
 
 	}
 	
@@ -36,5 +37,7 @@ public class SpinCube extends Command{
 		RobotMap.rightIntake.set(0);
 		RobotMap.leftIntake.set(0);
 		tim.stop();
+		if(!RobotMap.intakeLimitSwitch.get())
+			RobotMap.pincer.set(DoubleSolenoid.Value.kForward);
 	}
 }

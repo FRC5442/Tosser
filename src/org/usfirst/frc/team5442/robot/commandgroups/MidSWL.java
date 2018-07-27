@@ -26,13 +26,12 @@ public class MidSWL extends CommandGroup{
 		
 		//backward
 		addSequential(new PIDDriveCommand(13, -0.50));
-		addSequential(new Stop(.20));
+		addSequential(new Stop(.15));
 		addSequential(new PIDTurnCommand(-38));
-		addSequential(new PIDDriveCommand(87, -0.50));
-		addSequential(new Stop(.20));
+		addSequential(new PIDDriveCommand(90, -0.50));//87
+		addSequential(new Stop(.15));
 		addSequential(new PIDTurnCommand(38));
-		addSequential(new PIDDriveCommand(36, -0.50)); 
-		addSequential(new Stop(.20));
+		addSequential(new PIDDriveCommand(33, -0.50)); //36
 		addSequential(new IntakeOutAuto(.70, 2));
 	}
 

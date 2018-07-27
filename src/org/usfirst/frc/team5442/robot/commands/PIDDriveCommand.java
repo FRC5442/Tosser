@@ -21,7 +21,7 @@ public class PIDDriveCommand extends PIDCommand{
 	
 	public PIDDriveCommand(
 			double distanceInInches, double speed) {
-		super("Straight DrivingPID", 0.01, 0.00, 0);
+		super("Straight DrivingPID", 0.015, 0.00, 0);
 		//.1 not in mpr?
 		_speed = speed;
 		_encoderDistance = distanceInInches * _ratio -  _rollout;

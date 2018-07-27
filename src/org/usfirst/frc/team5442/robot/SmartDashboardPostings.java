@@ -25,6 +25,8 @@ public class SmartDashboardPostings {
 //		SmartDashboard.putNumber("Right Encoder", RobotMap.encoderRight.getDistance());
 //		SmartDashboard.putNumber("NavX Angle", RobotMap.navx.getAngle());
 		SmartDashboard.putBoolean("Pincer State", RobotMap.pincer.equals(DoubleSolenoid.Value.kForward));
+		SmartDashboard.putBoolean("Intake Limit Switch", !RobotMap.intakeLimitSwitch.get());
+		//SmartDashboard.putNumber("Winch Direction", Math.signum(RobotMap.winchMotor.getSpeed()));
 
 		
 		//SmartDashboard.putBoolean("PDP Voltage Less Than 12", RobotMap.pdp.getVoltage() <= 12);

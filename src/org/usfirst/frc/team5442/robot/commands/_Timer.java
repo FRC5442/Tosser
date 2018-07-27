@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class _Timer extends Command {
 	private double m_time;
+	Timer tim = new Timer();
 	
 	public _Timer(double time) {
 		m_time = time;
@@ -12,20 +13,22 @@ public class _Timer extends Command {
 	
 	@Override
 	protected void initialize() {
-		
+		tim.reset();
+		tim.start();
 	}
 	
 	@Override
 	protected void execute() {
-		Timer.delay(m_time);
 	}
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+		return tim.get() > m_time;
 	}
 	
+	protected void end() {
+		tim.stop();
+	}
 	
 
 }
