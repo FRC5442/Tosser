@@ -122,19 +122,19 @@ public class RobotMap {
 		
 		
 		rightController1 = new Spark(0);
-		rightController2 = new Spark(10); // This is above 9 b/c the navx code will just check to make sure that it is 
-		rightController3 = new Spark(11); // ^ That applies here too
+		rightController2 = new Spark(6); // This is above 9 b/c the navx code will just check to make sure that it is 
+		rightController3 = new Spark(7); // ^ That applies here too
 		leftController1 = new Spark(3);
-		leftController2 = new Spark(4);
-		leftController3 = new Spark(5);
+		leftController2 = new Spark(8);
+		leftController3 = new Spark(9);
 		
-		catapultMotor = new Spark(6);
+		catapultMotor = new Spark(5);
 		telescopeMotor = new Spark(2);
 		hookMotor = new Spark(1);
 		//Intake
-		leftIntake = new Spark(9);
-		rightIntake = new Spark(8);
-		flipper = new Spark(7);	
+		leftIntake = new Spark(11);
+		rightIntake = new Spark(10);
+		flipper = new Spark(4);	
 		
 		
 		gearShift = new DoubleSolenoid(0, 1);
