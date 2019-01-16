@@ -114,7 +114,7 @@ public class RobotMap {
 		spinRodMotor = new VictorSP(3);
 		telescopeMotor = new VictorSP(11);
 		hookMotor = new VictorSP(9);
-		//Intake
+		//Intake][\
 		leftIntake = new VictorSP(5);
 		rightIntake = new VictorSP(4);
 		flipper = new VictorSP(10);		
