@@ -132,12 +132,12 @@ public class RobotMap {
 		leftController3 = new VictorSP(8);
 		
 		catapultMotor = new VictorSP(3);
-		telescopeMotor = new VictorSP(11);
+		telescopeMotor = new VictorSP(10);
 		hookMotor = new VictorSP(9);
 		//Intake
 		leftIntake = new VictorSP(4);
 		rightIntake = new VictorSP(5);
-		flipper = new VictorSP(10);	
+		flipper = new VictorSP(11);	
 		 
 		
 		gearShift = new DoubleSolenoid(0, 1);
@@ -146,7 +146,7 @@ public class RobotMap {
 		latchCylinder = new DoubleSolenoid(4, 5);
 		
 		leftControllers = new SpeedControllerGroup(leftController1, leftController2, leftController3);
-		rightControllers = new SpeedControllerGroup(rightController1, rightController2, rightController3);
+		rightControllers = new SpeedControllerGroup(/*rightController1, */rightController2, rightController3);
 	
 		driveTrain = new DifferentialDrive(leftControllers, rightControllers);
 		
